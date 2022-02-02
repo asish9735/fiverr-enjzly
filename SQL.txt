@@ -1,0 +1,50 @@
+INSERT INTO `pref_notifications_template` (`notification_template_id`, `template_key`, `template_for`, `display_order`, `status`) VALUES
+(19, 'withdrawal-request-approved-by-admin', 'Withdrawal Request Approved by admin', 0, 1),
+(20, 'withdrawal-request-rejected-by-admin', 'Withdrawal  Request Rejected by admin', 0, 1);
+
+INSERT INTO `pref_notifications_template_names` (`notification_template_id`, `template_content`, `lang`) VALUES
+(19, 'Your withdrawal request  has been Successfully Approved.', 'en'),
+(19, 'Your withdrawal request  has been Successfully Approved.', 'ar'),
+(20, 'Your withdrawal request  has been Rejected .', 'en'),
+(20, 'Your withdrawal request  has been Rejected .', 'ar');
+
+INSERT INTO `pref_settings` (`id`, `title`, `setting_key`, `setting_value`, `editable`, `deletable`, `display_order`) VALUES
+(124, 'Minimum Service Value', 'minimum_service_value', '5', 1, 0, 0);
+
+ALTER TABLE `pref_conversations` ADD `sender_last_seen_msg` INT NOT NULL AFTER `status`, ADD `receiver_last_seen_msg` INT NOT NULL AFTER `sender_last_seen_msg`;
+ALTER TABLE `pref_conversations_message` ADD `reply_to` INT NOT NULL AFTER `is_read`, ADD `is_deleted` DATETIME NOT NULL AFTER `reply_to`, ADD `is_edited` DATETIME NOT NULL AFTER `is_deleted`;
+CREATE TABLE `pref_conversations_message_edited` (
+  `mesage_id` int(11) NOT NULL,
+  `message_org` text NOT NULL,
+  `edit_date` datetime NOT NULL,
+  `edit_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `pref_conversations_message_favorite` (
+  `message_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+ALTER TABLE `pref_conversations_message_edited`
+  ADD PRIMARY KEY (`edit_id`),
+  ADD KEY `mesage_id` (`mesage_id`);
+
+ALTER TABLE `pref_conversations_message_favorite`
+  ADD UNIQUE KEY `message_id` (`message_id`,`member_id`);
+
+
+ALTER TABLE `pref_conversations_message_edited`
+  MODIFY `edit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+ALTER TABLE `pref_conversations_message` CHANGE `reply_to` `reply_to` INT(11) NULL, CHANGE `is_deleted` `is_deleted` DATETIME NULL, CHANGE `is_edited` `is_edited` DATETIME NULL;
+ALTER TABLE `pref_conversations_message` CHANGE `attachment` `attachment` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+UPDATE `pref_conversations_message` SET `attachment`=null WHERE 1
+  
+  --
+ALTER TABLE `pref_category` ADD `category_module` TINYINT NOT NULL AFTER `display_order`;
+CREATE TABLE `pref_proposal_package_module_attributes` ( `proposal_id` INT NOT NULL , `package_id` INT NOT NULL , `attribute_key` VARCHAR(50) NOT NULL , `attribute_value` VARCHAR(50) NOT NULL ) ENGINE = InnoDB;
+ALTER TABLE `pref_proposal_package_module_attributes` ADD UNIQUE( `proposal_id`, `package_id`, `attribute_key`);
+

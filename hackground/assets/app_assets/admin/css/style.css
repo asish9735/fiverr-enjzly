@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* CSS Document */
+:root {
+    --siteColor: #00b0ff;
+	--webColor: #3d5afe;
+}
+ @font-face {
+ font-family: 'Montserrat';
+ src: url("../fonts/Montserrat-Regular.ttf");
+ font-style: normal;
+ font-weight: 400;
+}
+ @font-face {
+ font-family: 'Montserrat';
+ src: url("../fonts/Montserrat-Medium.ttf");
+ font-style: normal;
+ font-weight: 500;
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url("../fonts/Montserrat-SemiBold.ttf");
+	font-style: normal;
+	font-weight: 600;
+}
+ @font-face {
+	font-family: 'Montserrat';
+	src: url("../fonts/Montserrat-Bold.ttf");
+	font-style: normal;
+	font-weight: 700;
+}
+html{
+	font-size:15px;
+}
+body{
+	font-family: 'Montserrat';
+	font-size:1rem;
+}
+.btn-site {
+    background-color: var(--siteColor);
+    border-color: var(--siteColor);
+    color: #fff;
+}
+.btn-site:hover {
+	background-color:var(--webColor);
+	border-color:var(--webColor);
+	color:#fff;
+}
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn-success:hover {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+.btn-outline-success {
+    border-color: #00c853;
+    color: #00c853;
+}
+.btn-outline-success:hover, .btn-outline-success:focus {
+	background-color:#00c853;
+	border-color:#00c853;
+	color:#fff;
+}
+.btn-outline-site {
+	border-color:var(--siteColor);
+	color:var(--siteColor);
+}
+.btn-outline-site:hover {
+	background-color:var(--siteColor);
+	border-color:var(--siteColor);
+	color:#fff;
+}
+.mr-2{
+	margin-right:0.5rem;
+}
+.loader {
+	height: 100px;
+	vertical-align: middle;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.invalid {
+	border-color: red;
+}
+.invalid_parent {
+	border: 1px solid red;
+}
+.green {
+	color: green;
+}
+.red {
+	color: #dd4b39;
+}
+.blue {
+	color: blue;
+}
+.checkbox-inline, .radio-inline {
+	padding-left: 0px;
+}
+.box-body td .btn-group .dropdown-menu {
+	left: inherit;
+	right: 0;
+}
+.table_visible {
+	overflow: visible;
+}
+.dropdown-menu>li>span{
+	padding: 3px 15px;
+}
+
+ @media only screen and (max-width: 767px) {
+ .table_visible {
+ overflow: auto;
+}
+ .table_visible tabel {
+ margin-bottom: 60px;
+}
+}

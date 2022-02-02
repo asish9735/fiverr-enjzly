@@ -1,0 +1,195 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+$enable_paypal=get_option_value('enable_paypal');
+$enable_stripe=get_option_value('enable_stripe');
+$enable_coinpayments=get_option_value('enable_coinpayments');
+$enable_payza=get_option_value('enable_payza');
+$enable_dusupay=get_option_value('enable_dusupay');
+$current_balance=$member_details['member']->balance;
+$sub_total=$CheckOutData['sub_total'];
+$s_currency=CURRENCY;
+$processing_fee=get_option_value('processing_fee');
+$total = $processing_fee+$sub_total;
+dd($proposal_details,TRUE);
+dd($CheckOutData,TRUE);
+$p=0;
+?>
+<div class="container mt-5 mb-5">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="row">
+        <?php if($current_balance >=$sub_total){ ?>
+				<div class="col-md-12 mb-3">
+					<div class="card payment-options">
+						<div class="card-header">
+							<h5><i class="fa fa-dollar"></i> Available Shopping Balance</h5>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-1">
+									<input id="shopping-balance" type="radio" name="method" class="form-control radio-input" checked>
+								</div>
+								<div class="col-11">
+									<p class="lead mt-2">
+									Personal Balance - <?php D($member_details['member']->member_name); ?>
+									<span class="text-success font-weight-bold"><?php D($s_currency); ?><?php D($current_balance); ?></span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+      <?php } ?>
+
+				<div class="col-md-12 mb-3">
+					<div class="card payment-options">
+						<div class="card-header">
+							<h5><i class="fa fa-credit-card"></i> Payment Options</h5>
+						</div>
+						<div class="card-body">
+                <?php if($enable_paypal == 1){
+                	$p++;
+                	 ?>
+							<div class="row">
+								<div class="col-1">
+									<input id="paypal" type="radio" name="method" class="form-control radio-input">
+								</div>
+								<div class="col-11">
+									<img src="<?php D(theme_url().IMAGE)?>paypal.png" height="50" class="ml-2 width-xs-100">
+								</div>
+							</div>
+                <?php } ?>
+				<?php if($enable_stripe == 1){
+						if($p>0){D('<hr>');}
+						$p++;
+						 ?>
+							<div class="row">
+								<div class="col-1">
+									<input id="credit-card" type="radio" name="method" class="form-control radio-input">
+								</div>
+								<div class="col-11">
+									<img src="<?php D(theme_url().IMAGE)?>credit_cards.jpg" height="50" class="ml-2 width-xs-100">
+								</div>
+							</div>
+                <?php } ?>
+  		<?php if($enable_payza == 1){
+  			if($p>0){D('<hr>');}
+  			$p++;
+  			?>
+							<div class="row">
+								<div class="col-1">
+					        		<input id="payza" type="radio" name="method" class="form-control radio-input" >
+								</div>
+								<div class="col-11">
+									<img src="<?php D(theme_url().IMAGE)?>payza.jpg" height="50" class="ml-2 width-xs-100">
+								</div>
+							</div>
+    <?php } ?>
+
+    <?php if($enable_coinpayments == 1){ 
+    	if($p>0){D('<hr>');}
+    	$p++;
+    	 ?>
+							<div class="row">
+								<div class="col-1">
+					        		<input id="coinpayments" type="radio" name="method" class="form-control radio-input" >
+								</div>
+								<div class="col-11">
+									<img src="<?php D(theme_url().IMAGE)?>coinpayments.png" height="50" class="ml-2 width-xs-100">
+								</div>
+							</div>
+    <?php } ?>
+    <?php if($enable_dusupay == 1){
+    	if($p>0){D('<hr>');}
+    	$p++;
+    	 ?>
+							<div class="row">
+								<div class="col-1">
+					            	<input id="mobile-money" type="radio" name="method" class="form-control radio-input" >
+								</div>
+								<div class="col-11">
+									<img src="<?php D(theme_url().IMAGE)?>mobile-money.png" height="50" class="ml-2 width-xs-100">
+								</div>
+							</div>
+        <?php } ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="card checkout-details">
+				<div class="card-header">
+					<h5> <i class="fa fa-file-text-o"></i> Order Summary </h5>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-4 mb-3">
+							<img src="<?php D(URL_USERUPLOAD)?>proposal-files/<?php D($proposal_details['proposal']->proposal_image); ?>" class="img-fluid">
+						</div>
+						<div class="col-md-8">
+							<h5><?php D($proposal_details['proposal']->proposal_title); ?></h5>
+						</div>
+					</div>
+					<hr>
+					<h6>Proposal's Price: <span class="float-right"><?php D($s_currency); ?><?php D($CheckOutData['proposal_price']); ?> </span></h6>
+
+					<?php if($CheckOutData['extra']){ ?>
+					<hr>
+					<h6>Proposal's Extras : <span class="float-right"><?php D($s_currency); ?><?php D($CheckOutData['extra_price']); ?></span> </h6>
+					<?php } ?>
+					<hr>
+					<h6>Proposal's Quantity: <span class="float-right"><?php D($CheckOutData['qty']); ?></span></h6>
+					<hr>
+
+					<h6 class="processing-fee">Processing Fee: <span class="float-right"><?php D($s_currency); ?><?php D($processing_fee); ?></span></h6>
+					<hr class="processing-fee">
+					<h6>Appy Coupon Code:</h6>
+					<form class="input-group" method="post">
+						
+						<input type="text" name="code" value="<?php if($CheckOutData['coupon']){D($CheckOutData['coupon']);}?>" class="form-control apply-disabled" placeholder="Enter Coupon Code">
+						<button type="submit" name="coupon_submit" class="input-group-addon btn btn-success">Apply</button>
+					</form>
+					<?php if($CheckOutData['coupon']){?>
+					<p class="coupon-response mt-2 p-2 bg-success text-white">Your coupon code has been applied successfully.</p>
+					<?php }?>
+					<hr>
+					<h5 class="font-weight-bold">
+						Proposal's Total: <span class="float-right total-price"><?php D($s_currency); ?><?php D($total); ?></span>
+					</h5>
+					<hr>
+          <?php 
+        $paymentMethod=array(
+        'current_balance'=>$current_balance,
+        'sub_total'=>$sub_total,
+        'processing_fee'=>$processing_fee,
+        'total'=>$total,
+        'enable_paypal'=>$enable_paypal,
+        'enable_stripe'=>$enable_stripe,
+        'enable_coinpayments'=>$enable_coinpayments,
+        'enable_payza'=>$enable_payza,
+        'enable_dusupay'=>$enable_dusupay,
+        's_currency'=>$s_currency,
+        'payfor'=>'checkout',
+        'ids'=>'0',
+        );
+ 		$templateLayout=array('view'=>'payment/paymentMethod','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
+		load_template($templateLayout,$paymentMethod);
+          
+         // include("checkoutPayMethods.php"); ?>          
+					        
+		</div>
+
+		<?php if($referred){ ?>
+
+		<div class="card-footer">Referred By : <b><?php D($referred['username']); ?></b></div>
+
+		<?php } ?>
+
+		</div>
+
+		</div>
+
+	</div>
+
+</div>

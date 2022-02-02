@@ -1,0 +1,387 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+
+
+.fullwidth .header-widget:last-of-type {
+	float: right;
+}
+.header-notifications-trigger span {
+	margin-left: -10px;
+}
+.header-notifications {
+	padding-right: 15px;
+}
+.header-notifications:last-child{
+	padding-right: 0;
+}
+#header .right-side {
+	float: right;
+	right: 20px;
+}
+.navigationTop {
+	float:left;
+}
+.header-widget:last-of-type {
+	padding-left: 0;
+	padding-right: 0;
+}
+header .input-group .form-control:not(:last-child) {
+ background-position: 3%
+}
+.navbar-nav .nav-item:last-child .mega-menu {
+	margin-left: -130px
+}
+.intro-search-button {
+	margin-left: 0;
+}
+.pull-left {
+	float:left
+}
+.pull-right {
+	float:right
+}
+.fit-avatar.s24 {
+	margin-right: 8px
+}
+.single-page-header .left-side {
+	padding-right: 1.5rem;
+}
+.single-page-header .header-image {
+	margin-right: 1.5rem;
+}
+.single-page-header .header-details li {
+	margin-right: 20px;
+}
+.accordion__item > .accordion-header:after {
+	float: right;
+}
+.carosel_sec .carousel-control-prev {
+	border-radius: 0 33px 33px 0;
+	padding-right: 10px;
+}
+.carosel_sec .carousel-control-next {
+	border-radius: 33px 0 0 33px;
+	padding-left: 5px;
+}
+.fit-avatar {
+	right: 1rem;
+}
+ul.list li {
+	margin-left: 28px;
+}
+ul.list li:before {
+	margin-left: -28px;
+	float: left;
+}
+.mark-unfav,
+.mark-fav {
+	left: 1rem;
+}
+.checkbox span {
+	padding-left: 5px
+}
+.checkbox span::before {
+	left: 0;
+	margin-left: -20px
+}
+.checkbox span::after {
+	left: -1px
+}
+.header-message-div .heading,  .header-message-div-unread .heading {
+	margin-left:10px
+}
+.header-message-div .message, .header-message-div-unread .message,
+.header-message-div .date,  .header-message-div-unread .date {
+	margin-left:64px;
+}
+.messagePopup .header-message-div .message{
+	margin-left: 56px;
+}
+#notifications .header-message-div .btn, #notifications .header-message-div-unread .btn{
+	right:20px;
+}
+.dashboard-box .featuretag,
+.card-image .featuretag{
+	right: 0;
+}
+.job-listing .job-listing-company-logo {
+	margin-right: 1.25rem;
+}
+.dashboard-box .featuretag,
+.card-image .featuretag{
+    padding: 2px 8px 1px 12px;
+    border-radius: 1rem 0 0 1rem;
+}
+.top_login_btn li a {
+	margin-left:12px
+}
+#favorites .favorite-owner img {
+	margin-right:12px;
+	float:left;
+}
+.inbox-conversations .inbox-seller h6,
+.buyer-requests .request-description {
+	margin-left:60px
+}
+.contact-title {
+	margin-left:60px;
+}
+.inbox-conversations .inbox-seller img,
+.order-proposal-image,
+.buyer-requests .request-img {
+	float:left
+}
+.specfic.col-md-9 {
+	border-left: 1px solid #ccc
+}
+.order-proposal-title {
+	margin-left:70px
+}
+.user-header .btn-edit {
+	float:right
+}
+.choosefile .btn,
+.proposal-reviews .reviews-list li .user-picture {
+    left: 0
+}
+.border-box {
+	border-right:1.5px solid #a5a5a5
+}
+.proposal-reviews .reviews-list li {
+	padding:15px 58px 15px 72px
+}
+.request-sidebar .card-body::before {
+	left: -10px;
+	border-right: 10px solid #fff;
+}
+.request-sidebar .card-body::after {
+	left: -12px;
+	border-right: 10px solid var(--siteColor);
+}
+.top_login_btn li:last-child {
+	margin-left:10px
+}
+.home-header .container .list-inline-item .new-indicator {
+	right:0
+}
+.message-div .message-image, .message-div-hover .message-image {
+	float:left;
+	margin-right:12px
+}
+.message-div .message-desc, .message-div-hover .message-desc,
+.message-div form, .message-div-hover form {
+	margin-left:56px
+}
+.proposal-reviews .reviews-list li.rating-seller {
+	padding-left:142px
+}
+.proposal-reviews .reviews-list li.rating-seller .user-picture {
+	left:93px
+}
+.proposal-card .is-online {
+	margin-right: 10px
+}
+.thumbnail_sec .btn{
+	right: -10px
+}
+.thumbnail_sec {
+	margin-right: 13px
+}
+.bootstrap-tagsinput .badge [data-role="remove"] {
+  margin-left: 8px
+}
+/* second last child */
+.mega-drop-down:nth-last-child(2) .mega-menu {
+	right:0
+}
+.modal-header .fa {
+	padding-right: 5px;
+}
+.popover label .radio-img {
+    float: left;
+}
+.popover label div {
+    padding-left: 10px;
+}
+.popover input[type=radio] {
+    left: -20px;
+}
+.icon-box.with-line:before {
+	left: 50%;
+}
+.header-notifications-dropdown {
+	right: -15px;
+}
+.user-menu .header-notifications-dropdown {
+	right: 0;
+}
+.user-menu .header-notifications-dropdown:before {
+	right: 23px;
+}
+.user-name {
+	padding: 2px 0 0 15px;
+}
+.notification-text, .header-notifications-content .notification-text {
+	padding-left: 20px;
+	padding-right: 5px;
+}
+.dashboard-status-button {
+	margin: 0 0 4px 4px;
+}
+.buttons-to-right, .dashboard-box-list .button-with-dropdown{
+    right: 1rem;
+}
+.job-listing .job-listing-footer ul li {
+	margin-right: 14px;
+}
+.boxed-list-item .item-image {
+	margin-right: 20px;
+}
+/*.input-group > .input-group-prepend > .input-group-text{
+	border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}*/
+.fun-fact-text {
+	margin-right: 20px;
+}
+.fun-fact-icon {
+    right: 1rem;
+}
+.status-icon, .notification-avatar:after, .user-avatar:after {
+	right: 0;
+}
+.messages-inbox .message-avatar {
+	left: 1rem;
+}
+.messages-container-inner .message-by-headline span {
+	right: 1rem
+}
+.messages-container-inner .messages-inbox .message-avatar {
+	left: 1rem;
+}
+.messages-container-inner .messages-inbox .message-by {
+	margin-left: 55px
+}
+.messages-inbox .message-by{
+	margin-left: 85px;
+}
+.message-bubble {
+    padding-right: 100px;
+}
+.message-bubble.me {
+    padding-left: 100px;
+    padding-right: 0;
+}
+.message-bubble .message-avatar {
+	left: 0;
+}
+.message-bubble.me .message-avatar {
+	left: auto;
+	right: 0;
+}
+.message-bubble .message-text {
+	float: left;
+	margin-left: 70px;
+}
+.message-bubble.me .message-text {
+	float: right;
+}
+.message-bubble.me .message-text {
+	margin-left: 0;
+	margin-right: 70px;
+}
+.fixed-action-btn {
+    right: -20px;
+}
+.message-bubble.me .fixed-action-btn {
+    left: -20px;
+    right: auto;
+}
+.fixed-action-btn ul {
+    left: 15px;
+}
+.message-bubble.me .fixed-action-btn ul {
+    left: auto;
+    right: 15px;
+}
+.fav-star {
+    right: -5px;
+}
+.message-bubble.me .fav-star {
+    left: -5px;
+    right: auto;
+}
+.emojionearea, .emojionearea.form-control {
+	margin-right:1rem;
+}
+.message-bubble .message-text:before {
+	border-right-style: solid;
+	border-right-width: 6px;
+	left: -6px;
+	right: auto;
+}
+.message-bubble.me .message-text:before {
+	border-left-style: solid;
+	border-left-width: 6px;
+	border-right: none;
+	right: -6px;
+	left: auto;
+}
+.message-bubble .message-text:before {
+    border-right-color: #f4f4f4;
+}
+.message-bubble.me .message-text:before {
+	border-left-color: var(--siteColor);
+}
+.message-reply .uploadButton {
+    margin: 0.1rem 1rem 0 auto;
+}
+.bootbox .modal-header .pull-right, .bootbox  .modal-header .btn-success, .bootbox  .modal-header .btn-primary {
+    right: 21px;
+}
+.bootbox  .modal-header .pull-left, .bootbox  .modal-header .btn-black, .bootbox  .modal-header .btn-danger {
+    left: 21px;
+}
+.message-reply textarea {
+	margin-right:15px;
+	padding-left:0;
+}
+a.headline-link,
+.headline-text-right{
+	right: 15px;
+}
+.input-with-icon i, .messages-headline .input-with-icon i {
+	right: 14px;
+}
+.checkbox label {
+	padding-left: 30px;
+}
+.checkbox label span.checkbox-icon{
+	margin-right: 5px;
+	left: 0;
+}
+
+
+ @media (min-width: 992px) {
+ #navigation ul li:last-child ul,  #navigation ul li:nth-last-child(2) .mega-menu,  #navigation ul li:nth-last-child(3) .mega-menu {
+ right: 0;
+ left: auto;
+}
+/*.dashboard-box-list .buttons-to-right {
+	right:20px;
+}*/
+ul.dashboard-box-list.with-button > li {
+	padding-right: 9rem
+}
+
+}
+
+
+
+
+
+
+

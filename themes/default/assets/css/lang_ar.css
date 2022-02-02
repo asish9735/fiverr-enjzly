@@ -1,0 +1,404 @@
+@charset "utf-8";
+/* CSS Document */
+.dropdown-menu.show{
+	left: auto !important;
+	top: 30px !important;
+	right: 0;
+	transform: none !important;
+}
+[class*="carousel-control-"] .fa {
+	transform:rotate(180deg)
+}
+#fc_frame, #fc_frame.fc-widget-normal {
+	left:15px;
+	right:auto !important
+}
+.fullwidth .header-widget:last-of-type {
+	float: left;
+}
+.header-notifications-trigger span {
+	margin-right: -10px;
+}
+.header-notifications {
+	padding-left: 15px;
+}
+.header-notifications:last-child {
+	padding-left: 0;
+}
+#header .right-side {
+	float: left;
+	left: 20px;
+}
+.navigationTop {
+	float:right;
+}
+.header-widget:last-of-type {
+	padding-right: 0;
+	padding-left: 0;
+}
+header .input-group .form-control:not(:last-child) {
+ background-position: 97%
+}
+.navbar-nav .nav-item:last-child .mega-menu {
+	margin-right: -130px
+}
+.intro-search-button {
+	margin-right: 0;
+}
+.pull-left {
+	float:right
+}
+.pull-right {
+	float:left
+}
+.fit-avatar.s24 {
+	margin-left: 8px
+}
+.single-page-header .left-side {
+	padding-left: 1.5rem;
+}
+.single-page-header .header-image {
+	margin-left: 1.5rem;
+}
+.single-page-header .header-details li {
+	margin-left: 20px;
+}
+.carosel_sec .carousel-control-next {
+	border-radius: 0 33px 33px 0;
+	padding-right: 10px;
+}
+.carosel_sec .carousel-control-prev {
+	border-radius: 33px 0 0 33px;
+	padding-left: 5px;
+}
+.accordion__item > .accordion-header:after {
+	float: left;
+}
+.fit-avatar {
+	left: 1rem;
+}
+ul.list li {
+	margin-right: 28px;
+}
+ul.list li:before {
+	margin-right: -28px;
+	float: right;
+}
+.mark-unfav,
+.mark-fav {
+	right: 1rem;
+}
+.checkbox span {
+	padding-right: 5px
+}
+.checkbox span::before {
+	right: 0;
+	margin-right: -20px
+}
+.checkbox span::after {
+	right: -17px
+}
+.header-message-div .heading,  .header-message-div-unread .heading {
+	margin-right:10px
+}
+.header-message-div .message, .header-message-div-unread .message,
+.header-message-div .date,  .header-message-div-unread .date {
+	/*margin-right:55px;*/
+	right:20px
+}
+.messagePopup .header-message-div .message{
+	margin-right: 56px;
+}
+#notifications .header-message-div .btn, #notifications .header-message-div-unread .btn{
+	left:20px;
+}
+.dashboard-box .featuretag{
+	left: 0;
+}
+.job-listing .job-listing-company-logo {
+	margin-left: 1.25rem;
+}
+.dashboard-box .featuretag{
+    padding: 0 15px 2px 10px;
+    border-radius:0 1rem 1rem 0;
+}
+.top_login_btn li a {
+	margin-right:12px
+}
+#favorites .favorite-owner img {
+	margin-left:12px;
+	float:right;
+}
+.inbox-conversations .inbox-seller h6,
+.buyer-requests .request-description {
+	margin-right:60px
+}
+.inbox-conversations .inbox-seller img,
+.order-proposal-image,
+.buyer-requests .request-img {
+	float:right
+}
+.contact-title {
+	margin-right:60px;
+}
+.specfic.col-md-9 {
+	border-right: 1px solid #ccc
+}
+.order-proposal-title {
+	margin-right:70px
+}
+.user-header .btn-edit {
+	float:left
+}
+.choosefile .btn,
+.proposal-reviews .reviews-list li .user-picture {
+    right: 0
+}
+.border-box {
+	border-left:1.5px solid #a5a5a5
+}
+.proposal-reviews .reviews-list li {
+	padding:15px 72px 15px 58px
+}
+.request-sidebar .card-body:before {
+	right: -13px;	
+	border-left: 13px rgb(0 176 255 / 25%) solid;
+}
+.top_login_btn li:last-child {
+	margin-right:10px
+}
+.home-header .container .list-inline-item .new-indicator {
+	left:0
+}
+.message-div .message-image, .message-div-hover .message-image {
+	float:right;
+	margin-left:12px
+}
+.message-div .message-desc, .message-div-hover .message-desc,
+.message-div form, .message-div-hover form {
+	margin-right:56px
+}
+.proposal-reviews .reviews-list li.rating-seller {
+	padding-right:142px
+}
+.proposal-reviews .reviews-list li.rating-seller .user-picture {
+	right:93px
+}
+.proposal-card .is-online {
+	margin-left: 10px
+}
+.thumbnail_sec .btn{
+	left: -10px
+}
+.bootstrap-tagsinput .badge [data-role="remove"] {
+  margin-right: 8px
+}
+/* second last child */
+.mega-drop-down:nth-last-child(2) .mega-menu {
+	left:0
+}
+.modal-header .fa {
+	padding-left: 5px;
+}
+.popover label .radio-img {
+    float: right;
+}
+.popover label div {
+    padding-right: 10px;
+}
+.popover input[type=radio] {
+    right: -20px;
+}
+
+.dropdown-menu-right {
+	right: auto;
+}
+.icon-box.with-line:before {
+	right: 50%;
+}
+.header-notifications-dropdown {
+	left: -15px;
+}
+.user-menu .header-notifications-dropdown {
+	left: 0;
+}
+.user-menu .header-notifications-dropdown:before {
+	left: 23px;
+}
+.user-name {
+	padding: 2px 15px 0 0;
+}
+.notification-text, .header-notifications-content .notification-text {
+	padding-right: 20px;
+	padding-left: 5px;
+}
+.dashboard-status-button {
+	margin: 0 4px 4px 0;
+}
+.buttons-to-right, .dashboard-box-list .button-with-dropdown{
+    left: 1rem;
+}
+.job-listing .job-listing-footer ul li {
+	margin-left: 14px;
+}
+.boxed-list-item .item-image {
+	margin-left: 20px;
+}
+.input-group > .input-group-prepend > .input-group-text{
+	border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+.fun-fact-text {
+	margin-left: 20px;
+}
+.fun-fact-icon {
+    left: 1rem;
+}
+.status-icon, .notification-avatar:after, .user-avatar:after {
+	left: 0;
+}
+.messages-inbox .message-avatar {
+	right: 1rem;
+}
+.messages-container-inner .message-by-headline span {
+	left: 1rem;
+}
+.messages-container-inner .messages-inbox .message-avatar {
+	right: 1rem;
+}
+.messages-container-inner .messages-inbox .message-by {
+	margin-right: 55px
+}
+.messages-inbox .message-by{
+	margin-right: 85px;
+}
+.message-bubble {
+    padding-left: 100px;
+}
+.message-bubble.me {
+    padding-right: 100px;
+    padding-left: 0;
+}
+.message-bubble .message-avatar {
+	right: 0;
+}
+.message-bubble.me .message-avatar {
+	left: 0;
+	right: auto;
+}
+.message-bubble .message-text {
+	float: right;
+	margin-right: 70px;
+}
+.message-bubble.me .message-text {
+	float: left;
+}
+.message-bubble.me .message-text {
+	margin-right: 0;
+	margin-left: 70px;
+}
+.fixed-action-btn {
+    left: -20px;
+}
+.message-bubble.me .fixed-action-btn {
+    right: -20px;
+    left: auto;
+}
+.fixed-action-btn ul {
+    right: 15px;
+}
+.message-bubble.me .fixed-action-btn ul {
+    right: auto;
+    left: 15px;
+}
+.fav-star {
+    left: -5px;
+}
+.message-bubble.me .fav-star {
+    right: -5px;
+    left: auto;
+}
+.emojionearea, .emojionearea.form-control {
+	margin-left:1rem;
+}
+.message-bubble .message-text:before {
+	border-left-style: solid;
+    border-left-width: 6px;
+    right: -6px;
+    left: auto;
+}
+.message-bubble.me .message-text:before {
+	border-right-style: solid;
+    border-right-width: 6px;
+    border-left: none;
+    left: -6px;
+    right: auto;
+}
+.message-bubble .message-text:before {
+    border-left-color: #f4f4f4;
+}
+.message-bubble.me .message-text:before {
+	border-right-color: var(--siteColor);
+}
+.message-reply .uploadButton {
+    margin: 0.1rem auto 0 1rem;
+}
+.bootbox .modal-header .pull-right, .bootbox  .modal-header .btn-success, .bootbox  .modal-header .btn-primary {
+    left: 21px;
+}
+.bootbox  .modal-header .pull-left, .bootbox  .modal-header .btn-black, .bootbox  .modal-header .btn-danger {
+    right: 21px;
+}
+.message-reply textarea {
+	margin-left:15px;
+	padding-right:0;
+}
+a.headline-link,
+.headline-text-right{
+	left: 15px;
+}
+.input-with-icon i, .messages-headline .input-with-icon i {
+	left: 14px;
+}
+.checkbox label {
+	padding-right: 30px;
+}
+.checkbox label span.checkbox-icon{
+	margin-left: 5px;
+	right: 0;
+}
+
+ @media (min-width: 992px) {
+ #navigation ul li:last-child ul,  #navigation ul li:nth-last-child(2) .mega-menu,  #navigation ul li:nth-last-child(3) .mega-menu {
+ right: auto;
+ left: 0;
+}
+.dashboard-box-list .buttons-to-right {
+	left:20px;
+}
+ul.dashboard-box-list.with-button > li {
+	padding-left: 9rem
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

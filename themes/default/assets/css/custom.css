@@ -1,0 +1,214 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**************New loader start*******************/
+.MYspinner {
+  -webkit-animation: rotator 1.4s linear infinite;
+          animation: rotator 1.4s linear infinite;
+}
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+          animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+
+@keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+/**************New loader end*******************/
+.swal2-popup .swal2-styled.swal2-confirm {
+    background-color: #28a745;
+}
+.choosefile {
+    position:relative;
+        height: 38px;
+        
+}
+
+.choosefile input[type="file"] {
+      z-index: 99;
+    width: 100%;
+    height: 38px;
+    opacity: 0;
+    position: absolute;
+}
+.choosefile .btn {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+/* ---------------------------------- */
+/* List Styles
+------------------------------------- */
+.list-3,
+.list-2,
+.list-1 {
+	padding: 3px 0 0 0;
+}
+
+.list-3 li,
+.list-2 li,
+.list-1 li {
+	list-style: none;
+	margin: 0.35rem 0;
+	position: relative;
+	padding-left: 28px;
+}
+
+/*.list-3 li:first-child,
+.list-2 li:first-child,
+.list-1 li:first-child {
+	margin-top: 0;
+}*/
+
+.list-1.gray li:before {
+	color: #777;
+}
+.list-3 li:before {
+	content: "\e912";
+	font-family: "Feather-Icons";
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.list-1 li:before {
+	content: "";
+	height: 6px;
+	width: 6px;
+	background-color: #66676b;
+	border-radius: 2px;
+	position: relative;
+	top: 9px;
+}
+.btn-circle {
+    position: relative;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 1rem;
+    line-height: 1;
+    border-radius: 15px;
+}
+ul.card-list {
+	
+}
+ul.card-list > li {
+	display:flex;
+	margin-bottom:0.5rem
+}
+ul.card-list > li:last-child {
+	margin-bottom:0
+}
+
+.card-header > h4 {
+	margin-bottom:0
+}
+.mycustom-modal .modal-header {
+    text-align: center;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* END CSS */

@@ -1,0 +1,597 @@
+@charset "utf-8";
+/* CSS Document */
+:root {
+    --siteColor: #fdd007;
+	--webColor: #ffc107;
+}
+.numbered.color ol > li::before {
+     border:1px solid var(--siteColor);
+     color:#00b0ff;
+}
+ .numbered.color.filled ol > li::before {
+     border:1px solid var(--siteColor);
+     background-color:var(--siteColor);
+}
+ .radio input[type="radio"]:checked + label .radio-label {
+     background-color:var(--siteColor);
+     border-color:var(--siteColor);
+}
+ .checkbox input:checked + label span.checkbox-icon {
+     background-color:var(--siteColor);
+     border-color:var(--siteColor);
+}
+ .slider-handle {
+     border:2px solid var(--siteColor);
+}
+ .infoBox-close:hover {
+     color:#fff;
+     background-color:var(--siteColor);
+}
+ 
+ a,
+ .header-widget .log-in-button:hover i,
+ .notification-text span.color,
+ .header-notifications-content .notification-text span.color,
+ ul.user-menu-small-nav li a:hover,
+ ul.user-menu-small-nav li a:hover i,
+ #navigation ul li:hover a:after,
+ #navigation ul li a.current,
+ #navigation ul li a.current:after,
+ #navigation ul li:hover > a,
+ #breadcrumbs ul li a:hover,
+ #breadcrumbs.white ul li a:hover,
+ .single-page-header .header-details li a:hover,
+ .blog-post-content h3 a:hover,
+ #posts-nav li a:hover,
+ .task-tags span,
+ .freelancer-detail-item a:hover,
+ .list-4 li:before,
+ .list-3 li:before,
+ .list-2 li:before,
+ .list-1 li:before,
+ .share-buttons-content span strong,
+ .keyword,
+ .banner-headline strong.color,
+ .category-box-icon,
+ .recommended .pricing-plan-label,
+ .recommended .pricing-plan-label strong,
+ .boxed-widget.summary li.total-costs span,
+ .testimonial-box:before,
+ .single-counter h3,
+ .popup-tabs-nav li.active a,
+ .dialog-with-tabs .forgot-password:hover,
+ .dropdown-menu > li > a:hover,
+ .dropdown-menu > .active > a,
+ .dropdown-menu > .active > a:hover,
+ .bootstrap-select .dropdown-menu li.selected a span.check-mark:before,
+ .bootstrap-select .dropdown-menu li.selected:hover a span.check-mark:before,
+ .boxed-list-headline h3 i,
+ .boxed-list-item .item-details .detail-item a:hover,
+ .job-overview .job-overview-inner ul li i,
+ .dashboard-nav ul:before,
+ .dashboard-nav ul li.active-submenu a i,
+ .dashboard-nav ul li.active a i,
+ .dashboard-nav ul li:hover a i,
+ .dashboard-nav ul li.active-submenu a,
+ .dashboard-nav ul li:hover a,
+ .dashboard-nav ul li.active a,
+ .dashboard-nav ul li.active-submenu a:after,
+ .dashboard-nav ul li.active a:after,
+ .dashboard-nav ul li:hover a:after,
+ .dashboard-box .headline h3 i,
+ .help-icon,
+ .header-widget .log-in-button:hover,
+ .header-widget .log-in-button:hover i,
+ .freelancer-name h4 a:hover {
+     color:var(--siteColor);
+}
+#backtotop a,
+ .header-notifications-trigger span,
+ a.header-notifications-button,
+ #navigation ul ul.dropdown-nav ul.dropdown-nav li:hover a:after,
+ #navigation ul ul.dropdown-nav li:hover a:after,
+ .mm-menu em.mm-counter,
+ .language-switcher.bootstrap-select.btn-group.open button,
+ .language-switcher.bootstrap-select.btn-group button:hover,
+ .footer-links ul li a span:before,
+ .newsletter button,
+ .pagination ul li a.current-page,
+ a.blog-post-info:hover,
+ #posts-nav li a:hover span,
+ .comment-by a.reply:hover,
+ .contact-address-headline:after,
+ .enable-filters-button span,
+ .enable-filters-button i,
+ .job-listing.with-apply-button:hover .list-apply-button,
+ .letters-list a.current,
+ span.button,
+ button.button,
+ input[type="button"],
+ input[type="submit"],
+ a.button,
+ .list-1 li:before,
+ mark.color,
+ table.basic-table th,
+ .copy-url .copy-url-button,
+ .keyword-input-container .keyword-input-button,
+ .tags-container input[type="checkbox"]:checked + label,
+ input:checked + .switch-button,
+ .radio input[type="radio"] + label .radio-label:after,
+ .uploadButton .uploadButton-button:hover,
+ .pricing-plan .button:hover,
+ .pricing-plan.recommended .button,
+ .pricing-plan .recommended-badge,
+ .payment-tab-trigger > input:checked ~ label::after,
+ .breathing-icon,
+ .testimonial-author span,
+ .qtyInc:hover,
+ .qtyDec:hover,
+ #sign-in-dialog .mfp-close:hover,
+ #small-dialog-1 .mfp-close:hover,
+ #small-dialog-2 .mfp-close:hover,
+ #small-dialog-3 .mfp-close:hover,
+ #small-dialog-4 .mfp-close:hover,
+ #small-dialog .mfp-close:hover,
+ .slider-selection,
+ .cluster-visible,
+ .marker-container,
+ .custom-zoom-in:hover,
+ .custom-zoom-out:hover,
+ #geoLocation:hover,
+ #streetView:hover,
+ #scrollEnabling:hover,
+ #scrollEnabling.enabled,
+ a.apply-now-button,
+ a.attachment-box:hover,
+ .freelancer-indicators .indicator-bar span,
+ .dashboard-nav ul li span.nav-tag,
+ .dashboard-box .button.dark:not(.ico):hover,
+ .messages-inbox ul li:before,
+ .message-by h5 i,
+ .message-bubble.me .message-text {
+     background-color:var(--siteColor);
+}
+ .transparent-header #navigation > ul li:hover ul li:hover a:after,
+ .transparent-header #navigation > ul li:hover a:after,
+ .transparent-header #navigation > ul li a.current:after,
+ .compact-list-layout .job-listing:before,
+ .tasks-list-container.compact-list .task-listing:before,
+ .compact-list.freelancers-list-layout .freelancer:before,
+ .tabs-header,
+ .intro-search-field .field-title,
+ /*.category-box:hover,
+ .photo-box:hover:before,*/
+ .photo-box.small .photo-box-content span,
+ .slick-prev:hover,
+ .slick-next:hover,
+ .bootstrap-select.btn-group .bs-actionsbox div button:hover {
+     background:var(--siteColor);
+}
+ .uploadButton .uploadButton-button,
+ .pricing-plan .button {
+     color:var(--siteColor);
+     border:1px solid var(--siteColor);
+}
+ .payment-tab-trigger > input:checked ~ label::before,
+ .dashboard-nav ul li.active-submenu,
+ .dashboard-nav ul li.active,
+ .dashboard-nav ul li:hover {
+     border-color:var(--siteColor);
+}
+
+ #navigation ul ul.dropdown-nav ul.dropdown-nav li:hover a:after,
+  #navigation ul ul.dropdown-nav li:hover a:after, 
+  #navigation ul li:hover a:after {
+     background: rgba(0,176,255,0.13);
+}
+
+ #navigation ul li a.current:after {
+     background: rgba(0,176,255,0.13);
+}
+ .pagination ul li a.current-page {
+     box-shadow: 0 2px 8px rgba(0,176,255,0.25) 
+}
+ .sidebar-search-button-container button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.1);
+}
+ .sidebar-search-button-container button:hover {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.25);
+}
+ .job-listing.with-apply-button:hover .list-apply-button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.15);
+}
+ .task-listing-bid-inner .button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.15);
+}
+ .task-listing-bid-inner .button:hover {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.25);
+}
+ .task-tags span {
+     background-color: rgba(0,176,255,.07);
+}
+ .freelancers-grid-layout .freelancer-details a.button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.1);
+}
+ .freelancer-details a.button:hover {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.2);
+}
+ .freelancers-list-layout .freelancer-details a.button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.15);
+}
+ .freelancers-list-layout .freelancer-details a.button:hover {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.25);
+}
+ .letters-list a.current {
+     box-shadow: 0 2px 8px rgba(0,176,255,0.25);
+}
+ /*span.button, button.button, input[type="button"], input[type="submit"], a.button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.15);
+}*/
+ .move-on-hover {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.1);
+}
+ .move-on-hover:hover {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.2);
+}
+ .keyword {
+     background-color: rgba(0,176,255,0.07);
+}
+ @keyframes switch-shadow-color {
+     0% {
+         box-shadow: 0 0 0 0 rgba(0,176,255,0.6);
+    }
+     100% {
+         box-shadow: 0 0 0px 10px rgba(0,0,0,0);
+    }
+}
+ @keyframes radius-shadow {
+     0% {
+         box-shadow: 0 0 0 0 rgba(0,176,255,0.4);
+    }
+     100% {
+         box-shadow: 0 0 0 10px rgba(0,0,0,0);
+    }
+}
+ .category-box:hover {
+     /*box-shadow: 0 4px 12px rgba(0,176,255,0.2);
+	 border-color:var(--siteColor);*/
+	 border-image-source: linear-gradient(to top, #3d5afe, #00b0ff);
+}
+ .recommended .pricing-plan-label {
+     background-color: rgba(0,176,255,0.06);
+}
+ .pricing-plan .button:hover, .pricing-plan.recommended .button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.15);
+}
+ .pricing-plan .button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.1);
+}
+ .pricing-plan .button:hover {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.15);
+}
+ .breathing-icon {
+     box-shadow: 0 0 0 15px rgba(0,176,255,0.07);
+}
+ @keyframes bicokAnim {
+     0%,100% {
+         box-shadow: 0 0 0 15px rgba(0,176,255,0.07);
+    }
+     50% {
+         box-shadow: 0 0 0 28px rgba(0,176,255,0.12);
+    }
+}
+/* .icon-box-check {
+     box-shadow: 0 0 0 5px rgba(0,176,255,0.1);
+}*/
+ @keyframes checkAnim {
+     0%,100% {
+         box-shadow: 0 0 0 5px rgba(0,176,255,0.15);
+    }
+     50% {
+         box-shadow: 0 0 0 8px rgba(0,176,255,0.15);
+    }
+}
+ .testimonial-author span {
+     box-shadow: 0 2px 10px rgba(0,176,255,0.25);
+}
+ .bidding-widget .button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.15);
+}
+ .bidding-widget .button:hover {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.25);
+}
+ .dialog-with-tabs .button {
+     box-shadow: 0 4px 12px rgba(0,176,255,0.15);
+}
+ .slider-handle:after {
+     box-shadow: 0 0 0px 6px rgba(0,176,255,.12);
+}
+ .slider-handle:hover:after {
+     box-shadow: 0 0 0px 8px rgba(0,176,255,.12);
+}
+ .dropdown-menu > li > a:hover, .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover {
+     background-color: rgba(0,176,255,0.07);
+}
+ @keyframes clusterAnimation {
+     0%,100% {
+         box-shadow: 0 0 0 6px rgba(0,176,255,0.15);
+    }
+     50% {
+         box-shadow: 0 0 0 10px rgba(0,176,255,0.15);
+    }
+}
+ @keyframes markerAnimation {
+     0%,100% {
+         box-shadow: 0 0 0 6px rgba(0,176,255,0.15);
+    }
+     50% {
+         box-shadow: 0 0 0 8px rgba(0,176,255,0.15);
+    }
+}
+ a.apply-now-button {
+     box-shadow: 0 2px 8px rgba(0,176,255,0.15);
+}
+ a.apply-now-button:hover {
+     box-shadow: 0 2px 8px rgba(0,176,255,0.35);
+}
+ .dashboard-nav ul li.active-submenu, .dashboard-nav ul li.active, .dashboard-nav ul li:hover {
+     background-color: rgba(0,176,255,0.04);
+}
+ .dashboard-nav ul li.active-submenu a:after, .dashboard-nav ul li.active a:after, .dashboard-nav ul li:hover a:after {
+     background: rgba(0,176,255,0.13);
+}
+ .dashboard-box-list .button {
+     box-shadow: 0 3px 8px rgba(0,176,255,0.15);
+}
+ .dashboard-box .button.dark:not(.ico):hover {
+     box-shadow: 0 3px 8px rgba(0,176,255,0.15);
+}
+
+ #navigation ul ul.dropdown-nav ul.dropdown-nav li:hover a:after,
+ #navigation ul ul.dropdown-nav li:hover a:after {
+     background-color:var(--siteColor);
+ }
+
+a,
+.text-site {
+	color:var(--siteColor);
+}
+.btn_search, .btn_join {
+	background-color: var(--siteColor);
+	color:#fff;
+}
+.btn_search:hover, .btn_join:hover {
+	background-color: #fff;
+	border:1px solid var(--siteColor);
+	color: var(--siteColor);
+}
+.btn-border {
+	background-color:#fff;
+	border:1px solid var(--siteColor);
+	color:var(--siteColor);
+}
+.btn-border:hover {
+	color:#fff;
+	background-color:var(--siteColor);
+	border:1px solid var(--siteColor);
+}
+.btn-site {
+	background-color:var(--siteColor);
+	border-color:var(--siteColor);
+	color:#111;
+}
+.btn-site:hover {
+	background-color:var(--webColor);
+	border-color:var(--webColor);
+	color:#111;
+}
+.btn-web {
+	background-color:var(--webColor);
+	border-color:var(--webColor);
+	color:#fff;
+}
+.btn-web:hover {
+	background-color:var(--siteColor);
+	border-color:var(--siteColor);
+	
+	color:#fff;
+}
+
+.navbar-nav .mega-drop-down {
+	margin: 0 0.5rem;
+	border-bottom: 1px solid transparent
+}
+.navbar-nav .mega-drop-down:hover {
+	border-bottom: 1px solid var(--siteColor);
+}
+.navbar-nav .mega-drop-down > .nav-link {
+	color: #333;
+}
+.navbar-nav .mega-drop-down:hover > .nav-link,
+.mega-menu ul li a:hover {
+	color:#00b64c
+}
+
+.overlay,
+.home-banner-overlay {
+	background-color:rgba(0,0,0,0.5)
+}
+/*.breadcrumbs:before,*/
+.overlay-white {
+	background-color:rgba(255,255,255,0.65)
+}
+.list-group-item.active {
+    background-color: var(--siteColor);
+    border-color: var(--siteColor);
+}
+.accordion .list-group-item.active{
+    background: none;
+    color: var(--siteColor);
+}
+.custom-control {
+    min-height: 1.5rem;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: var(--siteColor);
+    background-color: #fff;
+}
+.custom-control-label::before {
+    position: absolute;
+    top: 0.15rem;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: 8px;
+    left: -17px;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0.15rem;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--siteColor);
+	color: var(--siteColor);
+}
+.nav-tabs .nav-link:hover {
+	color: var(--siteColor);
+}
+.logo {
+	color: var(--siteColor);
+}
+.btn_search:hover, .btn_join:hover {
+	border-color: var(--siteColor);
+	color: var(--siteColor);
+}
+.icons-A .fa, .icons-A .fa {
+    background-color: var(--siteColor);
+    color: #fff;
+}
+/*.contacts-sidebar .active {
+	color: var(--siteColor);
+}*/
+.bottom-tabs-dash .active {
+	color: var(--siteColor) !important;
+}
+
+ @media (max-width: 769px) {
+	.swal2-popup .swal2-styled.swal2-confirm {
+		background-color: var(--siteColor) !important;
+	}
+ }
+.swal2-popup .swal2-styled.swal2-confirm {
+	background-color: var(--siteColor) !important;
+}
+.top_login_btn li .user-menu a i {
+	color:var(--siteColor);
+}
+.timer h5 {
+	color: var(--siteColor);
+}
+.btn_view {
+	color: var(--siteColor);
+}
+.btn-outline-web {
+	border-color: var(--webColor);
+	color: var(--webColor);
+}
+.btn-outline-web:hover {
+	background-color: var(--webColor);
+	border-color: var(--webColor);
+	color:#fff;
+}
+.btn-outline-site {
+	border-color:var(--siteColor);
+	color:var(--siteColor);
+}
+.btn-outline-site:hover {
+	background-color:var(--siteColor);
+	border-color:var(--siteColor);
+	color:#111;
+}
+.header-notifications-trigger span {
+	background-color:var(--siteColor);
+	color:#fff;
+}
+
+.skill-widgets:hover h5 > a {
+	color: var(--siteColor);
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: var(--siteColor);
+}
+.nav-pills.flex-column {
+}
+.nav-pills.flex-column .nav-link {
+	color:#333
+}
+.nav-pills.flex-column .nav-link:hover {
+	color:var(--siteColor)
+}
+.nav-pills.flex-column .nav-link.active:hover,
+.nav-pills.flex-column .nav-link.active, .nav-pills.flex-column .show > .nav-link {
+    color: #fff;
+    background-color: var(--siteColor);
+	z-index: 1;
+}
+
+.list-3 li:before, .list-2 li:before, .list-1 li:before {
+	color:var(--siteColor)
+}
+ul.category-list > li > a {
+	color:#333
+}
+ul.category-list > li > a:hover {
+	color:var(--siteColor)
+}
+.accordion__item.active .accordion-header,
+.badge-site {
+	background-color:var(--siteColor);
+    color: #fff;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: var(--siteColor);
+}
+
+.page-link {
+	color:var(--siteColor);
+}
+.page-link:hover {
+	color:#00b64c;
+}
+.page-item.active .page-link {
+	background-color:var(--siteColor);
+	border-color:var(--siteColor)
+}
+ul.list li:before, .job-category .category-box:hover {
+	color:var(--siteColor);
+}
+.photo-box:hover:before{
+	background-color: var(--siteColor);
+}
+.toggle-nav .nav-link.active{
+	background-color: var(--siteColor);
+	color:#fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* END CSS */

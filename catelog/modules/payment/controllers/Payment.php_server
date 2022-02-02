@@ -1,0 +1,210 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Payment extends MX_Controller {
+
+	function __construct()
+	{
+		$this->loggedUser=$this->session->userdata('loggedUser');
+		$this->access_member_type='C';
+		if($this->loggedUser){
+			$this->member_id=$this->loggedUser['MID'];	
+			$this->organization_id=$this->loggedUser['OID'];
+			$this->access_user_id=$this->loggedUser['LID'];	
+			$this->profile_connection_id=$this->loggedUser['LAST_PCI'];
+			$this->access_member_type=$this->loggedUser['ACC_P_TYP'];
+			$this->username=$this->loggedUser['UNAME'];	
+		}elseif($this->router->fetch_method()=='paypalnotify'){
+		
+		}else{
+			show_404();
+		}
+		//loadModel('cart_model');
+		loadModel('notifications/notification_model');
+			parent::__construct();
+	}
+	public function paypal($type,$id=''){
+		$data=array();
+		
+		if($type=='checkout' && $id){
+			$arr=array(
+				'select'=>'o.order_id,o.order_number,o.order_duration,o.order_date,o.order_time,o.order_description,o.seller_id,o.buyer_id,o.proposal_id,o.order_price,o.order_qty,o.order_fee,o.order_active,o.complete_time,o.order_status,o.payment_method,o.transaction_id,p.proposal_image,p.proposal_title,p.proposal_url,p_a.buyer_instruction',
+				'table'=>'orders as o',
+				'join'=>array(
+				array('table'=>'proposals as p','on'=>'o.proposal_id=p.proposal_id','posiotion'=>'left'),
+				array('table'=>'proposal_additional as p_a','on'=>'o.proposal_id=p_a.proposal_id','posiotion'=>'left'),
+				),
+				'where'=>array('o.order_id'=>$id,'o.buyer_id'=>$this->member_id,'o.order_status'=>0),
+				'single_row'=>TRUE
+			);
+			$orderDetails=getData($arr);
+			if($orderDetails){
+				$order_id=$orderDetails->order_id;
+				$data['formdata']=array(
+				'amount'=>$orderDetails->order_price+$orderDetails->order_fee,
+				'return_url'=>get_link('OrderDetailsURL').$orderDetails->order_id.'?ref=paymentsuccess',
+				'notify_url'=>get_link('PaypalNotify').$type.'/'.$orderDetails->order_id,
+				'custom'=>md5('PPAY-'.$orderDetails->order_id),
+				);
+				
+			}else{
+				redirect(get_link('homeURL'));
+			}
+		}elseif($type=='featured'){
+			$proposal_id=$id;
+			$featured_fee=get_option_value('featured_fee');
+			$processing_fee=get_option_value('processing_fee');
+			$data['formdata']=array(
+			'amount'=>$featured_fee+$processing_fee,
+			'return_url'=>get_link('manageproposalURL').'?ref=paymentsuccess',
+			'notify_url'=>get_link('PaypalNotify').$type.'/'.$proposal_id,
+			'custom'=>md5('PPAY-'.$proposal_id),
+			);
+			
+		}elseif($type=='cart'){
+			
+		}else{
+			redirect(get_link('homeURL'));
+		}
+		$data['formdata']['url']='https://www.paypal.com/cgi-bin/webscr';
+		$is_sandbox=get_option_value('is_sandbox');
+		if($is_sandbox){
+			$data['formdata']['url']='https://www.sandbox.paypal.com/cgi-bin/webscr';
+		}
+		$templateLayout=array('view'=>'paypal-form','type'=>'default','buffer'=>FALSE,'theme'=>'');
+		load_template($templateLayout,$data);
+
+	}
+	public function paypalnotify($type,$id){
+		
+		$msg = json_encode($this->input->post());
+		file_put_contents('paypal.log', $msg);
+		require(APPPATH.'third_party/PaypalIPN.php');
+
+		$ipn = new PaypalIPN();
+		// Use the sandbox endpoint during testing.
+		$is_sandbox=get_option_value('is_sandbox');
+		if($is_sandbox){
+			$ipn->useSandbox();
+		}
+		$verified = $ipn->verifyIPN();
+		if ($verified) {
+			$verify_token=post('custom');
+			$token=md5('PPAY-'.$id);
+			if($verify_token==$token){
+				if($type=='checkout'){
+					$order_status=ORDER_PROCESSING;
+					
+					$arr=array(
+						'select'=>'o.order_id,o.order_number,o.order_duration,o.order_date,o.order_time,o.order_description,o.seller_id,o.buyer_id,o.proposal_id,o.order_price,o.order_qty,o.order_fee,o.order_active,o.complete_time,o.order_status,o.payment_method,o.transaction_id,p.proposal_image,p.proposal_title,p.proposal_url,p_a.buyer_instruction',
+						'table'=>'orders as o',
+						'join'=>array(
+						array('table'=>'proposals as p','on'=>'o.proposal_id=p.proposal_id','posiotion'=>'left'),
+						array('table'=>'proposal_additional as p_a','on'=>'o.proposal_id=p_a.proposal_id','posiotion'=>'left'),
+						),
+						'where'=>array('o.order_id'=>$id,'o.order_status'=>0),
+						'single_row'=>TRUE
+					);
+					$orderDetails=getData($arr);
+					if($orderDetails){
+						$total=$orderDetails->order_price;
+						$order_id=$orderDetails->order_id;
+						if(!empty($orderDetails->buyer_instruction)){
+							$order_status=ORDER_PENDING;
+						}
+						$buyer_details=getMemberDetails($orderDetails->buyer_id,array('main'=>1));
+						$buyer_wallet_id=$buyer_details['member']->wallet_id;
+						$buyer_wallet_balance=$buyer_details['member']->balance;
+						$site_details=getWallet(get_option_value('SITE_MAIN_WALLET'));
+						$reciver_wallet_id=$site_details->wallet_id;
+						$reciver_wallet_balance=$site_details->balance;
+						$recipient_relational_data=$buyer_details['member']->member_name;
+						
+						
+						
+						$wallet_transaction_type_id=get_option_value('ORDER_PAYMENT_PAYPAL');
+						$current_datetime=date('Y-m-d H:i:s');
+						$wallet_transaction_id=insertTable('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>1,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
+						if($wallet_transaction_id){
+							updateTable('orders',array('order_active'=>1,'order_status'=>$order_status),array('order_id'=>$order_id));
+							insertTable('orders_transaction',array('order_id'=>$order_id,'transaction_id'=>$wallet_transaction_id));
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$buyer_wallet_id,'credit'=>$total,'description_tkey'=>'Online_payment_from','relational_data'=>'Paypal');
+							insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+							
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$buyer_wallet_id,'debit'=>$total,'description_tkey'=>'OrderID','relational_data'=>$order_id);
+							insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+							
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$reciver_wallet_id,'credit'=>$total,'description_tkey'=>'Transfer_from','relational_data'=>$recipient_relational_data);
+							insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+							
+							$new_balance=displayamount($reciver_wallet_balance,2)+displayamount($total,2);
+							updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$reciver_wallet_id));
+							wallet_balance_check($reciver_wallet_id,array('transaction_id'=>$wallet_transaction_id));	
+							
+							
+							$notificationData=array(
+							'sender_id'=>$orderDetails->buyer_id,
+							'receiver_id'=>$orderDetails->seller_id,
+							'template'=>'order',
+							'url'=>$this->config->item('OrderDetailsURL').$order_id,
+							'content'=>json_encode(array('OID'=>$order_id)),
+							);
+							$this->notification_model->savenotification($notificationData);
+						}
+						
+						
+						
+						
+					}
+				}elseif($type=='featured'){
+					$featured_fee=get_option_value('featured_fee');
+					$processing_fee=get_option_value('processing_fee');
+					$featured_duration=get_option_value('featured_duration');
+					$total=$featured_fee;
+					$arr=array(
+						'select'=>'p.proposal_id,p.proposal_seller_id',
+						'table'=>'proposals p',
+						'where'=>array('p.proposal_id'=>$id),
+						'single_row'=>true,
+					);
+					$check_proposal=getData($arr);
+					IF($check_proposal){
+						$proposal_id=$check_proposal->proposal_id;
+						$seller_details=getMemberDetails($check_proposal->proposal_seller_id,array('main'=>1));
+						$seller_wallet_id=$seller_details['member']->wallet_id;
+						$seller_wallet_balance=$seller_details['member']->balance;
+						$site_details=getWallet(get_option_value('SITE_PROFIT_WALLET'));
+						$reciver_wallet_id=$site_details->wallet_id;
+						$reciver_wallet_balance=$site_details->balance;
+						$recipient_relational_data=$seller_details['member']->member_name;
+						
+						$wallet_transaction_type_id=get_option_value('FEATURED_PAYMENT_PAYPAL');
+						$current_datetime=date('Y-m-d H:i:s');
+						$wallet_transaction_id=insertTable('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>1,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
+						if($wallet_transaction_id){
+							$featured_end_date=date('Y-m-d H:i:s',strtotime('+'.$featured_duration.' days'));
+							updateTable('proposal_settings',array('proposal_featured'=>1,'featured_end_date'=>$featured_end_date),array('proposal_id'=>$proposal_id));
+							
+							
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$seller_wallet_id,'credit'=>$total,'description_tkey'=>'Online_payment_from','relational_data'=>'Paypal');
+							insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+							
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$seller_wallet_id,'debit'=>$total,'description_tkey'=>'PID','relational_data'=>$proposal_id);
+							insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+							
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$reciver_wallet_id,'credit'=>$total,'description_tkey'=>'Transfer_from','relational_data'=>$recipient_relational_data);
+							insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+							
+							$new_balance=displayamount($reciver_wallet_balance,2)+displayamount($total,2);
+							updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$reciver_wallet_id));
+							wallet_balance_check($reciver_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						}
+					}	
+				}
+			}
+		}
+		// Reply with an empty 200 response to indicate to paypal the IPN was received correctly.
+		header("HTTP/1.1 200 OK");
+	}
+	
+}
