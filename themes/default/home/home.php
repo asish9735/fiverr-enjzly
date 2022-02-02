@@ -125,7 +125,7 @@ load_template($templateLayout,$data);
       foreach($featured_category as $k=>$category){
         $count_list=$this->db->from('proposal_category as c')->join('proposals as p','c.proposal_id=p.proposal_id')->where('c.category_id',$category->category_id)->where('p.proposal_status',PROPOSAL_ACTIVE)->group_by('p.proposal_id')->get()->num_rows();
         ?>
-          <div class="col-xl-3 col-md-6 col-12">
+          <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
           <a href="<?php D(get_link('CategoryURL').$category->category_key);?>" class="card">
           <div class="card-image">
           	<img src="<?php D(URL_USERUPLOAD.'category/')?><?php D($category->category_image);?>" alt="<?php D($category->name);?>" class="card-img-top">
