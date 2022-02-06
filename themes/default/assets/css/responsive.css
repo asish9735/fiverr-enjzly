@@ -22,11 +22,11 @@ html {
 .visible-under-767 {
 	display:none !important
 }
-ul.category-list > li {
-	flex: 0 0 33.3333%;
-}
 .modal-dialog {
 	max-width: 600px;
+}
+ul.category-list > li {
+	flex: 0 0 33.3333%;
 }
 .home-banner .carousel-caption h1 {
 	font-size: 2.5rem;
@@ -43,6 +43,9 @@ ul.category-list > li {
 }
 .package-table tr > th:last-child, .package-table tr > td:last-child {
 	background-color: #ccefff;
+}
+.login:before{
+	width:50%;
 }
 }
  @media (min-width: 992px) {
@@ -135,7 +138,14 @@ ul.category-list > li {
 .section {
 	padding: 2rem 0;
 }
-ul.category-list > li {
+.login{
+	padding:1rem 0;
+}
+.box-login {
+	background-color: rgb(255 255 255 / 95%);
+	border-radius:0.25rem;
+}
+.category-list > li {
 	flex: 0 0 50%;
 }
 .carousel-caption {

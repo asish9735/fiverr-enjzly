@@ -1707,7 +1707,6 @@ video.embed-responsive {
 }
 .proposal-card .proposal-price .price{
 	color: var(--red);
-	font-weight: 500;
 }
 .details {
 	padding:0px;
@@ -1928,17 +1927,35 @@ video.embed-responsive {
 }
 /** Login **/
 
-
-
+.login{
+	background-image:url('../images/bg-login.jpg');
+	background-repeat:no-repeat;
+	background-position:right center;
+	position: relative;
+}
+.login:before{
+	background-color:#fff;
+	content:'';
+	position:absolute;
+	left:0;
+	top:0;
+	height:100%;
+	z-index:9;
+}
 .box-login {
-	background:#fff;
-	border: solid 1px #ddd;
+	background-color:#fff;
 	padding:1.5rem;
-	border-radius:4px;
+	min-height:550px;
+	display:flex;
+	align-items:center;
+	position:relative;
+	z-index:99;
+}
+.box-login > div{
+	width: 100%;
 }
 .box-login h1 {
 	margin-bottom:1rem;
-	text-align:center
 }
 .box-login a.logo {
 	background-color: #fff;
@@ -1951,13 +1968,15 @@ video.embed-responsive {
 	display: flex;
 	align-items: center;
 }
-.box-login input[type=submit] {
-	padding:15px 0px;
-	font-size:18px;
+.box-login .form-control{
+    height: calc(1.75em + 1rem + 2px);
+}
+.box-login button[type='submit']{
+    font-weight: 500;
+    height: calc(1.75rem + 1rem + 2px);
+	text-transform:uppercase;
 }
 /*** Change Passowrd Styles ***/
-
-
 
 .change-pass #meter_wrapper {
 }

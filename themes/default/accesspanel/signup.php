@@ -2,20 +2,22 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $enable_social_login=get_option_value('enable_social_login');
 ?>
-<style>
+<!--<style>
 header, footer, .post_footer{
 	display: none;
 }
-</style>
-<section class="section">
+</style>-->
+<section class="login">
 <div class="container">
-	<div class="row justify-content-center">
-		<div class="col-lg-6 col-md-8">			
+	<div class="row justify-content-center1">
+		<div class="col-lg-6 col-md-8 col-12">			
 			<div class="box-login">
-            	<a href="<?php D(VPATH);?>" class="logo" title="Home">
+            	<div>
+            	<!--<a href="<?php D(VPATH);?>" class="logo" title="Home">
 					<img src="<?php echo theme_url().IMAGE.LOGO_NAME;?>" alt="<?php D($website_name);?>">
-				</a>
+				</a>-->
 				<h1><?php D(__('signup_page_heading',"Sign Up"));?> <?php // D(get_option_value('website_name')); ?></h1>
+                <p>Already have an account? <a href="<?php echo get_link('loginURL'); ?>">Log In</a></p>	
 				<form action="" method="post" accept-charset="utf-8" id="singupform" class="form-horizontal" role="form" name="singupform" onsubmit="saveRegister(this);return false;"> 
 				<input type="hidden" name="ref" value="<?php D(get('ref'));?>"/>
     			<input type="hidden" name="refer" value="<?php D(get('refer'));?>" readonly/>
@@ -71,33 +73,22 @@ header, footer, .post_footer{
 					<span id="countryError" class="rerror"></span>
 				</div>
 					
-                <div class="row mb-3">
-                	<div class="col-lg-6 offset-lg-3 col-12">
-                    	<button type="submit" class="btn btn-site btn-block saveBTN" ><?php D(__('signup_page_button_submit',"Submit"));?></button>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-site btn-block saveBTN" ><?php D(__('signup_page_button_submit',"Submit"));?></button>
 				</form>
-		<?php if($enable_social_login == 1){ ?>
-				<div class="text-center pt-2 pb-2"><?php D(__('register_page_or',"OR"));?></div>
-				<hr class="mb-0 mt-0">
-				<div class="line mt-3"><span></span></div>
-				<div class="text-center">
-				<a href="#" onclick="window.location = '<?php echo $fLoginURL ?>';" class="btn btn-primary text-white" >
-				<i class="fa fa-facebook"></i> <?php D(__('register_page_social_FACEBOOK',"FACEBOOK"));?>
-				</a>
-				<a href="#" onclick="window.location = '<?php echo $gLoginURL ?>';" class="btn btn-danger text-white">
-				<i class="fa fa-google-plus"></i> <?php D(__('register_page_social_GOOGLE',"GOOGLE"));?>
-				</a>
-				</div>			
-				<div class="clearfix"></div>
-        <?php } ?>
-        
-				<div class="text-center mt-3">
-					<p>Already have an account? <a href="<?php echo get_link('loginURL'); ?>">Log In</a></p>
-					
-                    
-             	</div>
-   
+                
+				<?php if($enable_social_login == 0){ ?>
+                    <div class="social-login-separator"><span><?php D(__('login_page_or',"OR"));?></span></div>						
+                    <div class="social-login-buttons">
+                    <a href="#" onclick="window.location = '<?php echo $fLoginURL ?>';" class="facebook-login" >
+                    <i class="fa fa-facebook"></i> Log In via <?php D(__('login_page_social_FACEBOOK',"FACEBOOK"));?>
+                    </a>
+                    <a href="#" onclick="window.location = '<?php echo $gLoginURL ?>';" class="google-login">
+                    <i class="fa fa-google-plus"></i> Log In via <?php D(__('login_page_social_GOOGLE',"GOOGLE"));?>
+                    </a>
+                    </div>									
+				<?php } ?>
+        				
+   				</div>
             </div>
 
 

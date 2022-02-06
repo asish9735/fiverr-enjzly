@@ -10076,7 +10076,7 @@ img.mfp-img {
 	display: flex;
 	width: calc(100% + 20px)
 }
-.social-login-buttons button {
+.social-login-buttons button, .social-login-buttons a {
 	flex: 1;
 	text-align: center;
 	border: 1px solid #333;
@@ -10084,27 +10084,27 @@ img.mfp-img {
 	border-radius: 4px;
 	margin-top: 10px;
 	margin-right: 20px;
-	font-size: 14px;
-	padding: 9px 5px;
+	font-size: 1rem;
+    padding: 0.625rem 0.75rem;
 	max-width: 50%;
 	transition: 0.3s;
 }
-.social-login-buttons button:hover {
+.social-login-buttons button:hover, .social-login-buttons a:hover {
 	background-color: #333;
 	color: #fff;
 }
-.social-login-buttons button i {
+.social-login-buttons button i, .social-login-buttons a i {
 	position: relative;
 	top: 1px;
 	margin-right: 7px;
 	font-size: 15px;
 }
 .social-login-buttons .facebook-login {
-	border-color: #3b5998;
-	color: #3b5998;
+	border-color: #0078ff;
+	color: #0078ff;
 }
 .social-login-buttons .facebook-login:hover {
-	background-color: #3b5998;
+	background-color: #0078ff;
 	color: #fff;
 }
 .social-login-buttons .google-login {
