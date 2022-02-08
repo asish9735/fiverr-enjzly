@@ -3778,7 +3778,7 @@ input[type="button"].btn-block {
   position: relative;
   display: block;
   min-height: 1.5rem;
-  padding-left: 1.5rem;
+  padding-left: 1.75rem;
 }
 
 .custom-control-inline {
@@ -3833,29 +3833,29 @@ input[type="button"].btn-block {
 .custom-control-label::before {
   position: absolute;
   top: 0.25rem;
-  left: -1.5rem;
+  left: -1.75rem;
   display: block;
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   pointer-events: none;
   content: "";
   background-color: #fff;
-  border: #adb5bd solid 2px;
+  border: #adb5bd solid 1px;
 }
 
 .custom-control-label::after {
   position: absolute;
   top: 0.25rem;
-  left: -1.5rem;
+  left: -1.75rem;
   display: block;
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   content: "";
   background: no-repeat 50% / 50% 50%;
 }
 
 .custom-checkbox .custom-control-label::before {
-  border-radius: 0.25rem;
+  border-radius: 0.15rem;
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
@@ -3899,6 +3899,7 @@ input[type="button"].btn-block {
 .custom-switch .custom-control-label::before {
   left: -2.25rem;
   width: 1.75rem;
+  height:1rem;
   pointer-events: all;
   border-radius: 0.5rem;
 }

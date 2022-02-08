@@ -2232,7 +2232,7 @@ body #backtotop a {
 	margin-bottom: 0;
 }
 .sidebar-widget {
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 	display: block;
 }
 .sidebar-widget h3 {
@@ -2273,16 +2273,15 @@ body #backtotop a {
 .sort-by .bootstrap-select.btn-group button {
 	flex: 1;
 	position: relative;
-	right: 0;
-	top: 4px;
-	font-weight: 600;
 	margin-left: 10px;
 	width: auto;
-	padding: 0;
-	padding-right: 12px;
-	background-color: transparent;
+	padding-left: 0.5rem;
+	padding-right: 1rem;
+	background-color: #fff;
+	border:1px solid #6c757d;
+	border-radius:0.2rem;
 	box-shadow: none;
-	height: 20px;
+	height: 32px;
 	color: #333;
 }
  .sort-by .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
@@ -2292,7 +2291,6 @@ body #backtotop a {
 	right: 0;
 }
 .sort-by .bootstrap-select .dropdown-menu {
-	padding-top: 15px;
 	top: 40px;
 	right: 0;
 	left: auto;
@@ -4414,8 +4412,8 @@ span.blog-item-tag {
 	transition: 0.3s;
 	border-radius: 1rem;
 	font-size: 0.906rem;
-	border-radius: 4px;
-	background-color: rgba(102, 103, 107, .07);
+	border-radius: 0.2rem;
+	border:1px solid #dfdfdf;
 	color: #66676b;
 	display: inline-block;
 	padding: 3px 10px;
@@ -6122,24 +6120,25 @@ table.basic-table {
 /* Verified Badge */
 
 .verified-badge {
-	position: relative;
-	height: 16px;
+    bottom: 1px;
+    right: 1px;
+    height: 16px;
     width: 16px;
-	display: inline-block;
-	background-color: #38b653;
-	border-radius: 50%;
-	text-align: center;
-	z-index: 10;
-	font-weight: 500;
+    display: inline-block;
+    background-color: #38b653;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 10;
+    font-weight: 500;
 }
 .verified-badge:before {
 	content: "\e92b";
-	font-family: "Feather-Icons";
-	font-size: 16px;
-	color: #fff;
-	position: relative;
-	top: 0px;
-	line-height: 16px;
+    font-family: "Feather-Icons";
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    top: -1px;
+    line-height: 1;
 }
 .job-listing .job-listing-company-logo .verified-badge {
 	position: absolute;
@@ -10334,6 +10333,7 @@ input.range-slider, input.default-slider {
 }
 .slider .tooltip.top {
 	margin-top: -40px;
+	opacity:1;
 }
 .slider .tooltip-inner {
 	white-space: nowrap;
@@ -10583,13 +10583,12 @@ select.bs-select-hidden, select.selectpicker {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	font-size: 16px;
 }
 .bootstrap-select.btn-group .dropdown-menu.inner {
 	position: static;
 	float: none;
 	border: 0;
-	padding: 0 5px;
+	padding: 0;
 	border-radius: 0;
 	box-shadow: none;
 	max-height: 250px !important;
@@ -10810,7 +10809,6 @@ select.bs-select-hidden, select.selectpicker {
 	z-index: 1000;
 	display: none;
 	float: left;
-	padding: 10px 5px;
 	list-style: none;
 	background-color: #fff;
 	border: none;
@@ -10826,13 +10824,13 @@ select.bs-select-hidden, select.selectpicker {
 }
 .dropdown-menu > li > a {
 	display: block;
-	padding: 7px 10px;
-	padding-right: 35px;
+	padding: 0.25rem 1rem;
 	clear: both;
 	font-weight: normal;
 	line-height: 21px;
 	color: #777;
-	border-radius: 4px;
+	border-radius: 0.25rem;
+	font-size: 0.938rem;
 }
 .bootstrap-select:before {
 	content: "";

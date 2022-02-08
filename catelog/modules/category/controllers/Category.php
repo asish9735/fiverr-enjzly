@@ -67,7 +67,7 @@ class Category extends MX_Controller {
 		'meta_description'=>strip_tags(html_entity_decode($meta_description)),
 		'seo_images'=>array(),
 		);
-		//$data['load_js']=load_js(array('.js'));
+		$data['load_js']=load_js(array('bootstrap-select.min.js', 'bootstrap-slider.min.js'));
 		//$data['load_css']=load_css(array(''));
 		$templateLayout=array('view'=>'proposals','type'=>'default','buffer'=>FALSE,'theme'=>'');
 		load_template($templateLayout,$data);

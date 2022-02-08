@@ -39,7 +39,7 @@ $section_data=array(
 <div class="breadcrumbs">
   <div class="container">
     <h1>
-      <?php D(__('proposal_details_page_Order_Details', "Gigs Details")); ?>
+      <?php D(ucfirst($proposal_details['proposal']->proposal_title)); ?>
     </h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?php D(get_link('CategoryURL') . $proposal_details['proposal_category']->category_key) ?>">
@@ -57,6 +57,67 @@ $section_data=array(
     <div class="row">
       <div class="col-lg-8 mb-3">
         <div class="card rounded-0 mb-3">
+          <div class="card-body">
+            <div class="proposal-info">              
+              <div class="row">                            
+                  <div class="col-md">
+                    <p><i class="icon-feather-calendar"></i> <?php echo dateFormat($proposal_details['proposal']->proposal_date,'F d, Y');?></p>
+                    <div class="star-rating" data-rating="<?php echo round($average_rating); ?>"> </div>
+                    <span>(<?php D($count_reviews); ?>)</span>
+                  </div>
+                  <div class="col-md"> 
+                    <p><i class="icon-feather-eye"></i> <?php echo getnoofviews($proposal_details['proposal']->proposal_id);?></p>
+                    <p><i class="icon-feather-users"></i> <?php D($proposal_order_queue); ?> Order(s) In Queue.</p> 
+                  </div>
+                  <div class="col-md">
+                  	<p class="mb-2"><i class="icon-feather-share-2"></i> Share this Job:</p>
+                      <ul class="share-job">
+                        <li><a href=""><i class="icon-brand-facebook"></i></a></li>
+                        <li><a href=""><i class="icon-brand-twitter"></i></a></li>
+                        <li><a href=""><i class="icon-brand-linkedin"></i></a></li>
+                        <li><a href=""><i class="icon-brand-instagram"></i></a></li>
+                        <li><a href=""><i class="icon-brand-youtube"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+              <!-- Bookmark Icon --> 
+             <?php
+              if($loggedUser){ 
+                if($proposal_details['proposal']->proposal_seller_id != $loggedUser['MID']){
+                  $is_favorite=is_favorite($loggedUser['MID'],$proposal_details['proposal']->proposal_id);
+                  if($is_favorite){
+                    $show_favorite_class = "mark-unfav";
+                  }else{
+                    $show_favorite_class = "mark-fav ";
+                  }
+                  ?>
+                    <i style="position: absolute;z-index: 101;right: 0;top: 1rem;left: unset;" data-id="<?php D($proposal_details['proposal']->proposal_id); ?>" href="#" class="icon-line-awesome-heart <?php D($show_favorite_class); ?>" data-toggle="tooltip" data-placement="top" title="Favorite"></i>
+              <?php }
+              }
+              ?>
+             <!--  <span class="bookmark-icon"></span> -->
+              <div class="row align-items-center mt-2">
+                
+                <?php
+
+                if ($is_login) {
+
+                  if (!$is_owner) {
+
+                    if ($is_report == 0) {
+
+                ?>
+                <div class="col-md-auto"><a href="#" data-toggle="modal" data-target="#report-modal"><i class="icon-feather-flag"></i> Report </a></div>
+                <?php
+
+                    }
+                  }
+                }
+                ?>
+                
+              </div>
+            </div>
+          </div>
           <div id="myCarousel" class="carousel slide">
             <ol class="carousel-indicators">
               <?php if ($proposal_details['proposal_additional']->proposal_video) { ?>
@@ -127,66 +188,33 @@ $section_data=array(
               ?>
             </div>
             <a class="carousel-control-prev slide-nav slide-right" href="#myCarousel" data-slide="prev"> <span class="carousel-control-prev-icon carousel-icon"></span> </a> <a class="carousel-control-next slide-nav slide-left" href="#myCarousel" data-slide="next"> <span class="carousel-control-next-icon carousel-icon"></span> </a> </div>
+          
+        </div>
+        <h3>Details</h3>
+        <div class="card mb-4">          
           <div class="card-body">
-            <div class="proposal-info">
-              <h4>
-                <?php D(ucfirst($proposal_details['proposal']->proposal_title)); ?>
-              </h4>
-              <div class="star-rating" data-rating="<?php echo round($average_rating); ?>"> </div>
-              <span>(
-              <?php D($count_reviews); ?>
-              )</span> &nbsp; <i class="icon-feather-eye"></i> <?php echo getnoofviews($proposal_details['proposal']->proposal_id);?> &nbsp; <i class="icon-feather-calendar"></i> <?php echo dateFormat($proposal_details['proposal']->proposal_date,'F d, Y');?>
-              <!-- Bookmark Icon --> 
-             <?php
-              if($loggedUser){ 
-                if($proposal_details['proposal']->proposal_seller_id != $loggedUser['MID']){
-                  $is_favorite=is_favorite($loggedUser['MID'],$proposal_details['proposal']->proposal_id);
-                  if($is_favorite){
-                    $show_favorite_class = "mark-unfav";
-                  }else{
-                    $show_favorite_class = "mark-fav ";
-                  }
-                  ?>
-                    <i style="    position: absolute;
-    z-index: 101;
-    right: 0;
-    top: 1rem;
-    left: unset;" data-id="<?php D($proposal_details['proposal']->proposal_id); ?>" href="#" class="icon-line-awesome-heart <?php D($show_favorite_class); ?>" data-toggle="tooltip" data-placement="top" title="Favorite"></i>
-              <?php }
-              }
+            <h4>
+              <?php D(__('proposal_details_page_description', "Description")); ?>
+            </h4>
+            <?php D(html_entity_decode($proposal_details['proposal_additional']->proposal_description)); ?>
+            <h4>Tags</h4>
+            <div class="task-tags mt-2 test">
+              <?php
+
+              if ($proposal_details['proposal_tags']) {
+
+                foreach ($proposal_details['proposal_tags'] as $t => $tag) {
+
               ?>
-             <!--  <span class="bookmark-icon"></span> -->
-              <div class="row align-items-center mt-2">
-                <div class="col-md"> <span class="text-muted span">
-                  <?php D($proposal_order_queue); ?>
-                  Order(s) In Queue.</span> </div>
-                <?php
+              <span>
+              <?php D($tag->tag_name); ?>
+              </span>
+              <?php
 
-                if ($is_login) {
-
-                  if (!$is_owner) {
-
-                    if ($is_report == 0) {
-
-                ?>
-                <div class="col-md-auto"><a href="#" data-toggle="modal" data-target="#report-modal"><i class="icon-feather-flag"></i> Report </a></div>
-                <?php
-
-                    }
-                  }
                 }
-                ?>
-                <div class="col-md">
-                  <ul class="share-job">
-                    <li>Share this Job:</li>
-                    <li><a href=""><i class="icon-brand-facebook"></i></a></li>
-                    <li><a href=""><i class="icon-brand-twitter"></i></a></li>
-                    <li><a href=""><i class="icon-brand-linkedin"></i></a></li>
-                    <li><a href=""><i class="icon-brand-instagram"></i></a></li>
-                    <li><a href=""><i class="icon-brand-youtube"></i></a></li>
-                  </ul>
-                </div>
-              </div>
+              }
+
+              ?>
             </div>
           </div>
         </div>
@@ -195,14 +223,12 @@ $section_data=array(
           $attributedata = array();
 
         ?>
+        <h3><?php D(__('proposal_details_page_Packages', "Packages")); ?></h3>
         <div class="card mb-3" id="compare">
           <div class="card-body p-0">
             <div class="package cpackage d-sm-none">
               <div class="column">
-                <div>
-                  <h4>
-                    <?php D(__('proposal_details_page_Packages', "Packages")); ?>
-                  </h4>
+                <div>                  
                   <p class="mt-3 mb-3"><b>
                     <?php D(__('proposal_details_page_package_Total', "Total")); ?>
                     </b></p>
@@ -300,16 +326,29 @@ $section_data=array(
                 ?>
             </div>
             <div class="table-responsive package-table d-none d-sm-block">
-              <table class="table table-borderless mb-0">
+              <table class="table table-bordered mb-0">
                 <thead>
                   <tr>
-                    <th><h4>
-                        <?php D(__('proposal_details_page_Packages', "Packages")); ?>
-                      </h4></th>
+                    <th><?php D(__('proposal_details_page_package_Total', "Total")); ?></th>
                     <?php if ($proposal_details['proposal_packages']) {
                         foreach ($proposal_details['proposal_packages'] as $package) {
                       ?>
-                    <th><h4 class="text-center text-site">
+                    <th><h2>
+                        <?php D(CURRENCY); ?>
+                        <b>
+                        <?php D($package->price); ?>
+                        </b> </h2></th>
+                    <?php
+                        }
+                      }
+                      ?>
+                  </tr>
+                  <tr>
+                    <th><h4>Features</h4></th>
+                    <?php if ($proposal_details['proposal_packages']) {
+                        foreach ($proposal_details['proposal_packages'] as $package) {
+                      ?>
+                    <th><h4>
                         <?php D(__('proposal_details_page_package_' . $package->package_name, $package->package_name)); ?>
                       </h4></th>
                     <?php
@@ -319,23 +358,9 @@ $section_data=array(
                   </tr>
                 </thead>
                 <tbody>
+                  
                   <tr>
-                    <th><?php D(__('proposal_details_page_package_Total', "Total")); ?></th>
-                    <?php if ($proposal_details['proposal_packages']) {
-                        foreach ($proposal_details['proposal_packages'] as $package) {
-                      ?>
-                    <td align="center"><h2 class="text-center">
-                        <?php D(CURRENCY); ?>
-                        <b>
-                        <?php D($package->price); ?>
-                        </b> </h2></td>
-                    <?php
-                        }
-                      }
-                      ?>
-                  </tr>
-                  <tr>
-                    <th class="b-ccc text-left"><?php D(__('proposal_details_page_package_Description', "Description")); ?></th>
+                    <th class="b-ccc"><?php D(__('proposal_details_page_package_Description', "Description")); ?></th>
                     <?php if ($proposal_details['proposal_packages']) {
                         $attributedata=array();
                         foreach ($proposal_details['proposal_packages'] as $package) {
@@ -346,7 +371,7 @@ $section_data=array(
                             'order' => array(array('p.attribute_id', 'asc')),
                           ));
                       ?>
-                    <td align="center"><?php echo $package->description; ?>
+                    <td><?php echo $package->description; ?>
                       <?php /*?><?php echo getDefaultText($package->description,$package->description_ar,$this->currentlang); ?><?php */ ?></td>
                     <?php
                         }
@@ -372,10 +397,10 @@ $section_data=array(
                      
                   ?>
                   <tr>
-                    <th class="b-ccc text-left" data-toggle="popover" data-trigger="hover"  data-content="<?php echo $sectionrow['tooltip']?>" data-placement="top"><?php D($sectionrow['name']); ?></th>
-                    <td class="text-center "><?php echo $text_section_1;?></td>
-                    <td class="text-center"><?php echo $text_section_2;?></td>
-                    <td class="text-center"><?php echo $text_section_3;?></td>
+                    <th class="b-ccc" data-toggle="popover" data-trigger="hover"  data-content="<?php echo $sectionrow['tooltip']?>" data-placement="top"><?php D($sectionrow['name']); ?></th>
+                    <td><?php echo $text_section_1;?></td>
+                    <td><?php echo $text_section_2;?></td>
+                    <td><?php echo $text_section_3;?></td>
                   </tr>
                   <?php
                     }
@@ -388,10 +413,10 @@ $section_data=array(
                       foreach ($attributedata[0] as $a => $attributecontent) {
                     ?>
                   <tr>
-                    <th class="b-ccc text-left"><?php D($attributecontent->attribute_name); ?></th>
-                    <td align="center"><?php D($attributedata[0][$a]->attribute_value); ?></td>
-                    <td align="center"><?php D($attributedata[1][$a]->attribute_value); ?></td>
-                    <td align="center"><?php D($attributedata[2][$a]->attribute_value); ?></td>
+                    <th class="b-ccc"><?php D($attributecontent->attribute_name); ?></th>
+                    <td><?php D($attributedata[0][$a]->attribute_value); ?></td>
+                    <td><?php D($attributedata[1][$a]->attribute_value); ?></td>
+                    <td><?php D($attributedata[2][$a]->attribute_value); ?></td>
                   </tr>
                   <?php
                       }
@@ -402,7 +427,7 @@ $section_data=array(
                     <?php if ($proposal_details['proposal_packages']) {
                         foreach ($proposal_details['proposal_packages'] as $package) {
                       ?>
-                    <td align="center"><?php echo $package->delivery_time; ?>
+                    <td><?php echo $package->delivery_time; ?>
                       <?php D(__('proposal_details_page_package_Days', "Days")); ?></td>
                     <?php
                         }
@@ -453,51 +478,23 @@ $section_data=array(
           </div>
         </div>
         <?php } ?>
-        <div class="card mb-4">
-          <div class="card-header">
-            <h4>
-              <?php D(__('proposal_details_page_description', "Description")); ?>
-            </h4>
-          </div>
-          <div class="card-body">
-            <?php D(html_entity_decode($proposal_details['proposal_additional']->proposal_description)); ?>
-            <div class="task-tags mt-2 test">
-              <?php
-
-              if ($proposal_details['proposal_tags']) {
-
-                foreach ($proposal_details['proposal_tags'] as $t => $tag) {
-
-              ?>
-              <span>
-              <?php D($tag->tag_name); ?>
-              </span>
-              <?php
-
-                }
-              }
-
-              ?>
-            </div>
-          </div>
-        </div>
+        
         
         <!-- End Proposal -->
-        
-        <div class="card">
-          <div class="card-header d-flex align-items-center">
-            <h4>
+        <div class="d-flex align-items-center mb-3">
+            <h3>
               <?php D(__('proposal_details_page_Reviews', "Reviews")); ?>
-              <span class="comments-amount">(<?php echo $count_reviews; ?>)</span> </h4>
-            <div class="star-rating d-block ml-auto" data-rating="<?php echo round($average_rating); ?>"></div>
-            <span class="text-muted ml-2">
+              <span class="comments-amount">(<?php echo $count_reviews; ?>)</span> </h3>
+            <div class="d-flex align-items-center ml-auto">
+            <div class="star-rating d-block" data-rating="<?php echo round($average_rating); ?>"></div>            
+            <span class="text-muted">
             <?php
 
               printf("%.1f", $average_rating);
 
               ?>
             </span>
-            <div class="dropdown ml-auto">
+            <div class="dropdown ml-3">
               <button id="dropdown-button" class="btn btn-outline-site dropdown-toggle" data-toggle="dropdown">
               <?php D(__('proposal_details_page_Most_Recent', "Most Recent")); ?>
               </button>
@@ -509,7 +506,9 @@ $section_data=array(
                 <?php D(__('proposal_details_page_Negative_Reviews', "Negative Reviews")); ?>
                 </a> </div>
             </div>
+            </div>
           </div>
+        <div class="card">  
           <div class="card-body comments">
             <ul id="all">
               <?php
@@ -538,7 +537,7 @@ $section_data=array(
                       <?php D($review->buyer_name); ?>
                     </h5>
                     <span class="date">
-                    <?php D(dateFormat($review->review_date, 'F d,Y')); ?>
+                    <i class="icon-feather-calendar"></i> <?php D(dateFormat($review->review_date, 'F d,Y')); ?>
                     </span> 
                     
                     <!--<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>--> 
@@ -1235,7 +1234,8 @@ $section_data=array(
 
         </div><?php */ ?>
       </div>
-      <div class="col-lg-4 proposal-sidebar"> 
+      <div class="col-lg-4 proposal-sidebar">
+       
         <!-- Col starts -->
         <div>
           	<?php
@@ -1283,7 +1283,7 @@ $section_data=array(
               } else {
                   if ($proposal_details['proposal']->proposal_price == 0) {
               ?>
-          	      <div class="accordion border-0" id="accordionExample">
+          	      <div class="tab-content" id="myTabContent">
                     <?php
                     if ($proposal_details['proposal_packages']) {
                       foreach ($proposal_details['proposal_packages'] as $i => $package) {
@@ -1295,7 +1295,7 @@ $section_data=array(
                               <?php D(__('proposal_details_page_package_' . $package->package_name, $package->package_name)); ?>
                               <i class="icon-feather-plus float-right"></i></a></h4>
                           </div>
-                          <div id="tab_<?php D($package->package_id); ?>" class="collapse <?php if ($package->package_name == "Standard") {  echo "show"; } ?>" data-parent="#accordionExample">
+                          <div id="tab_<?php D($package->package_id); ?>" class="tab-pane fade <?php if ($package->package_name == "Standard") {  echo "show"; } ?>" data-parent="#accordionExample">
                             <div class="card-body">
                               <h3><strong>
                                 <?php D(CURRENCY); ?>
@@ -1479,7 +1479,7 @@ $section_data=array(
                   <?php D(__('proposal_details_page_Proposal_Quantity', "Proposal\'s Quantity")); ?>
                 </label>
                 <div class="col-md-6">
-                  <select class="form-control" name="proposal_qty" form="<?php D($form); ?>">
+                  <?php /*?><select class="form-control" name="proposal_qty" form="<?php D($form); ?>">
                     <?php
 
                       for ($i = 1; $i <= $max_checkout_qty; $i++) {
@@ -1493,7 +1493,15 @@ $section_data=array(
                       }
 
                       ?>
-                  </select>
+                  </select><?php */?>
+                  <div class="qty-cart">
+					<div class="cart-plus-minus">
+						<input type="text" class="form-control" value="1">
+						<div class="minus qtybutton"><i class="icon-line-awesome-minus"></i></div>
+						<div class="plus qtybutton"><i class="icon-line-awesome-plus"></i></div>
+					</div>
+				  </div>	
+				
                 </div>
               </div>
             </div>
@@ -1552,13 +1560,11 @@ $section_data=array(
         if ($is_login && $proposal_details['proposal_settings']->proposal_enable_referrals && !$is_owner) {
 
         ?>
-        <div class="card mb-3">
-          <div class="card-header">
-            <h4>
-              <?php D(__('proposal_details_page_Referral_Link', "Referral Link")); ?>
-            </h4>
-          </div>
+        <div class="card mb-4">          
           <div class="card-body">
+          <h3>
+              <?php D(__('proposal_details_page_Referral_Link', "Referral Link")); ?>
+            </h3>
             <h6>
               <?php D(__('proposal_details_page_Referral_Link_text_part_1', "If anyone buys this proposal with your unique referral link, you will get")); ?>
               <?php D($proposal_details['proposal_settings']->proposal_referral_money); ?>
@@ -1573,14 +1579,16 @@ $section_data=array(
         }
 
         ?>
-        <center class="mb-3">
+        <center class="mb-4">
           
           <!-- Go to www.addthis.com/dashboard to customize your tools -->
           
           <div class="addthis_inline_share_toolbox"></div>
         </center>
-        <div class="card seller-bio mb-3 rounded-0">
+        
+        <div class="card seller-bio mb-4 rounded-0">
           <div class="card-body">
+          <h3>About Seller</h3>
             <div class="text-center">
               <div class="user-profile"> <img src="<?php D(getMemberLogo($owner_details['member']->member_id)); ?>" width="100" class="rounded-circle">
                 <?php
@@ -1607,7 +1615,7 @@ $section_data=array(
               ?>
               <h4><a href="<?php D(get_link('viewprofileURL')) ?><?php D($seller_user_name); ?>">
                 <?php /*D(ucfirst($owner_details['member']->member_name));*/ D($seller_user_name); ?>
-                </a> </h4>
+                </a> <div class="verified-badge" data-tippy-placement="top" title="Verified Employer"></div></h4>
               <p class="mb-1">
                 <?php
 
@@ -1664,21 +1672,25 @@ $section_data=array(
               echo $proposal_seller_about;
 
               ?>
-              <a href="<?php D(get_link('viewprofileURL')) ?><?php D(getUserName($owner_details['member']->member_id)); ?>" class="btn btn-site">
-              <?php D(__('proposal_details_page_Read_More', "Read More")); ?>
-              </a> &nbsp; <a class="btn btn-web" href="<?php D(get_link('messageLink')) ?>/<?php D($owner_details['member']->member_id); ?>">
+              <?php /*?><a href="<?php D(get_link('viewprofileURL')) ?><?php D(getUserName($owner_details['member']->member_id)); ?>" class="btn btn-site">
+              <?php D(__('proposal_details_page_Read_More', "Read More")); ?><?php */?>
+              </a> &nbsp; <a class="btn btn-site" href="<?php D(get_link('messageLink')) ?>/<?php D($owner_details['member']->member_id); ?>">
               <?php D(__('proposal_details_page_Contact_Me', "Contact Me")); ?>
               </a> </div>
           </div>
         </div>
-        <div class="card mb-3 text-center">
-          <div class="card-body"> <i class="icon-feather-shield icon-lg text-site"></i>
-            <h3>
-              <?php D(__('proposal_details_page_100_Secured', "100% Secured")); ?>
-            </h3>
-            <p>
-              <?php D(__('proposal_details_page_100_Secured_info', "The task will be completed, or money back guaranteed.")); ?>
-            </p>
+        <div class="card mb-4">
+          <div class="card-body"> 
+          	<h3>Payments</h3>
+            <div class="media">
+              <img src="<?php D(theme_url().IMAGE);?>payment-shield.png" class="align-self-center mr-3" alt="" />
+              <div class="media-body">
+                <h4>
+				  <?php D(__('proposal_details_page_100_Secured', "100% Secured")); ?>
+                </h4> 
+                <p class="mb-0"><?php D(__('proposal_details_page_100_Secured_info', "The task will be completed, or money back guaranteed.")); ?></p>
+              </div>
+            </div> 
           </div>
         </div>
         <div class="card">
@@ -1688,7 +1700,7 @@ $section_data=array(
             </h4>
           </div>
           <div class="card-body">
-            <ul class="bullet">
+            <ul class="list-2 mb-3">
               <li>
                 <?php D(__('proposal_details_page_user_info_row_1', "You pay the proposal/service price listed above.")); ?>
               </li>
@@ -1699,9 +1711,9 @@ $section_data=array(
                 <?php D(__('proposal_details_page_user_info_row_3', "Provide ratings & feedback about your freelancer after you've accepted the delivery.")); ?>
               </li>
             </ul>
-            <div class="text-center"> <a href="<?php D(get_link('CMShowitwork')); ?>" class="btn btn-site">
+            <a href="<?php D(get_link('CMShowitwork')); ?>" class="btn btn-outline-site ml-4">
               <?php D(__('proposal_details_page_How_It_Works', "How It Works")); ?>
-              </a> </div>
+              </a>
           </div>
         </div>
         

@@ -35,7 +35,7 @@ ul.category-list > li {
 	flex: 0 0 25%;
 	max-width: 25%;
 }
-.package-table tr > th:nth-child(2), .package-table tr > td:nth-child(2) {
+/*.package-table tr > th:nth-child(2), .package-table tr > td:nth-child(2) {
 	background-color: #f2fbff;
 }
 .package-table tr > th:nth-child(3), .package-table tr > td:nth-child(3) {
@@ -43,7 +43,7 @@ ul.category-list > li {
 }
 .package-table tr > th:last-child, .package-table tr > td:last-child {
 	background-color: #ccefff;
-}
+}*/
 .login:before{
 	width:50%;
 }
