@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <p class="mb-0"><strong>250</strong> Gigs Found</p>
                 </div>
                 <div class="sortFilter sort-by">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary <?php if($view_type=='list'){echo 'btn-active';}?>" onclick="setview('grid')"><i class="icon-feather-list"></i></a>
+                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary <?php if($view_type=='list'){echo 'btn-active';}?>" onclick="setview('list')"><i class="icon-feather-list"></i></a>
 					<a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary ml-2 <?php if($view_type!='list'){echo 'btn-active';}?>" onclick="setview('grid')"><i class="icon-feather-grid"></i></a>
 					<select class="selectpicker hide-tick w-auto">
                     	<option>Recent</option>
