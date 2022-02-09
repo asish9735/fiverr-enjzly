@@ -56,6 +56,11 @@ class Category extends MX_Controller {
 				$data['all_category'][$k]->subcategory=getAllSubCategory($category->category_id);
 			}
 		}
+		$view_type='';
+		if($this->session->userdata('view_type')){
+			$view_type=$this->session->userdata('view_type');
+		}
+		$data['view_type']=$view_type;
 		$data['loggedUser']=$this->loggedUser;
 		$data['all_delivery_times']=getAllDeliveryTimes();
 		$data['all_level']=getLevelName();
@@ -73,6 +78,17 @@ class Category extends MX_Controller {
 		load_template($templateLayout,$data);
 		
 	}
+	public function setloadview(){
+		$dataRes=array();
+		if($this->input->post()){
+			$type=$this->input->post('type');
+			$this->session->set_userdata('view_type',$type);
+			$dataRes['status']=1;
+		}else{
+			$dataRes['status']=0;
+		}
+		echo json_encode($dataRes);			
+	}
 	public function load_proposal()
 	{
 		$data=$dataRes=array();
@@ -89,6 +105,11 @@ class Category extends MX_Controller {
 			unset($where['page']);
 		}
 		$data['loggedUser']=$this->loggedUser;
+		$view_type='';
+		if($this->session->userdata('view_type')){
+			$view_type=$this->session->userdata('view_type');
+		}
+		$data['view_type']=$view_type;
 		$data['all_proposals']=$this->category_model->getProposal($where,$start,$limit);
 		$project_total=$this->category_model->getProposal($where,$start,$limit,TRUE);
 		if($project_total){
