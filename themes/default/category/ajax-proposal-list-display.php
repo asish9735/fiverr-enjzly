@@ -9,6 +9,7 @@ if($view_type=='list'){
 			<div class="col-12 list-view">
 				<?php
 				$proposaldata['proposal']=$proposal;
+				$proposaldata['view_type']=$view_type;
 				$templateLayout=array('view'=>'proposals/proposal-list','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
 				load_template($templateLayout,$proposaldata);
 				?>	
@@ -23,6 +24,7 @@ if($view_type=='list'){
 			<div class="col-md-4 col-sm-6 col-12 grid-view">
 				<?php
 				$proposaldata['proposal']=$proposal;
+				$proposaldata['view_type']=$view_type;
 				$templateLayout=array('view'=>'proposals/proposal-list','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
 				load_template($templateLayout,$proposaldata);
 				?>	
