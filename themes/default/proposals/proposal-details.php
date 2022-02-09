@@ -1382,13 +1382,24 @@ $section_data=array(
                               </form>
                               <?php }
                                   } else { ?>
-                              <a href="<?php D(get_link('loginURL')) ?>" class="btn btn-site">
-                              <?php D(__('proposal_details_page_Order_Now', "Order Now")); ?>
-                              (
-                              <?php D(CURRENCY); ?>
-                              <span class="total-price">
-                              <?php D($package->price); ?>
-                              </span>) </a>
+                                <div class="row mb-3">
+                                  <label class="col-md-6 col-form-label"><?php D(__('proposal_details_page_Proposal_Quantity', "Proposal\'s Quantity")); ?></label>
+                                  <div class="col-md-6">
+                                      <div class="qty-cart">
+                                        <div class="cart-plus-minus">
+                                          <input type="tel" class="form-control proposal_qty" value="1" name="proposal_qty" min="1">
+                                          <div class="minus qtybutton" onclick="addtocartBtn(this,'down')"><i class="icon-line-awesome-minus"></i></div>
+                                          <div class="plus qtybutton" onclick="addtocartBtn(this,'up')"><i class="icon-line-awesome-plus"></i></div>
+                                        </div>
+                                    </div>	            
+                                  </div>
+                                </div>
+                                <div class="text-right">
+
+                                  <a href="<?php D(get_link('loginURL')) ?>" class="btn btn-site">
+                                  <?php D(__('proposal_details_page_Order_Now', "Order Now")); ?>
+                                  </a>
+                                </div>  
                               <?php } ?>
                             </div>
                           </div>
@@ -1454,9 +1465,23 @@ $section_data=array(
 		        } 
             else {
 		        ?>
-            <a href="<?php D(get_link('loginURL')) ?>" class="btn btn-site">
-              <?php D(__('proposal_details_page_Order_Now', "Order Now")); ?> (<?php D(CURRENCY); ?><span class="total-price"><?php D($proposal_details['proposal']->proposal_price); ?></span>)
-            </a> 
+           <div class="row mb-3">
+              <label class="col-md-6 col-form-label"><?php D(__('proposal_details_page_Proposal_Quantity', "Proposal\'s Quantity")); ?></label>
+              <div class="col-md-6">
+                  <div class="qty-cart">
+                    <div class="cart-plus-minus">
+                      <input type="tel" class="form-control proposal_qty" value="1" name="proposal_qty" min="1">
+                      <div class="minus qtybutton" onclick="addtocartBtn(this,'down')"><i class="icon-line-awesome-minus"></i></div>
+                      <div class="plus qtybutton" onclick="addtocartBtn(this,'up')"><i class="icon-line-awesome-plus"></i></div>
+                    </div>
+                </div>	            
+              </div>
+            </div>
+            <div class="text-right">
+              <a href="<?php D(get_link('loginURL')) ?>" class="btn btn-site">
+              <?php D(__('proposal_details_page_Order_Now', "Order Now")); ?>
+              </a>
+            </div> 
           
           <!--<button class="btn btn-lg button-lg2 btn-site" data-toggle="modal" data-target="#login-modal">
 
