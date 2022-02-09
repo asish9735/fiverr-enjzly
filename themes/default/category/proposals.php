@@ -29,8 +29,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <p class="mb-0"><strong>250</strong> Gigs Found</p>
                 </div>
                 <div class="sortFilter sort-by">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary <?php if($view_type=='list'){echo 'btn-active';}?>" onclick="setview('list')"><i class="icon-feather-list"></i></a>
-					<a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary ml-2 <?php if($view_type!='list'){echo 'btn-active';}?>" onclick="setview('grid')"><i class="icon-feather-grid"></i></a>
+                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary btn-list <?php if($view_type=='list'){echo 'btn-active';}?>" onclick="setview('list')"><i class="icon-feather-list"></i></a>
+					<a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary ml-2 btn-grid  <?php if($view_type!='list'){echo 'btn-active';}?>" onclick="setview('grid')"><i class="icon-feather-grid"></i></a>
 					<select class="selectpicker hide-tick w-auto">
                     	<option>Recent</option>
                         <option>Popular</option>
@@ -311,12 +311,20 @@ $("#filter_form").on('change','.get_online_sellers, .get_delivery_time, .get_sel
  	getprojects(1);
  })
 function setview(type){
+	$("#ajax_table").empty();
 	$.ajax({
 		url:"<?php D(base_url('category/setloadview'))?>",
 		type:'post',
 		dataType:'json',
 		data: {type:type},
 	}).done(function(response){
+		if(type=='list'){
+			$('btn-grid').removeClass('btn-active');
+			$('btn-list').addClass('btn-active');
+		}else{
+			$('btn-list').removeClass('btn-active');
+			$('btn-grid').addClass('btn-active');
+		}
 		getprojects(1);
 	});
 }
