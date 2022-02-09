@@ -310,7 +310,7 @@ $("#filter_form").on('change','.get_online_sellers, .get_delivery_time, .get_sel
  	$("#ajax_table").empty();
  	getprojects(1);
  })
-functio setview(type){
+function setview(type){
 	$.ajax({
 		url:"<?php D(base_url('category/setloadview'))?>",
 		type:'post',
