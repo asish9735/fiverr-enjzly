@@ -1257,19 +1257,30 @@ $section_data=array(
               } else {
                   if ($proposal_details['proposal']->proposal_price == 0) {
               ?>
+                <div class="card mb-4 mt-4 mt-lg-0">
+                  <div class="card-header pt-0">
+                    <ul class="nav nav-tabs card-header-tabs justify-content-center" id="myTab" role="tablist">
+                    <?php
+                    if ($proposal_details['proposal_packages']) {
+                      foreach ($proposal_details['proposal_packages'] as $i => $package) {
+                    ?> 
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link <?php if ($package->package_name == "Standard") {  echo "active"; } ?>" id="basic-tab" data-toggle="tab" href="#tab_<?php D($package->package_id); ?>" role="tab" aria-selected="true"><?php D(__('proposal_details_page_package_' . $package->package_name, $package->package_name)); ?></a>
+                      </li>
+                      <?php }
+                      }?>
+                    </ul>
+                  </div>
+
           	      <div class="tab-content" id="myTabContent">
                     <?php
                     if ($proposal_details['proposal_packages']) {
                       foreach ($proposal_details['proposal_packages'] as $i => $package) {
                         $priceClass = "total-price-$i";
                     ?>
-                        <div class="card mb-3">
-                          <div class="card-header">
-                            <h4 class="card-title"> <a href="javascript:void(0)" class="btn-block <?php if ($package->package_name != "Standard") {  echo "collapsed"; } ?>" data-toggle="collapse" data-target="#tab_<?php D($package->package_id); ?>" aria-expanded="ture">
-                              <?php D(__('proposal_details_page_package_' . $package->package_name, $package->package_name)); ?>
-                              <i class="icon-feather-plus float-right"></i></a></h4>
-                          </div>
-                          <div id="tab_<?php D($package->package_id); ?>" class="tab-pane fade <?php if ($package->package_name == "Standard") {  echo "show"; } ?>" data-parent="#accordionExample">
+                      
+                          
+                          <div id="tab_<?php D($package->package_id); ?>" class="tab-pane fade <?php if ($package->package_name == "Standard") {  echo "show active"; } ?>" data-parent="#accordionExample">
                             <div class="card-body">
                               <h3><strong>
                                 <?php D(CURRENCY); ?>
@@ -1280,6 +1291,7 @@ $section_data=array(
                                 <?php D($package->delivery_time); ?>
                                 <?php D(__('proposal_details_page_Days_Delivery', "Days Delivery")); ?>
                               </h5>
+
                               <?php
                             if($proposal_details['module_attributes']){
                               $all_attr_values=$proposal_details['module_attributes'];
@@ -1340,17 +1352,30 @@ $section_data=array(
                               <form method="post" action="" id="checkoutForm_<?php D($i + 1); ?>" onsubmit="return checkoutForm(this);return false;">
                                 <input type="hidden" name="proposal_id" value="<?php D($proposal_details['proposal']->proposal_id); ?>">
                                 <input type="hidden" name="package_id" value="<?php D($package->package_id); ?>">
-                                <button class="btn btn-site mr-1 mb-2 saveBTN" type="submit" name="add_order">
-                                <?php D(__('proposal_details_page_Order_Now', "Order Now")); ?> (<?php D(CURRENCY); ?><span class="<?php D($priceClass); ?>"><?php D($package->price); ?></span>)</button>
+
+                                <div class="row mb-3">
+                                  <label class="col-md-6 col-form-label"><?php D(__('proposal_details_page_Proposal_Quantity', "Proposal\'s Quantity")); ?></label>
+                                  <div class="col-md-6">
+                                      <div class="qty-cart">
+                                        <div class="cart-plus-minus">
+                                          <input type="tel" class="form-control proposal_qty" value="1" name="proposal_qty" min="1">
+                                          <div class="minus qtybutton" onclick="addtocartBtn(this,'down')"><i class="icon-line-awesome-minus"></i></div>
+                                          <div class="plus qtybutton" onclick="addtocartBtn(this,'up')"><i class="icon-line-awesome-plus"></i></div>
+                                        </div>
+                                    </div>	            
+                                  </div>
+                                </div>
+                                <div class="text-right"><button type="submit" class="btn btn-site saveBTN" name="add_order"><?php D(__('proposal_details_page_Order_Now', "Order Now")); ?></button></div>
+
                                 
                                 <!--<button class="btn btn-site button-lg2 btn-lg saveBTNCart" type="button" name="add_cart">
 
                                   <i class="fa fa-lg fa-shopping-cart"></i>
 
                                   </button>--> 
-                                  <a class="btn btn-web mb-2" href="<?php D(get_link('messageLink')) ?>/<?php D($owner_details['member']->member_id); ?>">
+                                  <!-- <a class="btn btn-web mb-2" href="<?php D(get_link('messageLink')) ?>/<?php D($owner_details['member']->member_id); ?>">
                                   <?php D(__('proposal_details_page_Contact_Seller', "Contact Seller")); ?>
-                                </a>
+                                </a> -->
                                 <!-- <a href="#compare" class="btn btn-outline-site mb-2">
                                 <?php D(__('proposal_details_page_Compare_Packages', "Compare Packages")); ?>
                                 </a> -->
@@ -1367,12 +1392,13 @@ $section_data=array(
                               <?php } ?>
                             </div>
                           </div>
-                        </div>
+                        
                     <?php
                     }
                   }
                   ?>
                 </div>
+              </div>
               <?php
               } else {
 
@@ -1401,7 +1427,20 @@ $section_data=array(
           
                   <form method="post" action="" id="checkoutForm" onsubmit="return checkoutForm(this);return false;">
                     <input type="hidden" name="proposal_id" value="<?php D($proposal_details['proposal']->proposal_id); ?>">
-                    <button class="btn btn-site saveBTN" type="submit" name="add_order"><?php D(__('proposal_details_page_Order_Now', "Order Now")); ?> (<?php D(CURRENCY); ?><span class="total-price"><?php D($proposal_details['proposal']->proposal_price); ?></span>)</button>
+                    <div class="row mb-3">
+                      <label class="col-md-6 col-form-label"><?php D(__('proposal_details_page_Proposal_Quantity', "Proposal\'s Quantity")); ?></label>
+                      <div class="col-md-6">
+                          <div class="qty-cart">
+                          <div class="cart-plus-minus">
+                              <input type="tel" class="form-control proposal_qty" value="1" name="proposal_qty" min="1">
+                              <div class="minus qtybutton" onclick="addtocartBtn(this,'down')"><i class="icon-line-awesome-minus"></i></div>
+                              <div class="plus qtybutton" onclick="addtocartBtn(this,'up')"><i class="icon-line-awesome-plus"></i></div>
+                          </div>
+                        </div>	            
+                      </div>
+                    </div>
+                    <div class="text-right"><button type="submit" class="btn btn-site saveBTN" name="add_order"><?php D(__('proposal_details_page_Order_Now', "Order Now")); ?></button></div>
+
                     
                     <!--<button class="btn btn-site button-lg2 btn-lg saveBTNCart" type="button" name="add_cart">
 
@@ -1447,40 +1486,7 @@ $section_data=array(
 
           ?>
           
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="row">
-                <label class="col-md-6 col-form-label">
-                  <?php D(__('proposal_details_page_Proposal_Quantity', "Proposal\'s Quantity")); ?>
-                </label>
-                <div class="col-md-6">
-                  <?php /*?><select class="form-control" name="proposal_qty" form="<?php D($form); ?>">
-                    <?php
-
-                      for ($i = 1; $i <= $max_checkout_qty; $i++) {
-
-                      ?>
-                    <option>
-                    <?php D($i); ?>
-                    </option>
-                    <?php
-
-                      }
-
-                      ?>
-                  </select><?php */?>
-                  <div class="qty-cart">
-					<div class="cart-plus-minus">
-						<input type="text" class="form-control" value="1">
-						<div class="minus qtybutton"><i class="icon-line-awesome-minus"></i></div>
-						<div class="plus qtybutton"><i class="icon-line-awesome-plus"></i></div>
-					</div>
-				  </div>	
-				
-                </div>
-              </div>
-            </div>
-          </div>
+         
           <?php
 
               }
@@ -1529,8 +1535,9 @@ $section_data=array(
             }
 
             ?>
-            
-<!-- STATIC DESIGN START -->        
+   <?php /*?>        
+<!-- STATIC DESIGN START -->    
+   
 <div class="card mb-4 mt-4 mt-lg-0">
 <div class="card-header pt-0">
 <ul class="nav nav-tabs card-header-tabs justify-content-center" id="myTab" role="tablist">
@@ -1616,7 +1623,7 @@ $section_data=array(
     </div>
 </div>
 <!-- STATIC DESIGN END -->
-
+ <?php */?>
         <?php
 
         if ($is_login && $proposal_details['proposal_settings']->proposal_enable_referrals && !$is_owner) {
@@ -2342,5 +2349,18 @@ $section_data=array(
 
     return false;
 
+  }
+  function addtocartBtn(sec,type){
+    var section=$(sec).closest('.cart-plus-minus');
+    var current_qty=section.find('.proposal_qty').val();
+    var new_qty=1;
+    if(type=='up'){
+      new_qty=parseInt(current_qty)+1;
+    }else{
+      if(current_qty>1){
+        new_qty=parseInt(current_qty)-1;
+      }
+    }
+    section.find('.proposal_qty').val(new_qty);
   }
 </script>
