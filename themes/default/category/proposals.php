@@ -319,11 +319,11 @@ function setview(type){
 		data: {type:type},
 	}).done(function(response){
 		if(type=='list'){
-			$('btn-grid').removeClass('btn-active');
-			$('btn-list').addClass('btn-active');
+			$('.btn-grid').removeClass('btn-active');
+			$('.btn-list').addClass('btn-active');
 		}else{
-			$('btn-list').removeClass('btn-active');
-			$('btn-grid').addClass('btn-active');
+			$('.btn-list').removeClass('btn-active');
+			$('.btn-grid').addClass('btn-active');
 		}
 		getprojects(1);
 	});
