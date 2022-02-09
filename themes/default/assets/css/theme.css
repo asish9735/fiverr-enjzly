@@ -205,8 +205,8 @@ header.fullwidth .container {
 	position: relative;
 }
 .header-notifications-trigger, .header-notifications-trigger a {
-	font-size: 22px;
-	color: #333;
+	font-size: 1.333rem;
+	color: #fff;
 	position: relative;
 	top: 50%;
 	transform: translate3d(0, -50%, 0);

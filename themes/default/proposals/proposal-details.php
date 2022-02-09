@@ -64,10 +64,40 @@ $section_data=array(
                     <p><i class="icon-feather-calendar"></i> <?php echo dateFormat($proposal_details['proposal']->proposal_date,'F d, Y');?></p>
                     <div class="star-rating" data-rating="<?php echo round($average_rating); ?>"> </div>
                     <span>(<?php D($count_reviews); ?>)</span>
+                    <?php
+					  if($loggedUser){ 
+						if($proposal_details['proposal']->proposal_seller_id != $loggedUser['MID']){
+						  $is_favorite=is_favorite($loggedUser['MID'],$proposal_details['proposal']->proposal_id);
+						  if($is_favorite){
+							$show_favorite_class = "mark-unfav";
+						  }else{
+							$show_favorite_class = "mark-fav ";
+						  }
+						  ?>
+						<div class="position-relative"><i style="top: 0.5rem; left:0;" data-id="<?php D($proposal_details['proposal']->proposal_id); ?>" href="#" class="icon-line-awesome-heart <?php D($show_favorite_class); ?>" data-toggle="tooltip" data-placement="top" title="Favorite"></i></div>
+					  <?php }
+					  }
+					?>
                   </div>
                   <div class="col-md"> 
                     <p><i class="icon-feather-eye"></i> <?php echo getnoofviews($proposal_details['proposal']->proposal_id);?></p>
                     <p><i class="icon-feather-users"></i> <?php D($proposal_order_queue); ?> Order(s) In Queue.</p> 
+                    <?php
+
+					if ($is_login) {
+	
+					  if (!$is_owner) {
+	
+						if ($is_report == 0) {
+	
+					?>
+					<p><i class="icon-feather-flag"></i> <a href="#" data-toggle="modal" data-target="#report-modal">Report </a></p>
+					<?php
+	
+						}
+					  }
+					}
+					?>
                   </div>
                   <div class="col-md">
                   	<p class="mb-2"><i class="icon-feather-share-2"></i> Share this Job:</p>
@@ -79,43 +109,7 @@ $section_data=array(
                         <li><a href=""><i class="icon-brand-youtube"></i></a></li>
                       </ul>
                   </div>
-              </div>
-              <!-- Bookmark Icon --> 
-             <?php
-              if($loggedUser){ 
-                if($proposal_details['proposal']->proposal_seller_id != $loggedUser['MID']){
-                  $is_favorite=is_favorite($loggedUser['MID'],$proposal_details['proposal']->proposal_id);
-                  if($is_favorite){
-                    $show_favorite_class = "mark-unfav";
-                  }else{
-                    $show_favorite_class = "mark-fav ";
-                  }
-                  ?>
-                    <i style="position: absolute;z-index: 101;right: 0;top: 1rem;left: unset;" data-id="<?php D($proposal_details['proposal']->proposal_id); ?>" href="#" class="icon-line-awesome-heart <?php D($show_favorite_class); ?>" data-toggle="tooltip" data-placement="top" title="Favorite"></i>
-              <?php }
-              }
-              ?>
-             <!--  <span class="bookmark-icon"></span> -->
-              <div class="row align-items-center mt-2">
-                
-                <?php
-
-                if ($is_login) {
-
-                  if (!$is_owner) {
-
-                    if ($is_report == 0) {
-
-                ?>
-                <div class="col-md-auto"><a href="#" data-toggle="modal" data-target="#report-modal"><i class="icon-feather-flag"></i> Report </a></div>
-                <?php
-
-                    }
-                  }
-                }
-                ?>
-                
-              </div>
+              </div>                           
             </div>
           </div>
           <div id="myCarousel" class="carousel slide">
@@ -190,32 +184,10 @@ $section_data=array(
             <a class="carousel-control-prev slide-nav slide-right" href="#myCarousel" data-slide="prev"> <span class="carousel-control-prev-icon carousel-icon"></span> </a> <a class="carousel-control-next slide-nav slide-left" href="#myCarousel" data-slide="next"> <span class="carousel-control-next-icon carousel-icon"></span> </a> </div>
           
         </div>
-        <h3>Details</h3>
+        <h3><?php D(__('proposal_details_page_description', "Description")); ?></h3>
         <div class="card mb-4">          
-          <div class="card-body">
-            <h4>
-              <?php D(__('proposal_details_page_description', "Description")); ?>
-            </h4>
-            <?php D(html_entity_decode($proposal_details['proposal_additional']->proposal_description)); ?>
-            <h4>Tags</h4>
-            <div class="task-tags mt-2 test">
-              <?php
-
-              if ($proposal_details['proposal_tags']) {
-
-                foreach ($proposal_details['proposal_tags'] as $t => $tag) {
-
-              ?>
-              <span>
-              <?php D($tag->tag_name); ?>
-              </span>
-              <?php
-
-                }
-              }
-
-              ?>
-            </div>
+          <div class="card-body">            
+            <?php D(html_entity_decode($proposal_details['proposal_additional']->proposal_description)); ?>                        
           </div>
         </div>
         <?php if ($proposal_details['proposal']->proposal_price == 0) {
@@ -457,7 +429,7 @@ $section_data=array(
                               if ($is_login) {
                                 if ($owner_details['member']->is_vacation) {
                                 } else { ?>
-                        <button class="btn btn-site text-white btn-block saveBTN" type="submit" name="add_order">
+                        <button class="btn btn-site btn-block saveBTN" type="submit" name="add_order">
                         <?php D(__('proposal_details_page_package_Select', "Select")); ?>
                         </button>
                         <?php }
@@ -508,6 +480,7 @@ $section_data=array(
             </div>
             </div>
           </div>
+        
         <div class="card">  
           <div class="card-body comments">
             <ul id="all">
@@ -1233,6 +1206,7 @@ $section_data=array(
           </div>
 
         </div><?php */ ?>
+        
       </div>
       <div class="col-lg-4 proposal-sidebar">
        
@@ -1403,6 +1377,7 @@ $section_data=array(
               } else {
 
               ?>
+          
           <div class="card mb-3">
             <div class="card-body">
               <h3><strong><?php D(CURRENCY); ?><span class="total-price"><?php D($proposal_details['proposal']->proposal_price); ?></span></strong></h3>
@@ -1554,7 +1529,94 @@ $section_data=array(
             }
 
             ?>
-        
+            
+<!-- STATIC DESIGN START -->        
+<div class="card mb-4 mt-4 mt-lg-0">
+<div class="card-header pt-0">
+<ul class="nav nav-tabs card-header-tabs justify-content-center" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic" aria-selected="true">Basic</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="standard-tab" data-toggle="tab" href="#standard" role="tab" aria-controls="standard" aria-selected="false">Standard</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="advance-tab" data-toggle="tab" href="#advance" role="tab" aria-controls="advance" aria-selected="false">Advance</a>
+  </li>
+</ul>
+</div>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="basic">
+  	<div class="card-body">
+    	<h2>$99</h2>
+    	<p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="row mb-3">
+            <label class="col-md-6 col-form-label">Gigs's Quantity</label>
+            <div class="col-md-6">
+                <div class="qty-cart">
+                <div class="cart-plus-minus">
+                    <input type="text" class="form-control" value="1">
+                    <div class="minus qtybutton"><i class="icon-line-awesome-minus"></i></div>
+                    <div class="plus qtybutton"><i class="icon-line-awesome-plus"></i></div>
+                </div>
+              </div>	            
+            </div>
+          </div>
+        <div class="text-right"><button type="submit" class="btn btn-site">Order Now</button></div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="standard">
+  	<div class="card-body">
+    	<h2>$149</h2>
+    	<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="row mb-3">
+            <label class="col-md-6 col-form-label">Gigs's Quantity</label>
+            <div class="col-md-6">
+                <div class="qty-cart">
+                <div class="cart-plus-minus">
+                    <input type="text" class="form-control" value="1">
+                    <div class="minus qtybutton"><i class="icon-line-awesome-minus"></i></div>
+                    <div class="plus qtybutton"><i class="icon-line-awesome-plus"></i></div>
+                </div>
+              </div>	            
+            </div>
+          </div>
+        <div class="text-right"><button type="submit" class="btn btn-site">Order Now</button></div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="advance">
+  	<div class="card-body">
+    	<h2>$199</h2>
+    	<p>Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="row mb-3">
+            <label class="col-md-6 col-form-label">Gigs's Quantity</label>
+            <div class="col-md-6">
+                <div class="qty-cart">
+                <div class="cart-plus-minus">
+                    <input type="text" class="form-control" value="1">
+                    <div class="minus qtybutton"><i class="icon-line-awesome-minus"></i></div>
+                    <div class="plus qtybutton"><i class="icon-line-awesome-plus"></i></div>
+                </div>
+              </div>	            
+            </div>
+          </div>
+        <div class="text-right"><button type="submit" class="btn btn-site">Order Now</button></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="card mb-4">          
+	<div class="card-body">
+    	<h2>$99</h2>
+        <h5><i class="icon-feather-clock"></i> 6 Months Delivery</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <button type="submit" class="btn btn-site">Order Now</button>
+    </div>
+</div>
+<!-- STATIC DESIGN END -->
+
         <?php
 
         if ($is_login && $proposal_details['proposal_settings']->proposal_enable_referrals && !$is_owner) {
@@ -1579,17 +1641,51 @@ $section_data=array(
         }
 
         ?>
-        <center class="mb-4">
-          
-          <!-- Go to www.addthis.com/dashboard to customize your tools -->
-          
+        <?php /*?><center class="mb-4">          
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->          
           <div class="addthis_inline_share_toolbox"></div>
-        </center>
-        
+        </center><?php */?>
+        <div class="card mb-4">
+          <div class="card-body"> 
+          	<h3>Tags</h3>
+            <div class="task-tags mt-2 test">
+                  <?php
+    
+                  if ($proposal_details['proposal_tags']) {
+    
+                    foreach ($proposal_details['proposal_tags'] as $t => $tag) {
+    
+                  ?>
+                  <span>
+                  <?php D($tag->tag_name); ?>
+                  </span>
+                  <?php
+    
+                    }
+                  }
+    
+                  ?>
+             </div>
+           </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body"> 
+          	<h3>Services</h3>
+            <p class="d-flex justify-content-between">
+            	<span>Delivery Time:</span> <span>6 Months</span>
+            </p>
+            <p class="d-flex justify-content-between">
+            	<span>Category:</span> <span>SEO</span>
+            </p>
+            <p class="d-flex justify-content-between mb-0">
+            	<span>English level:</span> <span>Professional</span>
+            </p>
+          </div>
+        </div>
         <div class="card seller-bio mb-4 rounded-0">
           <div class="card-body">
           <h3>About Seller</h3>
-            <div class="text-center">
+            <div class="text-center mb-3">
               <div class="user-profile"> <img src="<?php D(getMemberLogo($owner_details['member']->member_id)); ?>" width="100" class="rounded-circle">
                 <?php
 
@@ -1613,10 +1709,18 @@ $section_data=array(
               <?php $seller_user_name = getUserName($owner_details['member']->member_id);
 
               ?>
-              <h4><a href="<?php D(get_link('viewprofileURL')) ?><?php D($seller_user_name); ?>">
+              <h4><a class="text-dark" href="<?php D(get_link('viewprofileURL')) ?><?php D($seller_user_name); ?>">
                 <?php /*D(ucfirst($owner_details['member']->member_name));*/ D($seller_user_name); ?>
                 </a> <div class="verified-badge" data-tippy-placement="top" title="Verified Employer"></div></h4>
-              <p class="mb-1">
+              
+              <p class="text-muted text-center">
+                <?php D(getLevelName($owner_details['member']->seller_level)); ?>
+              </p>
+              
+            </div>
+            <p class="d-flex justify-content-between">
+            	<span><i class="icon-feather-map-pin pr-1"></i> Location:</span>
+            	<span><img src="<?php D(theme_url() . IMAGE); ?>flags/in.svg" alt="" class="flag" height="16" />
                 <?php
 
                 if ($owner_details['member_address'] && $owner_details['member_address']->member_country) {
@@ -1630,15 +1734,11 @@ $section_data=array(
                 }
 
                 ?>
-                <img src="<?php D(theme_url() . IMAGE); ?>flags/in.svg" alt="" class="flag" height="16" /> </p>
-              <p class="text-muted text-center">
-                <?php D(getLevelName($owner_details['member']->seller_level)); ?>
-              </p>
-              <hr>
-            </div>
-            <p class="text-muted"><i class="icon-feather-message-square pr-1"></i>
-              <?php D(__('proposal_details_page_Speaks', "Speaks")); ?>
-              : <b>
+                </span>
+            </p>
+            <p class="d-flex justify-content-between"><span><i class="icon-feather-message-square pr-1"></i>
+              <?php D(__('proposal_details_page_Speaks', "Speaks")); ?>:</span>
+               <b>
               <?php
 
                 if ($owner_details['member_languages']) {
@@ -1651,22 +1751,22 @@ $section_data=array(
 
                 ?>
               </b></p>
-            <p class="text-muted"><i class="icon-feather-star pr-1"></i>
+            <p class="d-flex justify-content-between"><span><i class="icon-feather-star pr-1"></i>
               <?php D(__('proposal_details_page_Positive_Reviews', "Positive Reviews")); ?>
-              : <b>
+              :</span> <b>
               <?php D($owner_details['member']->seller_rating); ?>
               % </b></p>
-            <p class="text-muted"><i class="icon-feather-shopping-cart pr-1"></i>
+            <p class="d-flex justify-content-between"><span><i class="icon-feather-shopping-cart pr-1"></i>
               <?php D(__('proposal_details_page_Recent_Delivery', "Recent Delivery")); ?>
-              : <b>
+              :</span> <b>
               <?php if ($owner_details['member']->recent_delivery_date) {
                   D(dateFormat($owner_details['member']->recent_delivery_date, 'F d, Y'));
                 } else {
                   D(__('global_None', 'None'));
                 } ?>
               </b></p>
-            <hr>
-            <div class="text-center">
+            
+            <div class="text-center mt-3">
               <?php
 
               echo $proposal_seller_about;
