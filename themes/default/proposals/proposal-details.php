@@ -1259,7 +1259,7 @@ $section_data=array(
               ?>
                 <div class="card mb-4 mt-4 mt-lg-0">
                   <div class="card-header pt-0">
-                    <ul class="nav nav-tabs card-header-tabs justify-content-center" id="myTab" role="tablist">
+                    <ul class="nav nav-pills card-header-tabs justify-content-center" id="myTab" role="tablist">
                     <?php
                     if ($proposal_details['proposal_packages']) {
                       foreach ($proposal_details['proposal_packages'] as $i => $package) {

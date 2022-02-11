@@ -153,6 +153,9 @@ b, strong {
 .fS-body{
 	font-size:1rem;
 }
+.nav-pills .nav-link{
+	border-radius: 0;
+}
 .nav-tabs .nav-link {
 	border-radius: 0;
 	border: none;

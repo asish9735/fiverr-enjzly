@@ -500,7 +500,7 @@ a,
 	color: var(--siteColor);
 }
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
+    color: #111;
     background-color: var(--siteColor);
 }
 .nav-pills.flex-column {
