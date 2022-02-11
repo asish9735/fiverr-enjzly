@@ -95,18 +95,18 @@ ul.list li:before {
 .checkbox span::after {
 	right: -17px
 }
-.header-message-div .heading,  .header-message-div-unread .heading {
+.message-list .heading {
 	margin-right:10px
 }
-.header-message-div .message, .header-message-div-unread .message,
-.header-message-div .date,  .header-message-div-unread .date {
+.message-list .message,
+.message-list .date {
 	/*margin-right:55px;*/
 	right:20px
 }
 .messagePopup .header-message-div .message{
 	margin-right: 56px;
 }
-#notifications .header-message-div .btn, #notifications .header-message-div-unread .btn{
+#notifications .message-list .btn{
 	left:20px;
 }
 .dashboard-box .featuretag{

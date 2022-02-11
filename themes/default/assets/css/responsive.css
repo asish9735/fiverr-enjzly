@@ -56,7 +56,7 @@ html {
 	min-height:475px;
 }
 .breadcrumbs .container, .breadcrumbs .container-fluid {
-	height: 100px;
+	height: 84px;
 }
 ul.category-list > li {
 	flex: 0 0 25%;

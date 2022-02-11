@@ -20,50 +20,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <form action="" method="post" accept-charset="utf-8" id="postproposalform" class="form-horizontal" role="form" name="postproposalform" onsubmit="saveProposal(this);return false;">
             <div class="card mb-4">
             <div class="card-body">
-                <div class="row">                
-                    <div class="col-md-12">
-                        <div class="form-field">
-                        <label class="form-label"><?php D(__('post_proposal_page_title',"Proposal\'s Title"));?></label>
-                        <input type="text" name="proposal_title" id="proposal_title" maxlength="70" class="form-control" value="">
-                        <small class="text-help"><i class="icon-feather-info"></i> <?php D(__('post_proposal_page_title_note',"Minimum 15 characters in length"));?></small>
-                        <span id="proposal_titleError" class="rerror"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-field">
-                        <label class="form-label"><?php D(__('post_proposal_page_category',"Gigs\'s Category"));?> </label>
-                        <div class="row">
-                        <div class="col-sm-6">                        
-                        <select class="form-control mb-3" name="category_id" id="category_id">
-                            <option value="" class="hidden"> <?php D(__('post_proposal_page_select_category',"Select A Category"));?> </option>
-                            <?php 
-                            if($all_category){
-                                foreach($all_category as $k=>$category){
-                            ?>
-                            <option value="<?php D($category->category_id); ?>">  <?php D($category->name); ?> </option>
-                            <?php	
-                                }
+                    <div class="form-field">
+                    <label class="form-label"><?php D(__('post_proposal_page_title',"Proposal\'s Title"));?> <span class="required">*</span></label>
+                    <input type="text" name="proposal_title" id="proposal_title" maxlength="70" class="form-control" value="">
+                    <small class="text-help"><i class="icon-feather-info"></i> <?php D(__('post_proposal_page_title_note',"Minimum 15 characters in length"));?></small>
+                    <span id="proposal_titleError" class="rerror"></span>
+                    </div>                    
+                    
+                    <div class="form-field">
+                    <label class="form-label"><?php D(__('post_proposal_page_category',"Gigs\'s Category"));?> <span class="required">*</span></label>
+                    <div class="row">
+                    <div class="col-sm-6">                        
+                    <select class="form-control mb-3" name="category_id" id="category_id">
+                        <option value="" class="hidden"> <?php D(__('post_proposal_page_select_category',"Select A Category"));?> </option>
+                        <?php 
+                        if($all_category){
+                            foreach($all_category as $k=>$category){
+                        ?>
+                        <option value="<?php D($category->category_id); ?>">  <?php D($category->name); ?> </option>
+                        <?php	
                             }
-                            ?>
-                        </select>
-                        <span id="category_idError" class="rerror"></span>
-                        </div>
-                        <div class="col-sm-6">                        
-                        <div class="load_cubcategory_loader" style="display: none"></div>
-                        <select class="form-control" name="sub_category_id" id="sub_category_id" style="display: none">
-                            <option value="" class="hidden"> <?php D(__('post_proposal_page_select_sub_category',"Select A Sub Category"));?> </option>
-                        </select>
-                        <span id="sub_category_idError" class="rerror"></span>
-                        </div>
-                        </div>
+                        }
+                        ?>
+                    </select>
+                    <span id="category_idError" class="rerror"></span>
+                    </div>
+                    <div class="col-sm-6">                        
+                    <div class="load_cubcategory_loader" style="display: none"></div>
+                    <select class="form-control" name="sub_category_id" id="sub_category_id" style="display: none">
+                        <option value="" class="hidden"> <?php D(__('post_proposal_page_select_sub_category',"Select A Sub Category"));?> </option>
+                    </select>
+                    <span id="sub_category_idError" class="rerror"></span>
                     </div>
                     </div>
                 </div>
+                    
                 
                 <div class="form-group">                
-                    <label class="form-label"> 
-                        <?php D(__('post_proposal_page_Description',"Proposal\'s Description"));?> <br> <small> <?php D(__('post_proposal_page_Description_info',"Briefly Describe Your Proposal."));?> </small>
+                    <label class="form-label mb-0"> 
+                        <?php D(__('post_proposal_page_Description',"Proposal\'s Description"));?> <span class="required">*</span>
                     </label>
+                    <p><small><i><?php D(__('post_proposal_page_Description_info',"Briefly Describe Your Proposal."));?></i></small></p>                    
                     <textarea name="proposal_description" id="proposal_description" rows="7" placeholder="<?php D(__('post_proposal_page_Description_input',"Enter Your Proposal\'s Description"));?>"  class="form-control proposal-desc"></textarea>
                     <small class="text-help"><i class="icon-feather-info"></i> <?php D(__('post_proposal_page_Description_note',"Minimum 150 characters in length"));?></small>
                     <span id="proposal_descriptionError" class="rerror"></span>
@@ -71,39 +68,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>	
                 
                 <div class="form-group">
-                    <label class="form-label">
-                        <?php D(__('post_proposal_page_Instructions',"Instructions to Buyer"));?> <br> <small> <?php D(__('post_proposal_page_Instructions_info',"Give buyer a head start."));?> </small>
-                        <br>
-                        <small class="text-justify"> 
-                            <?php D(__('post_proposal_page_Instructions_info_description',"If you need to obtain information, files or other items from the buyer prior to starting your work, please add your instructions here. For example: Please send me your company name or Please send me the photo you need me to edit."));?>
-                        </small>
-                    </label>
-                    <textarea name="buyer_instruction" id="buyer_instruction" rows="7" class="form-control"></textarea>                
+                    <label class="form-label mb-0">
+                        <?php D(__('post_proposal_page_Instructions',"Instructions to Buyer"));?></label>
+                        <p class="mb-0"><small><i><?php D(__('post_proposal_page_Instructions_info',"Give buyer a head start."));?></i></small></p>
+                        <p><small><i><?php D(__('post_proposal_page_Instructions_info_description',"If you need to obtain information, files or other items from the buyer prior to starting your work, please add your instructions here. For example: Please send me your company name or Please send me the photo you need me to edit."));?></i></small></p>                    
+                    <textarea name="buyer_instruction" id="buyer_instruction" rows="4" class="form-control"></textarea>                
                 </div>	
                 
                 <div class="row">                
                     <div class="col-md-6">
                         <div class="form-field">
-                        <label class="form-label"> <?php D(__('post_proposal_page_tags',"Proposal's Tags"));?>
-                            <small>(<?php D(__('post_proposal_page_tags_info',"Type a comma after each tag."));?>)</small>
-                        </label>
+                        <label class="form-label"> <?php D(__('post_proposal_page_tags',"Proposal's Tags"));?> <span class="required">*</span></label>
+                        <?php /*?><p><small><i>(<?php D(__('post_proposal_page_tags_info',"Type a comma after each tag."));?>)</small></i></p><?php */?>
                         <input type="text" name="proposal_tags" id="proposal_tags" placeholder="<?php D(__('post_proposal_page_tags_input',"Tags"));?>" data-role="tagsinput" value="" class="form-control">
                         <span id="proposal_tagsError" class="rerror"></span>
                         </div>
                     </div>
                     <div class="col-md-6 proposal_referral_money">
                     <div class="form-field">
-                    <label class="form-label"> <?php D(__('post_proposal_page_Promotion_Commission',"Promotion Commission:"));?> 
-                        <small> <?php D(__('post_proposal_page_Promotion_Commission_info',"When another user promotes your proposal, how much would you like that user to get from the sale? (in dollars)"));?>
-                    </small>
-                    </label>
+                    <label class="form-label mb-0"> <?php D(__('post_proposal_page_Promotion_Commission',"Promotion Commission:"));?> <span class="required">*</span></label>
+                    <p><small><i><?php D(__('post_proposal_page_Promotion_Commission_info',"When another user promotes your proposal, how much would you like that user to get from the sale? (in dollars)"));?></i></small></p>                    
                         <input type="number" name="proposal_referral_money" id="proposal_referral_money" class="form-control" min="1" value="" placeholder="Figure should be in percentage e.g 20">
                         <span id="proposal_referral_moneyError" class="rerror"></span>
                         <small><?php D(__('post_proposal_page_Promotion_Commission_note',"Figure should be in percentage. E.g 20 is the same as 20% from the sale of this proposal."));?></small>
                         </div>
                     </div>
                     <div class="col-md-6">
-                    <label class="form-label"><?php D(__('post_proposal_page_Delivery_Time',"Proposal\'s Delivery Time"));?> </label>
+                    <label class="form-label"><?php D(__('post_proposal_page_Delivery_Time',"Proposal\'s Delivery Time"));?> <span class="required">*</span></label>
                         <select name="delivery_id" class="form-control" >
                         <?php 
                         if($all_delivery_times){
@@ -119,11 +110,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 
                 <div class="form-group row d-none"><!--- form-group row Starts --->
-                    <label class="col-md-4 col-form-label"><?php D(__('post_proposal_page_Enable_Referrals',"Enable Referrals :"));?> <br>
-                        <small class="text-justify"> 
-                            If enabled, other users can promote your proposal by sharing it on different platforms.
-                        </small>
-                    </label>
+                    <label class="col-md-4 col-form-label"><?php D(__('post_proposal_page_Enable_Referrals',"Enable Referrals :"));?></label>
+                    <p><small><i>If enabled, other users can promote your proposal by sharing it on different platforms.</i></small></p>                    
                     <div class="col-md-8">
                         <select name="proposal_enable_referrals" id="proposal_enable_referrals" class="proposal_enable_referrals form-control">
                             <option value="0"> No </option>
@@ -137,13 +125,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>	
                 
                 <div class="form-group">
-                    <label class="form-label"> <?php D(__('post_proposal_page_Image',"Add Proposal\'s Image"));?>
-                    <br><small><?php D(__('post_proposal_page_Image_info',"Supported image extentions include: \'gif\', \'png\', \'jpg\', \'jpeg\', \'tif\'."));?>  </small>
-                    </label>
-                    <div class="uploadButton">
-                        <input type="file" class="uploadButton-input"  id="proposal_img1" accept="image/*"/>
-                        <label class="uploadButton-button ripple-effect" for="proposal_img1"><i class="icon-feather-upload mr-1"></i> Upload File</label>                        
+                    <label class="form-label mb-0"> <?php D(__('post_proposal_page_Image',"Add Proposal\'s Image"));?> <span class="required">*</span></label>                    
+                    <p><small><i><?php D(__('post_proposal_page_Image_info',"Supported image extentions include: \'gif\', \'png\', \'jpg\', \'jpeg\', \'tif\'."));?></i></small></p>
+                    <div class="input-group">
+                      <div class="custom-file upload-file upload-image">
+                        <input type="file" class="custom-file-input" id="proposal_img1" accept="image/*, application/pdf">
+                        <label class="custom-file-label" for="proposal_img1"><i class="icon-feather-upload mr-1"></i> <?php D(__('global_Choose_File',"Upload Files"));?></label>
+                      </div>
                     </div>
+                    
                     <?php /*?><div class="choosefile">
                         <input type="file" id="proposal_img1" class="form-control" >
                         <span class="btn btn-success"><?php D(__('global_Choose_File',"Choose File"));?></span>
@@ -156,7 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 
                 <div class="form-group">
                     <label class="form-label"><?php D(__('post_proposal_page_add_more_Image',"Add Proposal More Images"));?> </label>
-                    <a href="#" data-toggle="collapse" data-target="#more-images" class="btn btn-outline-site mb-2">
+                    <a href="#" data-toggle="collapse" data-target="#more-images" class="btn btn-sm btn-outline-dark mb-3">
                         <i class="icon-feather-plus"></i> <?php D(__('post_proposal_page_add_more_Image_btn',"Add More Images"));?>
                     </a>
                     <div id="more-images" class="collapse">
@@ -169,13 +159,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                         
                 <div class="form-group">
-                    <label class="form-label"><?php D(__('post_proposal_page_Video',"Add Proposal Video (Optional)"));?>
-                        <br><small><?php D(__('post_proposal_page_Video_info',"Supported video extentions include: \'mp4\', \'mov\', \'avi\', \'flv\', \'wmv\'."));?> </small>    
-                    </label>
-                    <div class="uploadButton">
-                        <input type="file" class="uploadButton-input" id="fileinputvideo" />
-                        <label class="uploadButton-button ripple-effect" for="fileinputvideo"><i class="icon-feather-upload mr-1"></i> Upload Files</label>											
-                    </div>
+                	<label class="form-label mb-0"><?php D(__('post_proposal_page_Video',"Add Proposal Video"));?></label>
+                    <p><small><i><?php D(__('post_proposal_page_Video_info',"Supported video extentions include: \'mp4\', \'mov\', \'avi\', \'flv\', \'wmv\'."));?></i></small></p>
+                    <div class="input-group">
+                      <div class="custom-file upload-file upload-video">
+                        <input type="file" class="custom-file-input" name="proposal_video" id="fileinputvideo" accept="video/*">
+                        <label class="custom-file-label" for="fileinputvideo"><i class="icon-feather-upload mr-1"></i> <?php D(__('global_Choose_File',"Upload Files"));?></label>
+                      </div>
+                    </div>                    
                                         
                     <?php /*?><div class="choosefile">
                         <input type="file" id="fileinputvideo" class="form-control">
@@ -189,7 +180,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">  
                     <div class="col-md-6">                 
                         <div class="form-field">
-                            <label class="form-label"><?php D(__('post_proposal_page_Price_Type',"Price Type"));?></label>
+                            <label class="form-label"><?php D(__('post_proposal_page_Price_Type',"Price Type"));?> <span class="required">*</span></label>
                             <select class="pricing form-control" name="is_fixed">
                                 <option value="0" <?php {D('selected');}?>> <?php D(__('post_proposal_page_Price_Type_Packages',"Packages"));?> </option>
                                 <option value="1"> <?php D(__('post_proposal_page_Price_Type_Fixed_Price',"Fixed Price"));?> </option>
@@ -215,18 +206,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
                 
                 
-                <div class="packages">
-                <div class="card mb-4">
-                <div class="card-body">
+                <div class="packages mb-4">
                     <div class="row row-10">
                     <article class="col-md-4 col-12">
-                    <div class="card package mb-4">
-                        <div class="card-header"><h4><?php D(__('post_proposal_page_package_Basic',"Basic"));?></h4></div>  
+                    <div class="card package mb-4">  
                         <div class="card-body">
+                        	<h4><?php D(__('post_proposal_page_package_Basic',"Basic"));?></h4>
                             <!--<table class="table table-bordered js-gig-packages"></table>-->
                             <div class="form-field">
                                 <label class="form-label">Description</label>
-                                <textarea rows="4" name="package_desc_1" id="package_desc_1" class="form-control description-value-64"></textarea>
+                                <textarea rows="3" name="package_desc_1" id="package_desc_1" class="form-control description-value-64"></textarea>
                                 <small class="text-help"><i class="icon-feather-info"></i> <?php D(__('post_proposal_page_package_description_note',"Minimum 70 characters in length"));?></small>
                                 <span id="package_desc_1Error" class="rerror"></span>
                             </div>
@@ -254,11 +243,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             
                     <article class="col-md-4 col-12">
                     <div class="card package mb-4">
-                    <div class="card-header"><h4><?php D(__('post_proposal_page_package_Standard',"Standard"));?></h4> </div>  
                     <div class="card-body">
+                    	<h4><?php D(__('post_proposal_page_package_Standard',"Standard"));?></h4>
                         <div class="form-field">
                             <label class="form-label">Description</label>
-                            <textarea rows="4" name="package_desc_2" id="package_desc_2" class="form-control description-value-65"></textarea>
+                            <textarea rows="3" name="package_desc_2" id="package_desc_2" class="form-control description-value-65"></textarea>
                             <small class="text-help"><i class="icon-feather-info"></i> <?php D(__('post_proposal_page_package_description_note',"Minimum 70 characters in length"));?></small>
                             <span id="package_desc_2Error" class="rerror"></span>
                         </div>
@@ -288,11 +277,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
                     <article class="col-md-4 col-12">
                     <div class="card package mb-4">   
-                    <div class="card-header"><h4><?php D(__('post_proposal_page_package_Advance',"Advance"));?></h4></div>
-                    <div class="card-body">                        
+                    <div class="card-body">   
+                    	<h4><?php D(__('post_proposal_page_package_Advance',"Advance"));?></h4>                     
                         <div class="form-field">
                             <label class="form-label">Description</label>
-                            <textarea rows="4" name="package_desc_3" id="package_desc_3" class="form-control description-value-66"></textarea>
+                            <textarea rows="3" name="package_desc_3" id="package_desc_3" class="form-control description-value-66"></textarea>
                             <small class="text-help"><i class="icon-feather-info"></i> <?php D(__('post_proposal_page_package_description_note',"Minimum 70 characters in length"));?></small>
                             <span id="package_desc_3Error" class="rerror"></span>
                         </div>
@@ -319,20 +308,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     </article>	            
                     </div>
-                
-                <div class="add-attribute">                
-                    <div class="input-group">                                
-                        <input class="form-control attribute-name" placeholder="<?php D(__('post_proposal_page_Add_New_Attribute_input',"Add New Attribute"));?>" name="">
-                        <div class="input-group-append">
-                        <button class="btn btn btn-outline-site insert-attribute" type="button">
-                            <i class="icon-feather-upload" aria-hidden="true"></i> <?php D(__('post_proposal_page_Add_New_Attribute_btn',"Insert"));?> 
-                        </button>
-                        </div>
-                        
-                    </div>        
-                </div>
-                </div>
-                </div>
+                    <div class="add-attribute">                
+                        <div class="input-group">                                
+                            <input class="form-control attribute-name" placeholder="<?php D(__('post_proposal_page_Add_New_Attribute_input',"Add New Attribute"));?>" name="">
+                            <div class="input-group-append">
+                            <button class="btn btn btn-dark insert-attribute" type="button">
+                                <i class="icon-feather-upload" aria-hidden="true"></i> <?php D(__('post_proposal_page_Add_New_Attribute_btn',"Insert"));?> 
+                            </button>
+                            </div>
+                            
+                        </div>        
+                    </div>               
                 </div>
                 
             

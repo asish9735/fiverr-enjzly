@@ -289,10 +289,10 @@ $website_name=get_option_value('website_name');
                 </div>
               </div>
               <ul class="user-menu-small-nav">
-                <a class="dropdown-item" href="<?php D(get_link('dashboardURL'))?>"> <i class="icon-feather-grid text-blue"></i>
+                <a class="dropdown-item" href="<?php D(get_link('dashboardURL'))?>"> <i class="icon-feather-grid"></i>
                 <?php D(__('header_dashboard','Dashboard'))?>
-                </a> <a class="dropdown-item" href="<?php D(get_link('FavoritesURL'))?>"><i class="icon-feather-heart text-red"></i> Favorites</a>
-                <div class="dropdown"> <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-feather-anchor text-purple"></i>
+                </a> <a class="dropdown-item" href="<?php D(get_link('FavoritesURL'))?>"><i class="icon-feather-heart"></i> Favorites</a>
+                <div class="dropdown"> <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-feather-anchor"></i>
                   <?php D(__('header_for_seller','For Seller'))?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -313,7 +313,7 @@ $website_name=get_option_value('website_name');
                     </a> </div>
                 </div>
                 <div class="dropdown">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-feather-user text-warning"></i>
+                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-feather-user"></i>
                   <?php D(__('header_My_Account','My Account'))?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -332,7 +332,7 @@ $website_name=get_option_value('website_name');
                   </div>
                 </div>
                 <div class="dropdown">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-line-awesome-hand-stop-o text-pink"></i>
+                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-line-awesome-hand-stop-o"></i>
                   <?php D(__('header_Requests','Requests'))?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> <a class="dropdown-item" href="<?php D(get_link('postrequestURL'))?>">
@@ -341,14 +341,14 @@ $website_name=get_option_value('website_name');
                     <i class="icon-line-awesome-hand-o-right"></i> <?php D(__('header_Manage_Requests','My Custom Requests'))?>
                     </a> </div>
                 </div>
-                <a class="dropdown-item" href="<?php D(get_link('ContactURL'));?>"> <i class="icon-feather-phone text-orange"></i>
+                <a class="dropdown-item" href="<?php D(get_link('ContactURL'));?>"> <i class="icon-feather-phone"></i>
                 <?php D(__('header_Contacts','Manage Contacts'))?>
-                </a> <a class="dropdown-item" href="<?php D(get_link('MessageBoard'));?>"> <i class="icon-feather-mail text-teal"></i>
+                </a> <a class="dropdown-item" href="<?php D(get_link('MessageBoard'));?>"> <i class="icon-feather-mail"></i>
                 <?php D(__('header_Inbox_Messages','Messages'))?>
-                </a> <a class="dropdown-item" href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>"> <i class="icon-feather-user text-indigo"></i>
+                </a> <a class="dropdown-item" href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>"> <i class="icon-feather-user"></i>
                 <?php D(__('header_My_Profile','My Profile'))?>
                 </a>
-                <div class="dropdown"> <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-feather-settings text-success"></i>
+                <div class="dropdown"> <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-feather-settings"></i>
                   <?php D(__('header_Settings','Settings'))?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> <a class="dropdown-item" href="<?php D(get_link('settingsURL'))?>">
@@ -358,8 +358,7 @@ $website_name=get_option_value('website_name');
                     <i class="icon-line-awesome-hand-o-right"></i> <?php D(__('header_Account_Settings','Account Settings'))?>
                     </a> </div>
                 </div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?php D(get_link('logoutURL'))?>"> <i class="icon-material-outline-power-settings-new text-danger"></i>
+                <a class="dropdown-item" href="<?php D(get_link('logoutURL'))?>"> <i class="icon-material-outline-power-settings-new"></i>
                 <?php D(__('header_Logout','Logout'))?>
                 </a>
               </ul>

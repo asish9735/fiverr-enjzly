@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
 }
 .container-fluid {
-	max-width:1360px
+	max-width:1280px
 }
 .-mb-3 {
 	margin-bottom:-1rem;
@@ -461,19 +461,21 @@ ul.top_login_btn li.list-inline-item {
 	background-color:#f7f7f7;
 	border-bottom:1px solid #ebebeb;
 }
-.header-message-div {
-	position: relative;
+.message-list{
+	position:relative;
+	border-bottom:1px solid #dfdfdf;
 }
-.header-message-div-unread {
-	background:#ebf2f5;
+.message-list:nth-last-child(2) {
+	border-bottom:none;
 }
-.header-message-div:last-child {
-	border-bottom:0px;
-}
-.header-message-div a:hover, .header-message-div-unread a:hover {
+.message-list a:hover {
 	text-decoration:none;
 }
-.header-message-div .heading, .header-message-div-unread .heading {
+.header-message-div-read {
+	background:rgb(253 208 7 / 5%);
+}
+
+.message-list .heading {
 	color:black;
 	font-size:15px;
 }
@@ -483,7 +485,7 @@ ul.top_login_btn li.list-inline-item {
 .messagePopup .message {
     margin-bottom: 0.25rem;
 }
-#notifications .header-message-div .btn, #notifications .header-message-div-unread .btn{
+#notifications .message-list .btn{
 	position:absolute;
 	top:20px
 }
@@ -2194,11 +2196,11 @@ video.embed-responsive {
 	margin-left:-15px;
 	margin-right:-15px;
 }
-.dashboard .header-message-div, .dashboard .header-message-div-unread {
+.dashboard .header-message-div, .dashboard .header-message-div-read {
 	padding-left: 20px;
 	padding-right: 10px;
 }
-.dashboard .header-message-div .date, .dashboard .header-message-div .message, .dashboard .header-message-div-unread .date, .dashboard .header-message-div-unread .message {
+.dashboard .header-message-div .date, .dashboard .header-message-div .message, .dashboard .header-message-div-read .date, .dashboard .header-message-div-read .message {
 	margin-left: 44px;
 }
 .border-box:last-child {
@@ -3044,6 +3046,7 @@ ul.list li:before {
 .upload-area h4 {
 	color: #777;
 	font-size: 13px;
+	font-weight: 500;
 	padding: 12px;
 }
 #fileinput {
@@ -3224,7 +3227,7 @@ ul.category-list {
 	flex-wrap:wrap
 }
 .notification-text .date, .message-tab .date {
-	font-size:0.85rem
+	font-size:0.875rem
 }
 .custom-headline {
 	display: block;
@@ -3253,11 +3256,13 @@ ul.user-menu-small-nav > .dropdown{
 	padding: 0 15px;
 }
 ul.user-menu-small-nav > .dropdown-item {
+	font-weight: 500;
 	padding: 6px 15px;
 }
 ul.user-menu-small-nav > .dropdown .dropdown-toggle {
 	color:#333;
 	display: block;
+	font-weight: 500;
 	padding: 6px 0;
 }
 ul.user-menu-small-nav > .dropdown .dropdown-toggle::after {
@@ -3503,8 +3508,7 @@ proposals/post_proposal
     text-transform: uppercase;
 }
 .dashboard-box .price{
-	color: var(--siteColor);
-	font-weight: 500;
+	color: var(--red);
 }
 ul.share-job{
 	align-items: center;
@@ -3644,8 +3648,6 @@ ul.bullet > li:before{
 #accordionExample > .card{
 	border-radius: 0.25rem !important;
 }
-
-
 .popover-info{
 	position: absolute;
     top: 50%;
@@ -3653,24 +3655,13 @@ ul.bullet > li:before{
     right: 15px;
 }
 .packages .card.package{
-	background-size: cover;
+	background-size: cover;	
+    border: 1px solid #dfdfdf;
     box-shadow: none;
-}
-.packages .col-12:nth-child(1) .card.package{
-	background-image: url('../images/inner_card_01.jpg');
-}
-.packages .col-12:nth-child(2) .card.package{
-	background-image: url('../images/inner_card_02.jpg');
-}
-.packages .col-12:nth-child(3) .card.package{
-	background-image: url('../images/inner_card_03.jpg');
 }
 .packages .card.package > .card-header {
     background-color: transparent;
     border-bottom: 0;
-}
-.packages .card.package .form-control, .packages .card.package .input-group-text{
-	border: none;
 }
 .message-bubble.me .card.message-offer{
 	color: #333;
@@ -4053,12 +4044,39 @@ ul.bullet > li:before{
     left: auto;
     right: 1px;
 }
-
-
-
-
-
-
+.profile .avatar-wrapper > a > img{
+	border: 2px solid var(--siteColor);
+    padding: 3px;
+}
+.profile h4 > a{
+	color:#333;
+}
+.profile h4 > a:hover{
+	color:var(--siteColor);
+}
+.upload-file .custom-file-label::after{
+	border-left:none;
+	height: calc(1.5em + 0.75rem + 2px);
+	top: -1px;
+    right: -1px;
+}
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before{
+	background-color:transparent;
+}
+.custom-radio .custom-control-label::after {
+    position: absolute;
+    top: 9px;
+    left: -21px;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+span.required{
+	color:#f00;
+	font-size:1.063rem;
+	display:inline-block;
+}
 
 
 

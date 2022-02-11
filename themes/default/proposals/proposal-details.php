@@ -1291,54 +1291,53 @@ $section_data=array(
                                 <?php D($package->delivery_time); ?>
                                 <?php D(__('proposal_details_page_Days_Delivery', "Days Delivery")); ?>
                               </h5>
-
+                              <div class="mb-3">
                               <?php
-                            if($proposal_details['module_attributes']){
-                              $all_attr_values=$proposal_details['module_attributes'];
-                              $importantfeature=array();
-                              $allowed=array();
-                              $notallowed=array();
-                              foreach($section_data as $sectionrow){
-                                if(array_key_exists($sectionrow['key'],$proposal_details['module_attributes'])){
-                                  if($sectionrow['key']=='no_of_concept' || $sectionrow['key']=='revisions'){
-                                    $importantfeature[]=$all_attr_values[$sectionrow['key']][$i].' '.$sectionrow['name'];
-                                  }else{
-                                    if($all_attr_values[$sectionrow['key']][$i]=='1'){
-                                      $allowed[]=$sectionrow['name'];
-                                    }else{
-                                      $notallowed[]=$sectionrow['name'];
-                                    }
-                                  }
-                                }  
-                              }
-                           
-                              if($importantfeature){
-                               
-                              ?>
-                              <p class="mb-0"><b><i class="icon-feather-repeat font-weight-bold"></i> <?php echo $importantfeature[1];?></b></p>
-                              <p class="mb-0"><i class="icon-feather-check text-success font-weight-bold"></i> <?php echo $importantfeature[0];?></p>
-                              <?php
-                                
-                              }
-                              if($allowed){
-                                foreach($allowed as $f=>$featureinclude){
-                              ?>
-                              <p class="mb-0"><i class="icon-feather-check text-success font-weight-bold"></i> <?php echo $featureinclude;?></p>
-                              <?php
-                                }
-                              }
-                              if($notallowed){
-                                foreach($notallowed as $f=>$featureinclude){
-                              ?>
-                              <p class="mb-0"><i class="icon-feather-check text-secondary font-weight-bold"></i> <?php echo $featureinclude;?></p>
-                              <?php
-                                }
-                              }
-                            }
-
-                            ?>    
-
-
+								if($proposal_details['module_attributes']){
+								  $all_attr_values=$proposal_details['module_attributes'];
+								  $importantfeature=array();
+								  $allowed=array();
+								  $notallowed=array();
+								  foreach($section_data as $sectionrow){
+									if(array_key_exists($sectionrow['key'],$proposal_details['module_attributes'])){
+									  if($sectionrow['key']=='no_of_concept' || $sectionrow['key']=='revisions'){
+										$importantfeature[]=$all_attr_values[$sectionrow['key']][$i].' '.$sectionrow['name'];
+									  }else{
+										if($all_attr_values[$sectionrow['key']][$i]=='1'){
+										  $allowed[]=$sectionrow['name'];
+										}else{
+										  $notallowed[]=$sectionrow['name'];
+										}
+									  }
+									}  
+								  }
+							   
+								  if($importantfeature){
+								   
+								  ?>
+								  <p class="mb-0"><b><i class="icon-feather-repeat font-weight-bold"></i> <?php echo $importantfeature[1];?></b></p>
+								  <p class="mb-0"><i class="icon-feather-check text-success font-weight-bold"></i> <?php echo $importantfeature[0];?></p>
+								  <?php
+									
+								  }
+								  if($allowed){
+									foreach($allowed as $f=>$featureinclude){
+								  ?>
+								  <p class="mb-0"><i class="icon-feather-check text-success font-weight-bold"></i> <?php echo $featureinclude;?></p>
+								  <?php
+									}
+								  }
+								  if($notallowed){
+									foreach($notallowed as $f=>$featureinclude){
+								  ?>
+								  <p class="mb-0"><i class="icon-feather-check text-secondary font-weight-bold"></i> <?php echo $featureinclude;?></p>
+								  <?php
+									}
+								  }
+								}
+	
+								?> 
+                                </div>   
                               
                               <?php
 

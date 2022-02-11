@@ -9,26 +9,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
 
 <div class="breadcrumbs">
-
-	<div class="containe-fluid">
-
+	<div class="container-fluid">
 		<h1><?php D(__('edit_proposal_page_heading',"Edit This Proposal"));?></h1>
-
 	</div>
-
 </div>
 
 <section class="section">
 <div class="container-fluid">
 	<div class="row">
-      <div class="col-xl-3 col-lg-4 col-12">
+      <div class="col-lg-auto col-12">
         <?php
           $templateLayout=array('view'=>'inc/user-nav','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
           load_template($templateLayout,$data);
         ?>
       </div>
-      <div class="col-xl-9 col-lg-8 col-12">
-     	<ul class="nav nav-tabs">
+      <div class="col-lg col-12">
+     	<?php /*?><ul class="nav nav-tabs">
 
             <li class="nav-item"> <a class="nav-link <?php //if($tab==''){ echo " active"; } ?> active" data-toggle="tab" href="#details">
 
@@ -40,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <li class="nav-item  d-none "> <a class="nav-link <?php if($tab=='extra'){ echo " active"; } ?>" data-toggle="tab" href="#extras"> Extras </a> </li>
 
-          </ul>              
+          </ul><?php */?>              
 
         <div class="tab-content">
 

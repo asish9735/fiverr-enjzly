@@ -23,30 +23,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <form action="" method="post" accept-charset="utf-8" id="postrequestform" class="form-horizontal" role="form" name="postrequestform" onsubmit="saveRequest(this);return false;"> 
             
                 <div class="form-group">
-                    <label class="form-label">Request Title</label>
+                    <label class="form-label">Request Title <span class="required">*</span></label>
                     <input type="text" name="request_title" id="request_title" placeholder="<?php D(__('post_request_page_request_title_input','Request Title'))?>" class="form-control input-lg">
                     <span id="request_titleError" class="rerror"></span>	
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Request Description</label>
+                    <label class="form-label">Request Description <span class="required">*</span></label>
                     <textarea name="request_description" id="request_description" rows="5" cols="73" maxlength="380" class="form-control" placeholder="<?php D(__('post_request_page_request_description_input','Request Description'))?>" ></textarea>
                     <span id="request_descriptionError" class="rerror"></span>
+                    <p class="text-right"><small class="text-help"><span class="count">0</span> / 380 <?php D(__('post_request_page_Max','Max'))?></small></p>
                 </div>
                 <div class="form-group">
-                    <div class="pull-right">
-                        <span class="count"> 0 </span> / 380 <?php D(__('post_request_page_Max','Max'))?>
-                    </div>
-                    <div class="choosefile">
-                        <input type="file" name="request_file" id="fileinput" >
-                        <label class="btn btn-outline-site" for="fileinput"><?php D(__('global_Choose_File','Choose File'));?></label>
-                    </div>
-                    <DIV id="uploadfile_container"></DIV>
+                    <div class="input-group">
+                      <div class="custom-file upload-file">
+                        <input type="file" class="custom-file-input" name="request_file" id="fileinput">
+                        <label class="custom-file-label" for="fileinput"><i class="icon-feather-upload mr-1"></i> <?php D(__('global_Choose_File','Choose File'));?></label>
+                      </div>
+                    </div>                    
+                    <div id="uploadfile_container"></div>
                     <small class="text-help"><i class="icon-feather-info"></i> <?php D(__('post_request_page_attachment_note','Maximum size 25MB'))?></small>
                 </div>
             
             <div class="row-2">
 
-                <h5> <?php D(__('post_request_page_Chose_A_Category','Chose A Category'))?> </h5>
+                <label class="form-label"><?php D(__('post_request_page_Chose_A_Category','Chose A Category'))?> <span class="required">*</span></label>
                 <div class="row row-10">
                     <div class="col-md-6 mb-3">
                         <select class="form-control" name="category_id" id="category_id">
@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="row-3 mb-3">
-                <h5> <?php D(__('post_request_page_delivery_time_text','Once you place your order, when would you like your service delivered?'));?> </h5>
+                <label class="form-label"><?php D(__('post_request_page_delivery_time_text','Once you place your order, when would you like your service delivered?'));?> <span class="required">*</span></label>
                 <div class="radio-col radio-col-4">
                 <?php 
                 if($all_delivery_times){
@@ -90,7 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span id="delivery_timeError" class="rerror"></span>
             </div>
             <div class="row-4 mb-4">               
-                <h5> <?php D(__('post_request_page_budget_text','What is your budget for this service? (Optional)'));?></h5>
+                <label class="form-label"><?php D(__('post_request_page_budget_text','What is your budget for this service?'));?></label>
                 <div class="row">
                 <div class="col-md-6 col-12">
                     <div class="input-group form-curb">

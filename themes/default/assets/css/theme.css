@@ -78,9 +78,8 @@ img {
 /* Full Width Header */
 
 header.fullwidth .container {
-	max-width: 100%;
+	max-width: 1280px;
 	margin: 0 auto;
-	padding: 0 20px;
 }
 /* Boxed Styles*/
 
@@ -6861,15 +6860,10 @@ input:checked + .switch-button:before {
 	border: 1px solid #66676b;
 	font-size: 1rem;
 	line-height: 1.5;
-	height: 40px;
 	flex-direction: row;
 	transition: 0.3s;
 	margin: 0;
 	outline: none;
-}
-.uploadButton .uploadButton-button:hover {
-	background-color: #66676b;
-	color: #fff;
 }
 .uploadButton .uploadButton-file-name {
 	flex-grow: 1;
@@ -12424,13 +12418,14 @@ a.dashboard-responsive-nav-trigger {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	color:#fff;
+	color:#111;
 	flex: 1 1 calc(25% - 20px);
 	height: auto;
 	transition: 0.3s;
 }
 a.fun-fact:hover{
-	color:#fff;
+	border-color:1px solid var(--siteColor);
+	color:var(--siteColor);
 }
 /* IE 11 Fixes */
 
@@ -12456,7 +12451,6 @@ a.fun-fact:hover{
 	font-size: 36px;
 	align-self: center;
 	margin: 0 auto;
-	color: #fff;
 }
 .fun-fact-icon i.icon-material-outline-gavel {
 	transform: scale(0.91);
@@ -12466,6 +12460,7 @@ a.fun-fact:hover{
 }
 .fun-fact span {
 	font-size: 1.067rem;
+    font-weight: 500;
 }
 .fun-fact h2 {
 	margin-top: 5px;
@@ -12478,7 +12473,7 @@ a.fun-fact:hover{
 	display: block;
 	border-radius: 4px;
 	background-color: #fff;
-	border: 1px solid rgba(0, 0, 0, 0.125);
+	box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 	border-top: 0;
 	margin-top: 1.5rem;
 	position: relative;
@@ -12486,8 +12481,7 @@ a.fun-fact:hover{
 .dashboard-box .headline {
 	display: block;
 	padding: 0.75rem 1.25rem;
-	background-color:#fff;
-	border: 1px solid #dfdfdf;
+	/*border-bottom: 1px solid #dfdfdf;*/
 	position: relative;
 	margin: 0 -1px;
 	border-radius: 4px 4px 0 0;
@@ -12830,11 +12824,12 @@ ul.dashboard-box-list > li:hover {
 
 .dashboard-status-button {
 	color: #fff;
+	border: 1px solid;
 	border-radius: 0.1rem;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     line-height: 18px;
-    padding: 2px 6px;
+    padding: 0 6px;
 	display: inline-block;
 	position: relative;
 	top: -2px;
@@ -12928,6 +12923,7 @@ ul.dashboard-box-list > li:hover {
 	margin: 0;
 	background-color: transparent;
 	display: flex;
+	align-items: flex-start;
 	flex-direction: row;
 	width: 100%;
 }
@@ -12935,7 +12931,7 @@ ul.dashboard-box-list > li:hover {
 	max-width: 60%
 }
 .dashboard-box .job-listing h4,
-.dashboard-box .job-listing h3 a {
+.dashboard-box .job-listing h4 a {
 	color: #000;
 	font-size: 1.125rem;
 }
@@ -12950,6 +12946,7 @@ ul.dashboard-box-list > li:hover {
 }
 .dashboard-box .job-listing .job-listing-footer {
 	background-color:transparent;
+	font-size:0.875rem;
 	padding: 0;
 	border-radius: 0;
 }

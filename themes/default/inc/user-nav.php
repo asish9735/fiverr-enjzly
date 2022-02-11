@@ -24,12 +24,16 @@ if($rating){
 ?>
 <div class="card">
     <div class="card-body">
-        <div class="avatar-wrapper"><img src="<?php D(getMemberLogo($loggedUser['MID'])); ?>" class="rounded-circle img-fluid"></div>
-        <div class="text-center mb-3">
+    	<div class="profile mb-3">
+        <div class="avatar-wrapper">
+        	<a href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>"><img src="<?php D(getMemberLogo($loggedUser['MID'])); ?>" class="rounded-circle img-fluid"></a>
+        </div>
+        <div class="text-center">
             <h4><a href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>">Richard Wills</a></h4>
             <!-- <h5>Civil Engineer</h5> -->
             <div class="star-rating d-block" data-rating="<?php printf("%.1f",$avg_rating);?>" data-showcount="true" data-digit="(25)"></div>
             <img class="flag" src="<?php D(theme_url().IMAGE);?>flags/<?php echo strtolower($member_details->country_code_short);?>.svg" alt="" title="<?php D($member_details->country_name); ?>" data-tippy-placement="top"> <?php D($member_details->country_name); ?>
+        </div>
         </div>
             
         <div class="mp-box mp-box-white">	
@@ -37,7 +41,7 @@ if($rating){
                 <ul class="main-cat-list active">
                     <li>
                         <a class="active" href="<?php D(get_link('dashboardURL'))?>">
-                        <i class="icon-feather-grid text-blue"></i> <?php D(__('header_dashboard','Dashboard'))?>
+                        <i class="icon-feather-grid"></i> <?php D(__('header_dashboard','Dashboard'))?>
                         </a>
                     </li>
                     
@@ -49,32 +53,32 @@ if($rating){
         
                     <li>
                         <a  href="<?php D(get_link('TransactionHistoryURL'));?>">
-                        <i class="icon-feather-dollar-sign text-pink"></i> <?php D(__('header_Transaction_history','Transaction History'))?>
+                        <i class="icon-feather-dollar-sign"></i> <?php D(__('header_Transaction_history','Transaction History'))?>
                         </a>
                     </li>
                                 
                     <li>
                         <a href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>">
-                        <i class="icon-feather-user text-yellow"></i> <?php D(__('header_My_Profile','My Profile'))?>
+                        <i class="icon-feather-user"></i> <?php D(__('header_My_Profile','My Profile'))?>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php D(get_link('settingsURL'))?>"><i class="icon-feather-settings text-purple"></i> <?php D(__('header_Profile_Settings','Profile Settings'))?></a>
+                        <a href="<?php D(get_link('settingsURL'))?>"><i class="icon-feather-settings"></i> <?php D(__('header_Profile_Settings','Profile Settings'))?></a>
                     </li>
                     <li>
-                        <a href="<?php D(get_link('settingsURL'))?>?tab=account"><i class="icon-feather-settings text-green"></i> <?php D(__('header_Account_Settings','Account Settings'))?></a>
+                        <a href="<?php D(get_link('settingsURL'))?>?tab=account"><i class="icon-feather-settings"></i> <?php D(__('header_Account_Settings','Account Settings'))?></a>
                     </li>
                                                 
                     <li>
                         <a href="<?php D(get_link('ContactURL')); ?>">
-                        <i class="icon-feather-phone text-orange"></i> <?php D(__('header_Contacts','Contacts'))?>
+                        <i class="icon-feather-phone"></i> <?php D(__('header_Contacts','Contacts'))?>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php D(get_link('MessageBoard'));?>"><i class="icon-feather-mail text-teal"></i> <?php D(__('header_Inbox_Messages','Inbox Messages'))?></a>
+                        <a href="<?php D(get_link('MessageBoard'));?>"><i class="icon-feather-mail"></i> <?php D(__('header_Inbox_Messages','Inbox Messages'))?></a>
                     </li>
                     <li>
-                        <a href="<?php D(get_link('NotificationListURL'));?>"><i class="icon-feather-bell text-red"></i> <?php D(__('header_Notifications','Notifications'))?></a>
+                        <a href="<?php D(get_link('NotificationListURL'));?>"><i class="icon-feather-bell"></i> <?php D(__('header_Notifications','Notifications'))?></a>
                     </li>
                     <li>
                         <h5><?php D(__('header_for_seller','For Seller'))?></h5>
@@ -82,22 +86,22 @@ if($rating){
                             <ul>
                                 <li>
                                     <a href="<?php D(get_link('sellingOrderURL'))?>">
-                                        <i class="icon-feather-shopping-bag text-indigo"></i> <?php D(__('header_orders','Orders'))?>
+                                        <i class="icon-feather-shopping-bag"></i> <?php D(__('header_orders','Orders'))?>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?php D(get_link('manageproposalURL'))?>">
-                                    <i class="icon-feather-file-text text-blue"></i> <?php D(__('header_My_Proposals','My Proposal'))?>
+                                    <i class="icon-feather-file-text"></i> <?php D(__('header_My_Proposals','My Proposal'))?>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?php D(get_link('buyerRequests')); ?>">
-                                    <i class="icon-line-awesome-hand-stop-o text-pink"></i> <?php D(__('header_Buyer_Requests','Custom Requests'))?>
+                                    <i class="icon-line-awesome-hand-stop-o"></i> <?php D(__('header_Buyer_Requests','Custom Requests'))?>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?php D(get_link('revenueURL')); ?>">
-                                    <i class="icon-line-awesome-money text-green"></i> <?php D(__('header_Revenues','Earnings'))?>
+                                    <i class="icon-line-awesome-money"></i> <?php D(__('header_Revenues','Earnings'))?>
                                     </a>
                                 </li>
                                 
@@ -113,17 +117,17 @@ if($rating){
                             <ul>
                                 <li>
                                     <a href="<?php D(get_link('buyingOrderURL'))?>">
-                                    <i class="icon-feather-shopping-cart text-orange"></i> <?php D(__('header_Orders','My Orders'))?>
+                                    <i class="icon-feather-shopping-cart"></i> <?php D(__('header_Orders','My Orders'))?>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?php D(get_link('managerequestURL'))?>">
-                                    <i class="icon-line-awesome-hand-stop-o text-purple"></i> <?php D(__('header_Manage_Requests','My Custom Requests'))?>
+                                    <i class="icon-line-awesome-hand-stop-o"></i> <?php D(__('header_Manage_Requests','My Custom Requests'))?>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?php D(get_link('PurchasesURL'))?>">
-                                    <i class="icon-feather-tag text-teal"></i> <?php D(__('header_Purchases','My Purchases'))?>
+                                    <i class="icon-feather-tag"></i> <?php D(__('header_Purchases','My Purchases'))?>
                                     </a>
                                 </li>
                                 

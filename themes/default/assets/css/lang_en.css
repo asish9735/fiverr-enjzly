@@ -87,17 +87,17 @@ ul.list li:before {
 .checkbox span::after {
 	left: -1px
 }
-.header-message-div .heading,  .header-message-div-unread .heading {
+.message-list .heading {
 	margin-left:10px
 }
-.header-message-div .message, .header-message-div-unread .message,
-.header-message-div .date,  .header-message-div-unread .date {
+/*.header-message-div .message, .header-message-div-read .message,
+.header-message-div .date,  .header-message-div-read .date {
 	margin-left:64px;
-}
+}*/
 .messagePopup .header-message-div .message{
 	margin-left: 56px;
 }
-#notifications .header-message-div .btn, #notifications .header-message-div-unread .btn{
+#notifications .message-list .btn{
 	right:20px;
 }
 .dashboard-box .featuretag,
