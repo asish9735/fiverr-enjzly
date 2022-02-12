@@ -4,9 +4,6 @@
 .stickytop .main-cat-list > li {
 	line-height:24px;
 }
-.stickytop .main-cat-list > li .menu-cont {
-	top: 100%;
-}
 .mp-box.mp-box-white {
 	background:#fff;
 	min-height:40px;
@@ -42,43 +39,8 @@
 	display: inline-block;
 	font-weight: 500;
 }
-.main-cat-list > li .menu-cont {
-	/*background-color:#fff;
-	border-radius: 0 3px 3px 3px;
-	position: absolute;
-	z-index:2000;
-	display:none;
-	width:0;
-	border:1px #dddddd solid;
-	box-sizing:border-box;*/
-	padding-left: 1rem;
-}
-/*.main-cat-list > li .menu-cont ul {
-	display:inline-block;
-	vertical-align:top;
-	box-sizing:border-box;
-}*/
 .main-cat-list > li a.active {
 	color:var(--siteColor);
-}
-.main-cat-list > li .menu-cont li {
-	display:block;
-	/*white-space:nowrap;
-	max-width: 240px;
-	overflow: hidden;*/
-}
-.main-cat-list > li .menu-cont li:first-child a {
-	padding-top:0;
-}
-.main-cat-list > li .menu-cont li a {
-	display:block;
-	padding:5px 0;
-	overflow:hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-.main-cat-list > li .menu-cont li a:hover {
-	color: var(--siteColor);
 }
 .main-cat-list > li a {
 	color:#333;
@@ -92,8 +54,4 @@
 .main-cat-list > li a > i{
 	font-size: 1.125rem;
 	vertical-align: text-bottom;
-}
-.main-cat-list > li:hover .menu-cont {
-	display:block;
-	width:auto;
 }

@@ -10,14 +10,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <section class="section">
 <div class="container-fluid">
 	<div class="row">
-      <div class="col-xl-3 col-lg-4 col-12">
+      <div class="col-xl-3 col-lg-auto col-12">
         <?php
           $templateLayout=array('view'=>'inc/user-nav','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
           load_template($templateLayout,$data);
         ?>
       </div>
-      <div class="col-xl-9 col-lg-8 col-12">
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
+      <div class="col-xl-9 col-lg col-12">
+		<ul class="nav nav-pills" id="myTab" role="tablist">
 		<li class="nav-item">
 			<a class="nav-link <?php if(empty($tab) || $tab=='profile'){D("active"); }?>" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php D(__('settings_page_tab_Profile_Settings',"Profile Settings"));?></a>
 		</li>

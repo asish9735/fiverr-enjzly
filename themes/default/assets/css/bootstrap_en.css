@@ -4061,10 +4061,10 @@ input[type="button"].btn-block {
   display: block;
   height: calc(1.5em + 0.75rem);
   padding: 0.375rem 0.75rem;
-  line-height: 1.5;
-  color: #111;
+  line-height: 1.6;
+  color: #fff;
   content: "Upload File";
-  background-color: var(--siteColor);
+  background-color: #343a40;
   border-left: inherit;
   border-radius: 0 0.25rem 0.25rem 0;
 }

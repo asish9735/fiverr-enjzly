@@ -13156,13 +13156,13 @@ ul.dashboard-box-list > li:hover {
 
 .avatar-wrapper {
 	position: relative;
-	width: 130px;
-	height: 130px;
+	width: 96px;
+	height: 96px;
 	border-radius: 4px;
 	overflow: hidden;
 	box-shadow: none;
 	margin: 0 auto 1rem auto;
- transition: all .3s ease;
+	transition: all .3s ease;
 }
 .avatar-wrapper:hover {
 	transform: scale(1.05);
@@ -13200,6 +13200,13 @@ ul.dashboard-box-list > li:hover {
 	pointer-events: none;
 	position: absolute;
 }
+ @media (min-width: 1200px) {
+	.avatar-wrapper {
+		width: 120px;
+		height: 120px;	
+	}
+ }
+
 /* Small Footer Styles
 
 ------------------------------------- */
