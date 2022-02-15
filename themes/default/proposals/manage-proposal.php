@@ -48,14 +48,14 @@ $username=$loggedUser['UNAME'];
 <section class="section gray">
   <div class="container-fluid"><!-- container-fluid view-proposals Starts -->
     <div class="row">
-      <div class="col-xl-3 col-lg-4 col-12">
+      <div class="col-xl-3 col-lg-auto col-12">
         <?php
           $templateLayout=array('view'=>'inc/user-nav','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
           load_template($templateLayout,$data);
         ?>
       </div>
-      <div class="col-xl-9 col-lg-8 col-12">
-        <ul class="nav nav-tabs">
+      <div class="col-xl-9 col-lg col-12">
+        <ul class="nav nav-pills">
           <li class="nav-item"> <a href="#active-proposals" data-toggle="tab" class="nav-link active">
             <?php D(__('manage_proposal_page_Active_Proposals','Active Proposals'))?>
             <span class="badge badge-site ml-1">
@@ -101,13 +101,13 @@ $username=$loggedUser['UNAME'];
 			</tr><?php */?>
                 <?php
 
-								if($active_proposals){
+				if($active_proposals){
 
-									foreach($active_proposals as $i=>$proposal){
+					foreach($active_proposals as $i=>$proposal){
 
-										$token=md5('FVRR'.'-'.date("Y-m-d").'-'.$proposal->proposal_id);
+					$token=md5('FVRR'.'-'.date("Y-m-d").'-'.$proposal->proposal_id);
 
-								?>
+				?>
                 <li> 
                   
                   <!-- Job Listing -->
@@ -121,7 +121,7 @@ $username=$loggedUser['UNAME'];
                       <!-- Details -->
                       
                       <div class="job-listing-description">
-                        <h3 class="job-listing-title">
+                        <h4 class="job-listing-title">
                           <?php D($proposal->proposal_title); ?>
                           <?php $class='';
 
@@ -162,11 +162,10 @@ $username=$loggedUser['UNAME'];
                           </span> <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="" data-content="<?php D(__('manage_proposal_page_action_Featured','Featured'));?> till: <?php D(dateFormat($proposal->featured_end_date,'F d, Y')); ?>"><i class="icon-feather-info"></i></a>
                           <?php }else{ ?>
                           <?php } ?>
-                        </h3>
+                        </h4>
                         
                         <!-- Job Listing Footer -->
-                        
-                        <div class="job-listing-footer">
+                        <div class="job-listing-footer mb-3">
                           <ul>
                             <li><i class="icon-feather-tag"></i> <b>
                               <?php D(__('manage_proposal_page_list_Price',"Proposal's Price"))?>
@@ -192,56 +191,47 @@ $username=$loggedUser['UNAME'];
                           <?php } */?>
                           </ul>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Buttons -->
-                  
-                  <div class="button-with-dropdown">
-                    <div class="dropdown">
-                      <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
-                      <?php D(__('manage_proposal_page_list_Actions','Actions'))?>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right"> <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D('p-'.$member_details['member']->username); ?>/<?php echo $proposal->proposal_url; ?>" class="dropdown-item">
+                        <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D('p-'.$member_details['member']->username); ?>/<?php echo $proposal->proposal_url; ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-eye"></i>
                         <?php D(__('manage_proposal_page_action_Preview','Preview'));?>
                         </a>
                         <?php if($proposal->proposal_featured == 1 && $proposal->featured_end_date>=date('Y-m-d H:i:s')){ ?>
                         
-                        <!--<a href="<?php D(VZ)?>" class="dropdown-item text-success">
-
-                    <?php D(__('manage_proposal_page_action_Already_Featured','Already Featured'));?>
-
-                    till
-
-                    <?php D(dateFormat($proposal->featured_end_date,'F d, Y').' '.date('H:i',strtotime($proposal->featured_end_date))); ?>
-
-                    </a>-->
+                        <?php /*?><a href="<?php D(VZ)?>" class="dropdown-item text-success"><?php D(__('manage_proposal_page_action_Already_Featured','Already Featured'));?> till <?php D(dateFormat($proposal->featured_end_date,'F d, Y').' '.date('H:i',strtotime($proposal->featured_end_date))); ?></a><?php */?>
                         
                         <?php }else{ ?>
-                        <a href="<?php D(VZ)?>" class="dropdown-item" onclick="doAction('makefeature','<?php D($proposal->proposal_id); ?>')" id="featured-button-<?php D($proposal->proposal_id); ?>">Make Proposal Featured</a>
+                        <a href="<?php D(VZ)?>" class="btn btn-sm btn-outline-dark mr-2" onclick="doAction('makefeature','<?php D($proposal->proposal_id); ?>')" id="featured-button-<?php D($proposal->proposal_id); ?>"><i class="icon-feather-award"></i> Make Proposal Featured</a>
                         <?php } ?>
-                        <a href="<?php D(VZ)?>" onclick="doAction('pause','<?php D($proposal->proposal_id); ?>')" class="dropdown-item">
+                        <a href="<?php D(VZ)?>" onclick="doAction('pause','<?php D($proposal->proposal_id); ?>')" class="btn btn-sm btn-outline-dark mr-2"> <i class="icon-feather-pause-circle"></i>
                         <?php D(__('manage_proposal_page_action_Pause','Pause'));?>
                         </a> 
                         
-                        <!--<a href="<?php D(get_link('ProposalReferralURL'))?>/<?php D($proposal->proposal_id); ?>" class="dropdown-item"> <?php D(__('manage_proposal_page_action_View_Referrals','View Referrals'));?></a>--> 
+                        <?php /*?><a href="<?php D(get_link('ProposalReferralURL'))?>/<?php D($proposal->proposal_id); ?>" class="dropdown-item"> <?php D(__('manage_proposal_page_action_View_Referrals','View Referrals'));?></a><?php */?> 
                         
-                        <a href="<?php D(get_link('editproposalURL'))?>/<?php D($proposal->proposal_id); ?>/<?php D($token); ?>" class="dropdown-item">
+                        <a href="<?php D(get_link('editproposalURL'))?>/<?php D($proposal->proposal_id); ?>/<?php D($token); ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-edit"></i>
                         <?php D(__('manage_proposal_page_action_Edit','Edit'));?>
-                        </a> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="dropdown-item">
+                        </a> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="btn btn-sm btn-outline-danger mr-2"><i class="icon-feather-trash"></i>
                         <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
                         </a> </div>
                     </div>
                   </div>
+                  
+                  <!-- Buttons -->
+                  <?php /*?><div class="button-with-dropdown">
+                    <div class="dropdown">
+                      <button class="btn btn-sm btn-outline-dark dropdown-toggle" data-toggle="dropdown">
+                      <?php D(__('manage_proposal_page_list_Actions','Actions'))?>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                      </div>
+                    </div>
+                  </div><?php */?>
                 </li>
                 <?php
 
-									}
+					}
+				}
 
-								}
-
-								?>
+				?>
               </ul>
               <?php
 
@@ -265,22 +255,18 @@ $username=$loggedUser['UNAME'];
               <ul class="dashboard-box-list">
                 <?php
 
-                            if($paused_proposals){
+					if($paused_proposals){
 
-                                foreach($paused_proposals as $i=>$proposal){
+					foreach($paused_proposals as $i=>$proposal){
 
-                                    $token=md5('FVRR'.'-'.date("Y-m-d").'-'.$proposal->proposal_id);
+					$token=md5('FVRR'.'-'.date("Y-m-d").'-'.$proposal->proposal_id);
 
-                            ?>
+				?>
                 <li>
-                  <div class="job-listing"> 
-                    
-                    <!-- Job Listing Details -->
-                    
-                    <div class="job-listing-details"> 
-                      
-                      <!-- Details -->
-                      
+                  <div class="job-listing">                     
+                    <!-- Job Listing Details -->                    
+                    <div class="job-listing-details">                       
+                      <!-- Details -->                     
                       <div class="job-listing-description">
                         <h3 class="job-listing-title">
                           <?php D($proposal->proposal_title); ?>
@@ -291,7 +277,7 @@ $username=$loggedUser['UNAME'];
                         
                         <!-- Job Listing Footer -->
                         
-                        <div class="job-listing-footer">
+                        <div class="job-listing-footer mb-3">
                           <ul>
                             <li><i class="icon-feather-tag"></i> <b>
                               <?php D(__('manage_proposal_page_list_Price',"Proposal's Price"))?>
@@ -311,30 +297,27 @@ $username=$loggedUser['UNAME'];
                               </span></li>
                           </ul>
                         </div>
+                        <a href="<?php D(VZ)?>" onclick="doAction('active','<?php D($proposal->proposal_id); ?>')" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-"></i> <?php D(__('manage_proposal_page_action_Activate_Proposal','Activate Proposal'));?></a> 
+                        
+                        <?php /*?><a href="<?php D(get_link('ProposalReferralURL'))?>/<?php echo $proposal_id; ?>" class="dropdown-item"> <?php D(__('manage_proposal_page_action_View_Referrals','View Referrals'));?></a><?php */?> 
+                        
+                        <a href="<?php D(get_link('editproposalURL'))?>/<?php D($proposal->proposal_id); ?>/<?php D($token); ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-edit"></i> <?php D(__('manage_proposal_page_action_Edit','Edit'));?></a>
+                        <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="btn btn-sm btn-outline-danger"><i class="icon-feather-trash"></i> <?php D(__('manage_proposal_page_action_Delete','Delete'));?></a>
                       </div>
                     </div>
                   </div>
                   
                   <!-- Buttons -->
                   
-                  <div class="buttons-to-right single-right-button always-visible">
+                  <?php /*?><div class="buttons-to-right single-right-button always-visible">
                     <div class="dropdown">
                       <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
                       <?php D(__('manage_proposal_page_list_Actions','Actions'))?>
                       </button>
-                      <div class="dropdown-menu dropdown-menu-right"> <a href="<?php D(VZ)?>" onclick="doAction('active','<?php D($proposal->proposal_id); ?>')" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Activate_Proposal','Activate Proposal'));?>
-                        </a> 
-                        
-                        <!--<a href="<?php D(get_link('ProposalReferralURL'))?>/<?php echo $proposal_id; ?>" class="dropdown-item"> <?php D(__('manage_proposal_page_action_View_Referrals','View Referrals'));?></a>--> 
-                        
-                        <a href="<?php D(get_link('editproposalURL'))?>/<?php D($proposal->proposal_id); ?>/<?php D($token); ?>" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Edit','Edit'));?>
-                        </a> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
-                        </a> </div>
+                      <div class="dropdown-menu dropdown-menu-right">
+                       </div>
                     </div>
-                  </div>
+                  </div><?php */?>
                 </li>
                 <?php
 
@@ -350,8 +333,9 @@ $username=$loggedUser['UNAME'];
 
                         ?>
               <div class='p-3'>
-                <div class="alert alert-danger mb-0">
-                  <?php D(__('manage_proposal_page_list_paused_no_record',"You currently have no paused proposals/services."));?>
+                <div class="text-center">
+                	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                    <h5><?php D(__('manage_proposal_page_list_paused_no_record',"You currently have no paused proposals/services."));?></h5>
                 </div>
               </div>
               <?php
@@ -389,7 +373,7 @@ $username=$loggedUser['UNAME'];
                         
                         <!-- Job Listing Footer -->
                         
-                        <div class="job-listing-footer">
+                        <div class="job-listing-footer mb-3">
                           <ul>
                             <li><i class="icon-feather-tag"></i> <b>
                               <?php D(__('manage_proposal_page_list_Price',"Proposal's Price"))?>
@@ -409,26 +393,23 @@ $username=$loggedUser['UNAME'];
                               </span></li>
                           </ul>
                         </div>
+                        <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D('p-'.$member_details['member']->username); ?>/<?php echo $proposal->proposal_url; ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-eye"></i> <?php D(__('manage_proposal_page_action_Preview','Preview'));?>
+                        </a> <a href="<?php D(get_link('editproposalURL'))?>/<?php D($proposal->proposal_id); ?>/<?php D($token); ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-edit"></i> <?php D(__('manage_proposal_page_action_Edit','Edit'));?>
+                        </a> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="btn btn-sm btn-outline-danger"><i class="icon-feather-trash"></i> <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
+                        </a>
                       </div>
                     </div>
                   </div>
                   
-                  <!-- Buttons -->
-                  
-                  <div class="buttons-to-right single-right-button always-visible">
+                  <!-- Buttons -->                  
+                  <?php /*?><div class="buttons-to-right single-right-button always-visible">
                     <div class="dropdown">
                       <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
                       <?php D(__('manage_proposal_page_list_Actions','Actions'))?>
                       </button>
-                      <div class="dropdown-menu dropdown-menu-right"> <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D('p-'.$member_details['member']->username); ?>/<?php echo $proposal->proposal_url; ?>" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Preview','Preview'));?>
-                        </a> <a href="<?php D(get_link('editproposalURL'))?>/<?php D($proposal->proposal_id); ?>/<?php D($token); ?>" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Edit','Edit'));?>
-                        </a> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
-                        </a> </div>
+                      <div class="dropdown-menu dropdown-menu-right">  </div>
                     </div>
-                  </div>
+                  </div><?php */?>
                 </li>
                 <?php
 
@@ -444,8 +425,9 @@ $username=$loggedUser['UNAME'];
 
 		  ?>
               <div class='p-3'>
-                <div class="alert alert-danger mb-0">
-                  <?php D(__('manage_proposal_page_list_pending_no_record',"You currently have no proposals/services pending."));?>
+                <div class="text-center">
+                	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                    <h5><?php D(__('manage_proposal_page_list_pending_no_record',"You currently have no proposals/services pending."));?></h5>
                 </div>
               </div>
               <?php
@@ -486,7 +468,7 @@ $username=$loggedUser['UNAME'];
                         
                         <!-- Job Listing Footer -->
                         
-                        <div class="job-listing-footer">
+                        <div class="job-listing-footer mb-3">
                           <ul>
                             <li><i class="icon-feather-tag"></i> <b>
                               <?php D(__('manage_proposal_page_list_Price',"Proposal's Price"))?>
@@ -506,26 +488,23 @@ $username=$loggedUser['UNAME'];
                               </span></li>
                           </ul>
                         </div>
+                        <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D('p-'.$member_details['member']->username); ?>/<?php echo $proposal->proposal_url; ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-eye"></i> <?php D(__('manage_proposal_page_action_Preview','Preview'));?></a>
+                         <a href="<?php D(get_link('editproposalURL'))?>/<?php D($proposal->proposal_id); ?>/<?php D($token); ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-edit"></i> <?php D(__('manage_proposal_page_action_Edit','Edit'));?>
+                        </a> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="btn btn-sm btn-outline-danger"><i class="icon-feather-trash"></i> <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
+                        </a>
                       </div>
                     </div>
                   </div>
                   
-                  <!-- Buttons -->
-                  
-                  <div class="buttons-to-right single-right-button always-visible">
+                  <!-- Buttons -->                  
+                  <?php /*?><div class="buttons-to-right single-right-button always-visible">
                     <div class="dropdown">
                       <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
                       <?php D(__('manage_proposal_page_list_Actions','Actions'))?>
                       </button>
-                      <div class="dropdown-menu dropdown-menu-right"> <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D('p-'.$member_details['member']->username); ?>/<?php echo $proposal->proposal_url; ?>" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Preview','Preview'));?>
-                        </a> <a href="<?php D(get_link('editproposalURL'))?>/<?php D($proposal->proposal_id); ?>/<?php D($token); ?>" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Edit','Edit'));?>
-                        </a> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="dropdown-item">
-                        <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
-                        </a> </div>
+                      <div class="dropdown-menu dropdown-menu-right">  </div>
                     </div>
-                  </div>
+                  </div><?php */?>
                 </li>
                 <?php
 
@@ -541,8 +520,9 @@ $username=$loggedUser['UNAME'];
 
                         ?>
               <div class='p-3'>
-                <div class="alert alert-danger mb-0">
-                  <?php D(__('manage_proposal_page_list_pending_no_record',"You currently have no proposals/services modification."));?>
+                <div class="text-center">
+                	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                    <h5><?php D(__('manage_proposal_page_list_pending_no_record',"You currently have no proposals/services modification."));?></h5>
                 </div>
               </div>
               <?php
@@ -578,7 +558,7 @@ $username=$loggedUser['UNAME'];
                         
                         <!-- Job Listing Footer -->
                         
-                        <div class="job-listing-footer">
+                        <div class="job-listing-footer mb-3">
                           <ul>
                             <li><i class="icon-feather-tag"></i> <b>
                               <?php D(__('manage_proposal_page_list_Price',"Proposal's Price"))?>
@@ -598,15 +578,15 @@ $username=$loggedUser['UNAME'];
                               </span></li>
                           </ul>
                         </div>
+                        <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="btn btn-sm btn-outline-danger"><i class="icon-feather-trash"></i> <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
+                    	</a>
                       </div>
                     </div>
                   </div>
                   
                   <!-- Buttons -->
                   
-                  <div class="buttons-to-right single-right-button always-visible"> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="btn btn-outline-danger">
-                    <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
-                    </a> </div>
+                  <?php /*?><div class="buttons-to-right single-right-button always-visible">  </div><?php */?>
                 </li>
                 <?php
 
@@ -622,8 +602,9 @@ $username=$loggedUser['UNAME'];
 
 			?>
               <div class='p-3'>
-                <div class="alert alert-danger mb-0">
-                  <?php D(__('manage_proposal_page_list_declined_no_record',"You currently have no proposals/services declined."));?>
+                <div class="text-center">
+                	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                    <h5><?php D(__('manage_proposal_page_list_declined_no_record',"You currently have no proposals/services declined."));?></h5>
                 </div>
               </div>
               <?php
@@ -666,9 +647,9 @@ $username=$loggedUser['UNAME'];
             
             <label>
               <?php D(__('modal_vacation_Why',"Why?"));?>
-              <small class="text-muted">
-              (<?php D(__('modal_vacation_Optional',"Optional"));?>)
-              </small></label>
+              <small class="text-muted"> (
+              <?php D(__('modal_vacation_Optional',"Optional"));?>
+              ) </small></label>
             <select class="form-control float-right" name="seller_vacation_reason" id="seller_vacation_reason">
               <option value="">
               <?php D(__('modal_vacation_Select',"Select"));?>
@@ -692,9 +673,9 @@ $username=$loggedUser['UNAME'];
             
             <label>
               <?php D(__('modal_vacation_Additional_Information',"Additional Information"));?>
-              <small class="text-muted">
-              (<?php D(__('modal_vacation_Optional',"Optional"));?>)
-              </small> </label>
+              <small class="text-muted"> (
+              <?php D(__('modal_vacation_Optional',"Optional"));?>
+              ) </small> </label>
             <textarea name="seller_vacation_message" id="seller_vacation_message" rows="4" class="form-control"></textarea>
           </div>
           

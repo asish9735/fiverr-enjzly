@@ -23,14 +23,14 @@ $s_currency=CURRENCY;
 <section class="section">
   <div class="container-fluid">
   <div class="row">
-      <div class="col-xl-3 col-lg-4 col-12">
+      <div class="col-xl-3 col-lg-auto col-12">
         <?php
           $templateLayout=array('view'=>'inc/user-nav','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
           load_template($templateLayout,$data);
         ?>
       </div>
-      <div class="col-xl-9 col-lg-8 col-12">
-        <ul class="nav nav-tabs">
+      <div class="col-xl-9 col-lg col-12">
+        <ul class="nav nav-pills">
           <li class="nav-item"> <a href="#active" data-toggle="tab" class="nav-link active">
             <?php D(__('buyer_order_page_tab_ACTIVE',"Active"));?>
             <span class="badge badge-site ml-1">
@@ -76,16 +76,31 @@ $s_currency=CURRENCY;
                       foreach($active_orders as $order){
                           
                   ?>
+                  <?php $class='';
+						if($order->order_status==1){
+							$class='yellow';
+						}elseif($order->order_status==2){
+							$class='blue';
+						}elseif($order->order_status==3){
+							$class='';
+						}elseif($order->order_status==4){
+							$class='';
+						}elseif($order->order_status==5){
+							$class='red';
+						}elseif($order->order_status==6){
+							$class='green';
+						}elseif($order->order_status==7){
+							$class='green';
+						}						
+					?>
                   <li>
                     <div class="job-listing">
                       <div class="job-listing-details">
                         <div class="job-listing-company-logo"> <a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>"><img src="<?php D(URL_USERUPLOAD)?>proposal-files/<?php D($order->proposal_image); ?>" alt="" class="fluid-img"></a> </div>
-                        <div class="job-listing-description">
-                          <h3 class="job-listing-title mb-0"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
+                        <div class="job-listing-description">                        
+                          <h4 class="job-listing-title"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
                             <?php D($order->proposal_title); ?>
-                            </a> <span class="dashboard-status-button red">
-                            <?php D(ucwords($orderStatus[$order->order_status])); ?>
-                            </span></h3>
+                            </a> </h4>
                           <div class="job-listing-footer">
                             <ul>
                               <li><i class="icon-feather-calendar"></i> <b>
@@ -98,16 +113,18 @@ $s_currency=CURRENCY;
                                 :</b>
                                 <?php D(dateFormat($order->order_time,'F d, Y')); ?>
                               </li>
-                              <li><i class="icon-feather-tag"></i><b>
-                                <?php D(__('buyer_order_page_TOTAL',"TOTAL"));?>
-                                :</b>
-                                <?php D($s_currency); ?>
-                                <?php D($order->order_price); ?>
+                              <li>
+                                <span class="dashboard-status-button <?php echo $class;?>">
+									<?php D(ucwords($orderStatus[$order->order_status])); ?>                        
+                                </span>
                               </li>
                             </ul>
                           </div>
                         </div>
                       </div>
+                    </div>
+                    <div class="buttons-to-right single-right-button">
+                    	<h3 class="price"><span><?php D($s_currency); ?></span><?php D($order->order_price); ?></h3>
                     </div>
                   </li>
                   <?php		
@@ -116,8 +133,9 @@ $s_currency=CURRENCY;
                   <?php
                   }else{?>
                 <li>
-                  <div class="alert alert-danger mb-0 w-100">
-                    <?php D(__('buyer_order_page_no_record_active',"No active purchases at the momment."));?>
+                  <div class="text-center w-100">
+                    <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                    <h5><?php D(__('buyer_order_page_no_record_active',"No active purchases at the momment."));?></h5>
                   </div>
                 </li>
                 <?php }?>
@@ -138,11 +156,9 @@ $s_currency=CURRENCY;
                 <div class="job-listing-details">
                   <div class="job-listing-company-logo"> <a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>"><img src="<?php D(URL_USERUPLOAD)?>proposal-files/<?php D($order->proposal_image); ?>" alt="" class="fluid-img"></a> </div>
                   <div class="job-listing-description">
-                    <h3 class="job-listing-title mb-0"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
+                    <h4 class="job-listing-title"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
                       <?php D($order->proposal_title); ?>
-                      </a> <span class="dashboard-status-button red">
-                      <?php D(ucwords($orderStatus[$order->order_status])); ?>
-                      </span></h3>
+                      </a> </h4>
                     <div class="job-listing-footer">
                       <ul>
                         <li><i class="icon-feather-calendar"></i> <b>
@@ -155,16 +171,15 @@ $s_currency=CURRENCY;
                           :</b>
                           <?php D(dateFormat($order->order_time,'F d, Y')); ?>
                         </li>
-                        <li><i class="icon-feather-tag"></i><b>
-                          <?php D(__('buyer_order_page_TOTAL',"TOTAL"));?>
-                          :</b>
-                          <?php D($s_currency); ?>
-                          <?php D($order->order_price); ?>
+                        <li><span class="dashboard-status-button red"><?php D(ucwords($orderStatus[$order->order_status])); ?></span>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="buttons-to-right single-right-button">              
+			  	<h3 class="price"><span><?php D($s_currency); ?></span><?php D($order->order_price); ?></h3>              
               </div>
             </li>
             <?php		
@@ -173,8 +188,9 @@ $s_currency=CURRENCY;
             <?php
             }else{?>
             <li>
-              <div class="alert alert-danger mb-0 w-100">
-                <?php D(__('buyer_order_page_no_record_delivered',"No proposals/services have been recently delivered yet."));?>
+              <div class="text-center w-100">
+                <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5><?php D(__('buyer_order_page_no_record_delivered',"No proposals/services have been recently delivered yet."));?></h5>
               </div>
             </li>
             <?php }?>
@@ -195,11 +211,9 @@ $s_currency=CURRENCY;
                 <div class="job-listing-details">
                   <div class="job-listing-company-logo"> <a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>"><img src="<?php D(URL_USERUPLOAD)?>proposal-files/<?php D($order->proposal_image); ?>" alt="" class="fluid-img"></a> </div>
                   <div class="job-listing-description">
-                    <h3 class="job-listing-title mb-0"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
+                    <h4 class="job-listing-title"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
                       <?php D($order->proposal_title); ?>
-                      </a> <span class="dashboard-status-button green">
-                      <?php D(ucwords($orderStatus[$order->order_status])); ?>
-                      </span></h3>
+                      </a> </h4>
                     <div class="job-listing-footer">
                       <ul>
                         <li><i class="icon-feather-calendar"></i> <b>
@@ -212,16 +226,17 @@ $s_currency=CURRENCY;
                           :</b>
                           <?php D(dateFormat($order->order_time,'F d, Y')); ?>
                         </li>
-                        <li><i class="icon-feather-tag"></i><b>
-                          <?php D(__('buyer_order_page_TOTAL',"TOTAL"));?>
-                          :</b>
-                          <?php D($s_currency); ?>
-                          <?php D($order->order_price); ?>
+                        <li><span class="dashboard-status-button green">
+							<?php D(ucwords($orderStatus[$order->order_status])); ?>
+                          </span>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="buttons-to-right single-right-button">
+              	<h3 class="price"><span><?php D($s_currency); ?></span><?php D($order->order_price); ?></h3>
               </div>
             </li>
             <?php		
@@ -230,8 +245,9 @@ $s_currency=CURRENCY;
             <?php
             }else{?>
             <li>
-              <div class="alert alert-danger mb-0 w-100">
-                <?php D(__('buyer_order_page_no_record_completed',"No proposals/services purchased have been completed yet."));?>
+              <div class="text-center w-100">
+                <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5><?php D(__('buyer_order_page_no_record_completed',"No proposals/services purchased have been completed yet."));?></h5>
               </div>
             </li>
             <?php }?>
@@ -252,11 +268,9 @@ $s_currency=CURRENCY;
                 <div class="job-listing-details">
                   <div class="job-listing-company-logo"> <a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>"><img src="<?php D(URL_USERUPLOAD)?>proposal-files/<?php D($order->proposal_image); ?>" alt="" class="fluid-img"></a> </div>
                   <div class="job-listing-description">
-                    <h3 class="job-listing-title mb-0"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
+                    <h4 class="job-listing-title"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
                       <?php D($order->proposal_title); ?>
-                      </a> <span class="dashboard-status-button red">
-                      <?php D(ucwords($orderStatus[$order->order_status])); ?>
-                      </span></h3>
+                      </a></h4>
                     <div class="job-listing-footer">
                       <ul>
                         <li><i class="icon-feather-calendar"></i> <b>
@@ -269,16 +283,17 @@ $s_currency=CURRENCY;
                           :</b>
                           <?php D(dateFormat($order->order_time,'F d, Y')); ?>
                         </li>
-                        <li><i class="icon-feather-tag"></i><b>
-                          <?php D(__('buyer_order_page_TOTAL',"TOTAL"));?>
-                          :</b>
-                          <?php D($s_currency); ?>
-                          <?php D($order->order_price); ?>
+                        <li><span class="dashboard-status-button red">
+			 	 <?php D(ucwords($orderStatus[$order->order_status])); ?>
+              </span>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="buttons-to-right single-right-button">
+              	<h3 class="price"><span><?php D($s_currency); ?></span><?php D($order->order_price); ?></h3>
               </div>
             </li>
             <?php		
@@ -287,8 +302,9 @@ $s_currency=CURRENCY;
             <?php
             }else{?>
             <li>
-              <div class="alert alert-danger mb-0 w-100">
-                <?php D(__('buyer_order_page_no_record_cancelled',"No proposals/services have been cancelled."));?>
+              <div class="text-center w-100">
+                <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5><?php D(__('buyer_order_page_no_record_cancelled',"No proposals/services have been cancelled."));?></h5>
               </div>
             </li>
             <?php }?>
@@ -310,28 +326,25 @@ $s_currency=CURRENCY;
                   <div class="job-listing-company-logo"> <a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>"><img src="<?php D(URL_USERUPLOAD)?>proposal-files/<?php D($order->proposal_image); ?>" alt="" class="fluid-img"></a> </div>
                   <div class="job-listing-description">
                     <?php $class='';
-                                if($order->order_status==1){
-                                    $class='yellow';
-                                }elseif($order->order_status==2){
-                                    $class='blue';
-                                }elseif($order->order_status==3){
-                                    $class='';
-                                }elseif($order->order_status==4){
-                                    $class='';
-                                }elseif($order->order_status==5){
-                                    $class='red';
-                                }elseif($order->order_status==6){
-                                    $class='green';
-                                }elseif($order->order_status==7){
-                                    $class='green';
-                                }
-                                
-                            ?>
-                    <h3 class="job-listing-title mb-0"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
+						if($order->order_status==1){
+							$class='yellow';
+						}elseif($order->order_status==2){
+							$class='blue';
+						}elseif($order->order_status==3){
+							$class='';
+						}elseif($order->order_status==4){
+							$class='';
+						}elseif($order->order_status==5){
+							$class='red';
+						}elseif($order->order_status==6){
+							$class='green';
+						}elseif($order->order_status==7){
+							$class='green';
+						}						
+					?>
+                    <h4 class="job-listing-title"><a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>">
                       <?php D($order->proposal_title); ?>
-                      </a> <span class="dashboard-status-button <?php echo $class;?>">
-                      <?php D(ucwords($orderStatus[$order->order_status])); ?>
-                      </span></h3>
+                      </a> </h4>
                     <div class="job-listing-footer">
                       <ul>
                         <li><i class="icon-feather-calendar"></i> <b>
@@ -355,6 +368,11 @@ $s_currency=CURRENCY;
                   </div>
                 </div>
               </div>
+              <div class="buttons-to-right single-right-button">
+              <span class="dashboard-status-button <?php echo $class;?>">
+			  	<?php D(ucwords($orderStatus[$order->order_status])); ?>
+              </span>
+              </div>
             </li>
             <?php		
                 }
@@ -362,8 +380,9 @@ $s_currency=CURRENCY;
             <?php
             }else{?>
             <li>
-              <div class="alert alert-danger mb-0 w-100">
-                <?php D(__('buyer_order_page_no_record_all',"No proposals/services purchases at the momment."));?>
+              <div class="text-center w-100">
+                <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5><?php D(__('buyer_order_page_no_record_all',"No proposals/services purchases at the momment."));?></h5>
               </div>
             </li>
             <?php }?>

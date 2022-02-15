@@ -20,10 +20,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ?>
       </div>
       <div class="col-xl-9 col-lg-8 col-12">		
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-pills">
             <li class="nav-item">
                 <a href="#active" data-toggle="tab" class="nav-link active">
-                    <?php D(__('manage_request_page_Active_Requests','Active Requests'))?> <span class="badge badge-site ml-1"><?php D(count($active_request)); ?></span>
+                    <?php D(__('manage_request_page_Active_Requests','Active Requests'))?> <span class="badge badge-dark ml-1"><?php D(count($active_request)); ?></span>
                 </a>
             </li>
             <li class="nav-item">
@@ -69,28 +69,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="job-listing-description">
                                     <h4 class="job-listing-title"><?php D($request->request_title); ?></h4>
                                     <p><?php D($request->request_description); ?></p>
-                                    <div class="job-listing-footer">
+                                    <div class="job-listing-footer mb-3">
                                         <ul>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Date','Date'))?>:</b> <?php D(dateFormat($request->request_date,'F d, Y')); ?></li>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Offers','Offers'))?>:</b> <?php D($request->offer); ?></li>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Budget','Budget'))?>:</b> <?php D(CURRENCY); ?><?php D($request->request_budget); ?></li>
                                         </ul>
                                     </div>
+                                    <a href="<?php D(get_link('viewofferURL'))?>/<?php D($request->request_id); ?>" target="blank" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-eye"></i> <?php D(__('manage_request_page_action_view_offers','View Offers'));?></a>
+                                            <a href="<?php D(VZ)?>" onclick="doAction('pause','<?php D($request->request_id); ?>')" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-pause-circle"></i> <?php D(__('manage_request_page_action_Pause','Pause'));?></a>
+                                            <a href="<?php D(get_link('editrequestURL'))?>/<?php D($request->request_id); ?>/<?php D($token); ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-edit"></i> <?php D(__('manage_request_page_action_Edit','Edit'));?> </a>
+                                            <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($request->request_id); ?>')" class="btn btn-sm btn-outline-danger"><i class="icon-feather-trash"></i> <?php D(__('manage_request_page_action_Delete','Delete'));?></a>
                                     </div>
+                                </div>                                    
                                 </div>
-                                    
-                                </div>
-                                <div class="buttons-to-right">
+                                <?php /*?><div class="buttons-to-right">
                                         <div class="dropdown">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"><?php D(__('manage_request_page_list_Actions','Actions'))?></button>
+                                        <button class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown"><?php D(__('manage_request_page_list_Actions','Actions'))?></button>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="<?php D(get_link('viewofferURL'))?>/<?php D($request->request_id); ?>" target="blank" class="dropdown-item"><?php D(__('manage_request_page_action_view_offers','View Offers'));?></a>
-                                            <a href="<?php D(VZ)?>" onclick="doAction('pause','<?php D($request->request_id); ?>')" class="dropdown-item"><?php D(__('manage_request_page_action_Pause','Pause'));?></a>
-                                            <a href="<?php D(get_link('editrequestURL'))?>/<?php D($request->request_id); ?>/<?php D($token); ?>" class="dropdown-item"> <?php D(__('manage_request_page_action_Edit','Edit'));?> </a>
-                                            <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($request->request_id); ?>')" class="dropdown-item"><?php D(__('manage_request_page_action_Delete','Delete'));?></a>
+                                            
                                         </div>
                                     </div>
-                                </div>
+                                </div><?php */?>
                                 
                             </li>
                             <?php
@@ -101,7 +101,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php
                     if(count($active_request) == 0){
                     ?>
-                    <li class="p-3"><div class="alert alert-danger mb-0 w-100"><?php D(__('manage_request_page_list_active_no_record',"You've posted no requests at the moment."));?></div>
+                    <li>
+                    <div class="text-center w-100">
+                    	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+						<h5><?php D(__('manage_request_page_list_active_no_record',"You've posted no requests at the moment."));?></h5>
+                    </div></li>
                     <?php
                     }
                     ?>
@@ -123,28 +127,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="job-listing-description">
                                     <h4 class="job-listing-title"><?php D($request->request_title); ?></h4>
                                     <p><?php D($request->request_description); ?></p>
-                                    <div class="job-listing-footer">
+                                    <div class="job-listing-footer mb-3">
                                         <ul>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Date','Date'))?>:</b> <?php D(dateFormat($request->request_date,'F d, Y')); ?></li>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Offers','Offers'))?>:</b> <?php D($request->offer); ?></li>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Budget','Budget'))?>:</b> <?php D(CURRENCY); ?><?php D($request->request_budget); ?></li>
                                         </ul>
                                     </div>
+                                    <a href="<?php D(get_link('viewofferURL'))?>/<?php D($request->request_id); ?>" target="blank" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-eye"></i> <?php D(__('manage_request_page_action_view_offers','View Offers'));?></a>
+                                            <a href="<?php D(VZ)?>" onclick="doAction('pause','<?php D($request->request_id); ?>')" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-pause-circle"></i> <?php D(__('manage_request_page_action_Pause','Pause'));?></a>
+                                            <a href="<?php D(get_link('editrequestURL'))?>/<?php D($request->request_id); ?>/<?php D($token); ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-edit"></i> <?php D(__('manage_request_page_action_Edit','Edit'));?> </a>
+                                            <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($request->request_id); ?>')" class="btn btn-sm btn-outline-danger mr-2"><i class="icon-feather-trash"></i> <?php D(__('manage_request_page_action_Delete','Delete'));?></a>
                                     </div>
                                 </div>
                                     
                                 </div>
-                                <div class="buttons-to-right single-right-button always-visible">
+                                <?php /*?><div class="buttons-to-right single-right-button always-visible">
                                         <div class="dropdown">
                                         <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"><?php D(__('manage_request_page_list_Actions','Actions'))?></button>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="<?php D(get_link('viewofferURL'))?>/<?php D($request->request_id); ?>" target="blank" class="dropdown-item"><?php D(__('manage_request_page_action_view_offers','View Offers'));?></a>
-                                            <a href="<?php D(VZ)?>" onclick="doAction('pause','<?php D($request->request_id); ?>')" class="dropdown-item"><?php D(__('manage_request_page_action_Pause','Pause'));?></a>
-                                            <a href="<?php D(get_link('editrequestURL'))?>/<?php D($request->request_id); ?>/<?php D($token); ?>" class="dropdown-item"> <?php D(__('manage_request_page_action_Edit','Edit'));?> </a>
-                                            <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($request->request_id); ?>')" class="dropdown-item"><?php D(__('manage_request_page_action_Delete','Delete'));?></a>
+                                            
                                         </div>
                                     </div>
-                                </div>
+                                </div><?php */?>
                                 
                             </li>
                             <?php
@@ -155,7 +160,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php
                     if(count($paused_request) == 0){
                     ?>
-                    <li><div class="alert alert-danger mb-0 w-100"><?php D(__('manage_request_page_list_paused_no_record',"You currently have no requests paused."));?></div></li>
+                    <li>
+                    <div class="text-center w-100">
+                    <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+					<h5><?php D(__('manage_request_page_list_paused_no_record',"You currently have no requests paused."));?></h5>
+                    </div></li>
                     <?php
                     }
                     ?>
@@ -181,28 +190,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="job-listing-description">
                                     <h4 class="job-listing-title"><?php D($request->request_title); ?></h4>
                                     <p><?php D($request->request_description); ?></p>
-                                    <div class="job-listing-footer">
+                                    <div class="job-listing-footer mb-3">
                                         <ul>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Date','Date'))?>:</b> <?php D(dateFormat($request->request_date,'F d, Y')); ?></li>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Offers','Offers'))?>:</b> <?php D($request->offer); ?></li>
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Budget','Budget'))?>:</b> <?php D(CURRENCY); ?><?php D($request->request_budget); ?></li>
                                         </ul>
                                     </div>
+                                    <a href="<?php D(get_link('viewofferURL'))?>/<?php D($request->request_id); ?>" target="blank" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-eye"></i> <?php D(__('manage_request_page_action_view_offers','View Offers'));?></a>
+                                            <a href="<?php D(VZ)?>" onclick="doAction('pause','<?php D($request->request_id); ?>')" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-pause-circle"></i> <?php D(__('manage_request_page_action_Pause','Pause'));?></a>
+                                            <a href="<?php D(get_link('editrequestURL'))?>/<?php D($request->request_id); ?>/<?php D($token); ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-edit"></i> <?php D(__('manage_request_page_action_Edit','Edit'));?> </a>
+                                            <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($request->request_id); ?>')" class="btn btn-sm btn-outline-danger mr-2"><i class="icon-feather-trash"></i> <?php D(__('manage_request_page_action_Delete','Delete'));?></a>
                                     </div>
                                 </div>
                                     
                                 </div>
-                                <div class="buttons-to-right single-right-button always-visible">
+                                <?php /*?><div class="buttons-to-right single-right-button always-visible">
                                         <div class="dropdown">
                                         <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"><?php D(__('manage_request_page_list_Actions','Actions'))?></button>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="<?php D(get_link('viewofferURL'))?>/<?php D($request->request_id); ?>" target="blank" class="dropdown-item"><?php D(__('manage_request_page_action_view_offers','View Offers'));?></a>
-                                            <a href="<?php D(VZ)?>" onclick="doAction('pause','<?php D($request->request_id); ?>')" class="dropdown-item"><?php D(__('manage_request_page_action_Pause','Pause'));?></a>
-                                            <a href="<?php D(get_link('editrequestURL'))?>/<?php D($request->request_id); ?>/<?php D($token); ?>" class="dropdown-item"> <?php D(__('manage_request_page_action_Edit','Edit'));?> </a>
-                                            <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($request->request_id); ?>')" class="dropdown-item"><?php D(__('manage_request_page_action_Delete','Delete'));?></a>
+                                            
                                         </div>
                                     </div>
-                                </div>
+                                </div><?php */?>
                                 
                             </li>
                             <?php
@@ -213,7 +223,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php
                     if(count($pending_request) == 0){
                     ?>
-                    <li><div class="alert alert-danger mb-0 w-100"><?php D(__('manage_request_page_list_pending_no_record',"You currently have no requests pending."));?></div></li>
+                    <li>
+                    <div class="text-center w-100">
+                    	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+						<h5><?php D(__('manage_request_page_list_pending_no_record',"You currently have no requests pending."));?></h5>
+                    </div>
+                    </li>
                     <?php
                     }
                     ?>
@@ -244,13 +259,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <li><i class="icon-feather-calendar"></i><b><?php D(__('manage_request_page_list_Budget','Budget'))?>:</b> <?php D(CURRENCY); ?><?php D($request->request_budget); ?></li>
                                         </ul>
                                     </div>
+                                    <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($request->request_id); ?>')" class="btn btm-sm btn-outline-danger"><i class="icon-feather-trash"></i> <?php D(__('manage_request_page_action_Delete','Delete'));?></a>
                                     </div>
                                 </div>
                                     
                                 </div>
-                                <div class="buttons-to-right single-right-button always-visible">
-                                        <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($request->request_id); ?>')" class="btn btn-outline-danger"><?php D(__('manage_request_page_action_Delete','Delete'));?></a>
-                                </div>
+                                <?php /*?><div class="buttons-to-right single-right-button always-visible">
+                                        
+                                </div><?php */?>
                                 
                             </li>
                             
@@ -263,7 +279,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php
                     if(count($unapproved_request) == 0){
                     ?>
-                    <li><div class="alert alert-danger mb-0 w-100"><?php D(__('manage_request_page_list_unapproved_no_record',"You currently have no unapproved requests."));?></div></li>
+                    <li>
+                    <div class="text-center w-100">
+						<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                        <h5><?php D(__('manage_request_page_list_unapproved_no_record',"You currently have no unapproved requests."));?></h5>
+                    </div>
+                    </li>
                     <?php
                     }
                     ?>

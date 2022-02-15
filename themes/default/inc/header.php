@@ -378,7 +378,7 @@ $website_name=get_option_value('website_name');
               <a href="<?php D(get_link('loginURL'))?>" class="btn btn-outline-site" >
               <!--<img src="<?php // D(theme_url().IMAGE)?>log-in.png" alt="">--><i class="icon-feather-log-in"></i> <?php D(__('header_login','Log In'))?>
               </a>
-              <a href="<?php D(get_link('registerURL'))?>" class="btn btn-site ml-3 mr-3">
+              <a href="<?php D(get_link('registerURL'))?>" class="btn btn-site ml-3 mr-3_">
               <i class="icon-line-awesome-mouse-pointer"></i> <?php D(__('header_post_gigs','Post Gigs'))?>
               </a>
               <?php /*?>

@@ -338,7 +338,7 @@ ul.list li:before {
 	border-right-color: var(--siteColor);
 }
 .message-reply .uploadButton {
-    margin: 0.1rem auto 0 1rem;
+    margin: 0 auto 0 1rem;
 }
 .bootbox .modal-header .pull-right, .bootbox  .modal-header .btn-success, .bootbox  .modal-header .btn-primary {
     left: 21px;

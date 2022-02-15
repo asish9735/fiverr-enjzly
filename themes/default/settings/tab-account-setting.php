@@ -9,16 +9,16 @@ $enable_coinpayments =get_option_value('enable_coinpayments');
 $enable_dusupay =get_option_value('enable_dusupay');
 
 ?>
-<div class="card mb-4">
-  <div class="card-body">
+
 <?php // D(__('settings_page_Account_Settings_heading',"Account Settings"));?>
 <?php if($enable_paypal == 1){ ?>
-
-
-  	<h5>
+<div class="card mb-4">
+	<div class="card-header black">
+    <h5>
       <?php D(__('account_settings_page_paypal_heading',"PayPal For Withdrawing Revenue"));?>
-    </h5>
-    <form action="" method="post" accept-charset="utf-8" id="accountPaypalform" class="mb-4" role="form" name="accountPaypalform" onsubmit="saveAccount(this);return false;">
+    </h5></div>
+  <div class="card-body">  	
+    <form action="" method="post" accept-charset="utf-8" id="accountPaypalform" role="form" name="accountPaypalform" onsubmit="saveAccount(this);return false;">
       <input type="hidden" name="section" value="paypal"/>
       <div class="form-group">
         <label class="form-label">
@@ -27,17 +27,20 @@ $enable_dusupay =get_option_value('enable_dusupay');
         <input type="text" name="seller_paypal_email" id="seller_paypal_email" value="<?php if($member_details && $member_details['member_payment_settings']){D($member_details['member_payment_settings']->paypal_email);} ?>" placeholder="<?php D(__('account_settings_page_paypal_Enter_Email_input',"Enter Paypal Email"));?>" class="form-control" >
           <span id="seller_paypal_emailError" class="rerror"></span>
       </div>
-      <button type="submit" name="submit_paypal_email" class="btn btn-dark saveBTN">
+      <button type="submit" name="submit_paypal_email" class="btn btn-site saveBTN">
       <?php D(__('account_settings_page_paypal_button',"Change Paypal Email"));?>
       </button>        
     </form>
-
+</div>
+</div>
 <?php }?>
-
+<div class="card mb-4">
+	<div class="card-header black">
     <h5>
       <?php D(__('account_settings_page_bank_heading',"Bank Transfer For Withdrawing Revenue"));?>
-    </h5>
-    <form action="" method="post" accept-charset="utf-8" id="accountBankform" class="mb-4" role="form" name="accountBankform" onsubmit="saveAccount(this);return false;">
+    </h5></div>
+    <div class="card-body">  	
+    <form action="" method="post" accept-charset="utf-8" id="accountBankform" role="form" name="accountBankform" onsubmit="saveAccount(this);return false;">
       <input type="hidden" name="section" value="bank"/>      
       <?php /*?><div class="form-group row">
 		<label class="form-label"> Bank Name </label>
@@ -78,16 +81,19 @@ $enable_dusupay =get_option_value('enable_dusupay');
           </div>
         </div>        
 	</div>
-	<button type="submit" name="submit_bank" class="btn btn-dark saveBTN">
+	<button type="submit" name="submit_bank" class="btn btn-site saveBTN">
 	  <?php D(__('account_settings_page_Bank_button',"Update Bank Details"));?>
     </button>                        
     </form>
-
+</div>
+</div>
 <?php if($enable_payoneer == 1){ ?>
-
+<div class="card mb-4">
+	<div class="card-header black">
     <h5>
       <?php D(__('account_settings_page_Payoneer_heading',"Payoneer For Withdrawing Revenue"));?>
-    </h5>
+    </h5></div>
+    <div class="card-body">  
     <form action="" method="post" accept-charset="utf-8" id="accountPayoneerform" role="form" name="accountPayoneerform" onsubmit="saveAccount(this);return false;">
       <input type="hidden" name="section" value="payoneer"/>
       <div class="form-group">
@@ -97,12 +103,13 @@ $enable_dusupay =get_option_value('enable_dusupay');
           <input type="text" name="seller_payoneer_email" id="seller_payoneer_email" value="<?php if($member_details && $member_details['member_payment_settings']){D($member_details['member_payment_settings']->payoneer_email);} ?>" placeholder="<?php D(__('account_settings_page_Payoneer_Email_input',"Enter Email"));?>" class="form-control" >
           <span id="seller_payoneer_emailError" class="rerror"></span>
       </div>
-      <button type="submit" name="submit_payoneer_email" class="btn btn-dark saveBTN">
+      <button type="submit" name="submit_payoneer_email" class="btn btn-site saveBTN">
           <?php D(__('account_settings_page_payoneer_button',"Change  Email"));?>
           </button>
       
     </form>
-
+</div>
+</div>
 <?php }?>
 <div class="d-none">
   <?php if($enable_dusupay == 1){ ?>
@@ -184,13 +191,13 @@ $enable_dusupay =get_option_value('enable_dusupay');
   </form>
   <hr>
 </div>
-</div>
-</div>
+
 <div class="card mb-4">
-  <div class="card-body">
-  <h5>
+  <div class="card-header black">
+	<h5>
       <?php D(__('account_settings_page_Change_Password_heading',"Change Password"));?>
-    </h5>
+    </h5></div>
+    <div class="card-body">
     <form action="" method="post" accept-charset="utf-8" id="accountPasswordform" class="form-horizontal" role="form" name="accountPasswordform" onsubmit="saveAccount(this);return false;">
       <input type="hidden" name="section" value="password"/>
       <div class="row">
@@ -224,17 +231,18 @@ $enable_dusupay =get_option_value('enable_dusupay');
         </div>
         </div>
       </div>
-      <button type="submit" name="change_password" class="btn btn-dark saveBTN">
+      <button type="submit" name="change_password" class="btn btn-site saveBTN">
           <?php D(__('account_settings_page_Change_Password_button',"Change Password"));?>
           </button>
     </form>
   </div>
 </div>
 <div class="card mb-4">
-  <div class="card-body">
+  <div class="card-header black">
   <h5>
       <?php D(__('account_settings_page_ACCOUNT_DEACTIVATION_heading',"Account Deactivation"));?>
-    </h5>
+    </h5></div>
+    <div class="card-body">
     <div class="form-field">
       <label class="form-label">
         <?php D(__('account_settings_page_ACCOUNT_DEACTIVATION_text',"What happens when you deactivate your account?"));?>

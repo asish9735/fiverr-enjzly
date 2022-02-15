@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ?>
       </div>
       <div class="col-xl-9 col-lg col-12">
-		<ul class="nav nav-pills" id="myTab" role="tablist">
+		<ul class="nav nav-pills mb-4" id="myTab" role="tablist">
 		<li class="nav-item">
 			<a class="nav-link <?php if(empty($tab) || $tab=='profile'){D("active"); }?>" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php D(__('settings_page_tab_Profile_Settings',"Profile Settings"));?></a>
 		</li>

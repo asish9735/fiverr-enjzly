@@ -34,16 +34,16 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 <section class="section">
 <div class="container-fluid">    
 	<div class="row">
-      <div class="col-xl-3 col-lg-4 col-12">
+      <div class="col-xl-3 col-lg-auto col-12">
         <?php
           $templateLayout=array('view'=>'inc/user-nav','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
           load_template($templateLayout,$data);
         ?>
       </div>
-      <div class="col-xl-9 col-lg-8 col-12">
+      <div class="col-xl-9 col-lg col-12">
         <div class="fun-facts-section">
 		<div class="fun-facts-container">
-			<div class="fun-fact" data-fun-fact-color="#6f42c1">
+			<div class="fun-fact text-white" data-fun-fact-color="#111">
 
 			<div class="fun-fact-text">
 
@@ -59,7 +59,7 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 
 
 
-			<div class="fun-fact" data-fun-fact-color="#e83e8c">
+			<div class="fun-fact text-dark" data-fun-fact-color="#fdd007">
 
 				<div class="fun-fact-text">
 
@@ -75,7 +75,7 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 
 			
 
-			<div class="fun-fact" data-fun-fact-color="#00c853">
+			<div class="fun-fact text-white" data-fun-fact-color="#111">
 
 				<div class="fun-fact-text">
 
@@ -91,7 +91,7 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 
 			
 
-			<div class="fun-fact" data-fun-fact-color="#007bff">
+			<div class="fun-fact text-dark" data-fun-fact-color="#fdd007">
 
 				<div class="fun-fact-text">
 
@@ -112,12 +112,12 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 			<?php if($member_details['member']->balance >=$withdrawal_limit){ ?>
 
 			
-			<div class="d-md-flex align-items-center">
+			<div class="d-md-flex align-items-center mb-3">
 			<label class="mr-2 mb-2"><strong><?php D(__('revenue_page_Withdraw_To',"Withdraw To:"));?></strong> </label>
 
 			 <?php if($enable_paypal == 1){ ?>
 
-			<button class="btn btn-outline-primary mr-2 mb-2" data-toggle="modal" data-target="#paypal_withdraw_modal">
+			<button class="btn btn-primary mr-2 mb-2" data-toggle="modal" data-target="#paypal_withdraw_modal">
 
 				<i class="icon-brand-paypal"></i> <?php D(__('revenue_page_Paypal_Account',"Paypal Account"));?>
 
@@ -125,7 +125,7 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 
 			<?php }?>
 
-			<button class="btn btn-outline-site mr-2 mb-2" data-toggle="modal" data-target="#bank_withdraw_modal">
+			<button class="btn btn-site mr-2 mb-2" data-toggle="modal" data-target="#bank_withdraw_modal">
 
 				<i class="fa fa-bank"></i> <?php D(__('revenue_page_Bank_Account',"Bank Account"));?>
 
@@ -133,7 +133,7 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 
 			<?php if($enable_payoneer == 1){ ?>
 
-			<button class="btn btn-outline-warning mr-2 mb-2" data-toggle="modal" data-target="#payoneer_withdraw_modal">
+			<button class="btn btn-dark mr-2 mb-2" data-toggle="modal" data-target="#payoneer_withdraw_modal">
 
 				<i class="fa fa-payoneer"></i> <?php D(__('revenue_page_Payoneer_Account',"Payoneer Account"));?> 
 
@@ -215,7 +215,7 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 			<?php } ?>
 
 		<div class="dashboard-box">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<ul class="nav nav-pills" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Revenue</a>
                 </li>
@@ -279,7 +279,7 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
                 
                 </div>
                 <div class="buttons-to-right single-right-button">
-                <a href="<?php D(get_link('OrderDetailsURL').$revenue->order_id); ?>" target="blank" class="btn btn-sm btn-outline-site"> <?php D(__('revenue_page_View_Order',"View Order"));?> </a>              
+                <a href="<?php D(get_link('OrderDetailsURL').$revenue->order_id); ?>" target="blank" class="btn btn-sm btn-outline-dark"> <?php D(__('revenue_page_View_Order',"View Order"));?> </a>              
                 </div>
                 
                 </li>
@@ -302,26 +302,27 @@ $enable_paypal=$enable_bank=$enable_payoneer=1;
 					<div class="job-listing">
 						<div class="job-listing-details">                        
 							<div class="job-listing-description">
-								<h5 class="job-listing-title"><?php D($transaction['wallet_transaction_id']) ; ?>
-									<?php if($transaction['status']==0){ ?>
-									<span class="dashboard-status-button yellow"><?php D(__('transaction_page_Pending','Pending'));?> </span>
-									<?php }elseif($transaction['status']== 1){?>
-									<span class="dashboard-status-button green"><?php D(__('transaction_page_Completed','Completed'));?></span>
-									<?php }else{?>
-									<span class="dashboard-status-button red"><?php D(__('transaction_page_Cancelled','Cancelled'));?></span>
-									<?php } ?>
-								</h5>
+								<h5 class="job-listing-title"><?php D($transaction['wallet_transaction_id']) ; ?></h5>
 								<div class="job-listing-footer">
 									<ul>
-										<li><i class="icon-feather-calendar"></i> <b><?php D(__('transaction_page_Date','Date'));?>:</b> <?php D(dateFormat($transaction['transaction_date'],'F d, Y')) ; ?> <?php D(date('H:i',strtotime($transaction['transaction_date']))) ; ?></li>
+										<li><i class="icon-feather-calendar"></i> <?php D(dateFormat($transaction['transaction_date'],'F d, Y')) ; ?> <?php D(date('H:i',strtotime($transaction['transaction_date']))) ; ?></li>
 										<li><i class="icon-feather-tag"></i> <b><?php D(__('transaction_page_Amount','Amount'));?>:</b> 
-											<span class="<?php D($clas)?>"><?php D(CURRENCY.displayamount($transaction['amount'])); ?></span>                        
+											<span class="<?php D($clas)?>"><?php D(CURRENCY.displayamount($transaction['amount'])); ?></span>
 										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
-					</div>                    
+					</div>  
+                    <div class="buttons-to-right single-right-button">
+                    	<?php if($transaction['status']==0){ ?>
+                        <span class="dashboard-status-button yellow"><?php D(__('transaction_page_Pending','Pending'));?> </span>
+                        <?php }elseif($transaction['status']== 1){?>
+                        <span class="dashboard-status-button green"><?php D(__('transaction_page_Completed','Completed'));?></span>
+                        <?php }else{?>
+                        <span class="dashboard-status-button red"><?php D(__('transaction_page_Cancelled','Cancelled'));?></span>
+                        <?php } ?>
+                    </div>                  
                 </li>
 				<?php
 					}

@@ -12,7 +12,7 @@ if($allcategory){
 		if($k<7 || count($allcategory)<=9){
 		?>
 	<li class="mega-drop"><a href="<?php D(get_link('CategoryURL').$category->category_key);?>" id="flip" title="<?php D($category->name); ?>"><?php D($category->name); ?></a>
-		<div class="mega-menu two-columns">
+		<div class="mega-menu four-columns">
         <ul>
 		<?php if($allsubcategory){
             //$half=count($allsubcategory)/2;
@@ -36,7 +36,7 @@ if($allcategory){
 	if($k==7){
 		?>
 <li>
-	<a href="#" id="flip" class="nav-link_ p-1 mt-1"><?php // D(__('header_category_More','More'));?> <i class="icon-feather-plus-square" style="font-size: 22px;"></i></a>
+	<a href="#" id="flip" class="nav-link_ p-2"><?php // D(__('header_category_More','More'));?> <i class="icon-feather-plus-circle" style="font-size: 18px;"></i></a>
 		
         <ul>	
 <?php }?>

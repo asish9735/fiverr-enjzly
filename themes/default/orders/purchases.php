@@ -11,14 +11,17 @@ $s_currency=CURRENCY;
 <section class="section">
 <div class="container-fluid">
 <div class="row">
-      <div class="col-xl-3 col-lg-4 col-12">
+      <div class="col-xl-3 col-lg-auto col-12">
         <?php
           $templateLayout=array('view'=>'inc/user-nav','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
           load_template($templateLayout,$data);
         ?>
       </div>
-      <div class="col-xl-9 col-lg-8 col-12">
+      <div class="col-xl-9 col-lg col-12">
         <div class="dashboard-box mt-0">
+        	<div class="headline black">
+            	<h4><?php D(__('purchases_page_heading',"Purchases"));?></h4>
+            </div>
             <ul class="dashboard-box-list">
             <?php if($all_orders){?>
             
@@ -66,7 +69,7 @@ $s_currency=CURRENCY;
                         
                     <div class="job-listing-footer">
                         <ul>
-                            <li><i class="icon-feather-calendar"></i> <b><?php D(__('purchases_page_Date',"Date"));?>:</b> <?php D(dateFormat($order->created_date,'F d, Y')); ?></li>
+                            <li><i class="icon-feather-calendar"></i> <?php D(dateFormat($order->created_date,'F d, Y')); ?></li>
                             
                             <li><i class="icon-feather-tag"></i> <b><?php D(__('purchases_page_Amount',"Amount"));?>:</b>
                             <?php 
@@ -88,7 +91,7 @@ $s_currency=CURRENCY;
                 </div>
                 </div>
                 <div class="buttons-to-right single-right-button always-visible">
-                    <a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>" class="btn btn-sm btn-outline-site"> <?php D(__('purchases_page_View_Order',"View Order"));?></a>
+                    <a href="<?php D(get_link('OrderDetailsURL').$order->order_id)?>" class="btn btn-sm btn-outline-dark"> <?php D(__('purchases_page_View_Order',"View Order"));?></a>
                 </div>
                     
                 </li>

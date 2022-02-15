@@ -37,7 +37,7 @@ $section_data=array(
 );
 ?>
 <div class="breadcrumbs">
-  <div class="container">
+  <div class="container-fluid">
     <h1>
       <?php D(ucfirst($proposal_details['proposal']->proposal_title)); ?>
     </h1>
@@ -52,7 +52,7 @@ $section_data=array(
   </div>
 </div>
 <section class="section">
-  <div class="container"> 
+  <div class="container-fluid"> 
     <!-- Container starts -->    
     <div class="row">
       <div class="col-lg-8 mb-3">
@@ -1863,6 +1863,7 @@ $section_data=array(
     $proposaldata = array();
 
     if ($other_proposal) { ?>
+    <div class="grid-view">
     <div class="row flex-wrap mb-4">
       <?php
 
@@ -1887,6 +1888,7 @@ $section_data=array(
 
         ?>
     </div>
+    </div>
     <?php
 
     } else { ?>
@@ -1907,6 +1909,7 @@ $section_data=array(
       $proposaldata = array();
 
       if ($recent_proposals) { ?>
+      <div class="grid-view">
     <div class="row flex-wrap -mb-3">
       <?php
 
@@ -1931,6 +1934,7 @@ $section_data=array(
           }
 
           ?>
+    </div>
     </div>
     <?php
 

@@ -156,7 +156,9 @@ $lang['order_details_page_In']="In";
 
 $lang['order_details_page_Order_Cancelled']="Order Cancelled, Payment Has Been Refunded To Buyer.";
 
-$lang['order_details_page_Order_Delivered']="Order Delivered. You Earned";
+$lang['order_details_page_Order_Delivered']="Order Delivered.";
+
+$lang['order_details_page_you_earned']="You Earned";
 
 $lang['order_details_page_Payment_expected_Release_Date']="Payment expected Release Date :";
 
@@ -166,7 +168,7 @@ $lang['order_details_page_Order_Activity']="Order Activity";
 
 $lang['order_details_page_Resolution_Center']="Resolution Center";
 
-$lang['order_details_page_View_Proposal']="View Proposal/Service";
+$lang['order_details_page_View_Proposal']="View Proposal";
 
 $lang['order_details_page_Date']="Date:";
 
@@ -190,9 +192,9 @@ $lang['order_details_page_Total']="Total :";
 
 $lang['order_details_page_Description']="Description";
 
-$lang['order_details_page_order_need_to_be_deliverd_before']="This Order Needs To Be Delivered Before This Day/Time:";
+$lang['order_details_page_order_need_to_be_deliverd_before']="This order needs to be delivered before this day/time:";
 
-$lang['order_details_page_your_order_need_to_be_deliverd_before']="Your Order Should Be Ready On or Before This Day/Time:";
+$lang['order_details_page_your_order_need_to_be_deliverd_before']="Your order should be ready on or before this day/time:";
 
 $lang['order_details_page_counter_days']="Day(s)";
 
@@ -272,9 +274,9 @@ $lang['order_details_page_Cancellation_Reason_option_buyer_5']="Freelancer canno
 
 $lang['order_details_page_Submit_Cancellation_Request']="Submit Cancellation Request";
 
-$lang['order_details_page_Failed_To_Deliver_Seller']="You Failed To Deliver Your Order On Time";
+$lang['order_details_page_Failed_To_Deliver_Seller']="You failed to deliver your order on time";
 
-$lang['order_details_page_Failed_To_Deliver_Buyer']="Your Freelancer Failed To Deliver Your Order On Time";
+$lang['order_details_page_Failed_To_Deliver_Buyer']="Your freelancer failed to deliver your order on time";
 
 /*End of order details file*/
 
@@ -376,11 +378,11 @@ $lang['seller_order_page_ORDER_SUMMARY']="Order Summary";
 
 $lang['seller_order_page_ORDER_DATE']="Order Date";
 
-$lang['seller_order_page_DUE_ON']="DUE ON";
+$lang['seller_order_page_DUE_ON']="Due On";
 
-$lang['seller_order_page_TOTAL']="TOTAL";
+$lang['seller_order_page_TOTAL']="Total";
 
-$lang['seller_order_page_STATUS']="STATUS";
+$lang['seller_order_page_STATUS']="Status";
 
 $lang['seller_order_page_no_record_active']="No active orders at the momment.";
 

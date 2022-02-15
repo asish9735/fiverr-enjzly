@@ -17,17 +17,25 @@ $s_currency=CURRENCY;
 ?>
 <div class="breadcrumbs">
   <div class="container-fluid">
+  <div class="row">  	
+	<div class="col-sm-6">
   	<h1><?php D(__('','Dashboard'));?></h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?php D(VPATH);?>">Home</a></li>
       <li class="breadcrumb-item active">Dashboard</li>
     </ol>
+    </div>
+    <div class="col-sm-6 text-right">                  
+      <a href="<?php D(get_link('postrequestURL')); ?>" class="btn btn-outline-dark mr-3"><i class="icon-line-awesome-hand-stop-o"></i> <?php D(__('Post_Requests','Post Request'))?></a>
+      <a href="<?php D(get_link('postproposalURL')); ?>" class="btn btn-dark"><i class="icon-line-awesome-mouse-pointer"></i> Post Gigs</a>
+    </div>
+  </div>
   </div>
 </div>
 <section class="section gray">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-auto col-12">
+      <div class="col6-xl-3 col-lg-auto col-12">
         <?php /*?>
 		    <div class="card contacts-sidebar_" style="border-bottom:0">
           <div class="card-header bg-white">
@@ -136,10 +144,10 @@ $s_currency=CURRENCY;
         ?>
             
       </div>
-      <div class="col-lg col-12" style="overflow-x: hidden;">
+      <div class="col-xl-9 col-lg col-12" style="overflow-x: hidden;">
       	<!-- Fun Facts Container -->
         <div class="fun-facts-container">
-          <a href="<?php D(get_link('manageproposalURL'))?>" class="fun-fact" data-fun-fact-color="#fff">
+          <a href="<?php D(get_link('manageproposalURL'))?>" class="fun-fact text-white" data-fun-fact-color="#111">
                 <div class="fun-fact-text">
                     <span>Active Gigs</span>
                     <h2><?php D($active_gigs); ?></h2>
@@ -153,7 +161,7 @@ $s_currency=CURRENCY;
                 </div>
                 <div class="fun-fact-icon"><i class="icon-feather-dollar-sign"></i></div>
             </a> -->
-            <a href="<?php D(get_link('managerequestURL'))?>" class="fun-fact" data-fun-fact-color="#fff">
+            <a href="<?php D(get_link('managerequestURL'))?>" class="fun-fact text-dark" data-fun-fact-color="#fdd007">
                 <div class="fun-fact-text">                    
                     
                     <span>Active Request</span>
@@ -168,7 +176,7 @@ $s_currency=CURRENCY;
                 </div>
                 <div class="fun-fact-icon"><i class="icon-feather-trash"></i></div>
             </div> -->
-            <a href="<?php D(get_link('sellingOrderURL').'?tab=completed')?>" class="fun-fact" data-fun-fact-color="#fff">
+            <a href="<?php D(get_link('sellingOrderURL').'?tab=completed')?>" class="fun-fact text-white" data-fun-fact-color="#111">
                 <div class="fun-fact-text">                    
                     
                     <span><?php D(__('dashboard_page_Orders_Completed','Orders Completed'));?></span>
@@ -177,7 +185,7 @@ $s_currency=CURRENCY;
                 <div class="fun-fact-icon"><i class="icon-feather-check-circle"></i></div>
             </a>
                        
-            <a href="<?php D(get_link('revenueURL'))?>" class="fun-fact" data-fun-fact-color="#fff">
+            <a href="<?php D(get_link('revenueURL'))?>" class="fun-fact text-dark" data-fun-fact-color="#fdd007">
                 <div class="fun-fact-text">                    
                     <span><?php D(__('dashboard_page_Balance','Balance'));?></span>
                     
@@ -187,7 +195,7 @@ $s_currency=CURRENCY;
                 <div class="fun-fact-icon"><i class="icon-feather-dollar-sign"></i></div>
             </a>
             
-            <a href="<?php D(get_link('sellingOrderURL').'?tab=delivered')?>" class="fun-fact" data-fun-fact-color="#fff">
+            <a href="<?php D(get_link('sellingOrderURL').'?tab=delivered')?>" class="fun-fact text-dark" data-fun-fact-color="#fdd007">
                 <div class="fun-fact-text">                    
                     
                     <span><?php D(__('dashboard_page_Delivered_Orders','Delivered Orders'));?></span>
@@ -196,7 +204,7 @@ $s_currency=CURRENCY;
                 <div class="fun-fact-icon"><i class="icon-feather-shopping-cart"></i></div>
             </a>
 
-            <a href="<?php D(get_link('sellingOrderURL').'?tab=cancelled')?>" class="fun-fact" data-fun-fact-color="#fff">
+            <a href="<?php D(get_link('sellingOrderURL').'?tab=cancelled')?>" class="fun-fact text-white" data-fun-fact-color="#111">
                 <div class="fun-fact-text">                    
                     
                     <span><?php D(__('dashboard_page_Orders_Cancelled','Orders Cancelled'));?></span>
@@ -205,7 +213,7 @@ $s_currency=CURRENCY;
                 <div class="fun-fact-icon"><i class="icon-feather-x-circle"></i></div>
             </a>
     
-           <a href="<?php D(get_link('sellingOrderURL').'?tab=active')?>" class="fun-fact" data-fun-fact-color="#fff">
+           <a href="<?php D(get_link('sellingOrderURL').'?tab=active')?>" class="fun-fact text-dark" data-fun-fact-color="#fdd007">
 
               <div class="fun-fact-text">
               <span><?php D(__('dashboard_page_Sales_In_Queue','Sales In Queue'));?></span>
@@ -213,7 +221,7 @@ $s_currency=CURRENCY;
               </div>
               <div class="fun-fact-icon"><i class="icon-feather-shopping-bag"></i></div>
               </a>
-              <a href="<?php D(get_link('buyingOrderURL').'?tab=purchase')?>" class="fun-fact" data-fun-fact-color="#fff">
+              <a href="<?php D(get_link('buyingOrderURL').'?tab=purchase')?>" class="fun-fact text-white" data-fun-fact-color="#111">
                     <div class="fun-fact-text"> 
                       <span>
                       <?php D(__('dashboard_page_Open_Purchases','Open Purchases'));?>
@@ -226,20 +234,12 @@ $s_currency=CURRENCY;
                     </a>
                <?php /*?><?php */?>
         </div>
-        <!-- Fun Facts Container / End -->
-		<div class="row">
-            <div class="col-6 text-right">
-              <a href="<?php D(get_link('postproposalURL')); ?>" class="btn btn-site"><i class="icon-line-awesome-mouse-pointer"></i> Post Gigs</a>
-            </div>
-            <div class="col-6 text-left">
-              <a href="<?php D(get_link('postrequestURL')); ?>" class="btn btn-dark"><i class="icon-line-awesome-hand-stop-o"></i> <?php D(__('Post_Requests','Post Request'))?></a>
-            </div>
-        </div>
+        <!-- Fun Facts Container / End -->		
         <div class="row">
             <div class="col-xl-6 col-12">
                 <!-- Dashboard Box -->
                 <div class="dashboard-box mb-4">
-                    <div class="headline">
+                    <div class="headline black">
                         <h3>Order Status</h3>                        
                     </div>
                     <div class="content">
@@ -254,7 +254,7 @@ $s_currency=CURRENCY;
             <div class="col-xl-6 col-12">
                 <!-- Dashboard Box -->
                 <div class="dashboard-box mb-4">
-                    <div class="headline">
+                    <div class="headline black">
                         <h3>Order Graph</h3>                        
                     </div>
                     <div class="content">
@@ -311,31 +311,28 @@ $s_currency=CURRENCY;
           </div>
         </div><?php */?>
         <ul class="nav nav-pills">
-              <li class="nav-item"> <a href="#notifications" data-toggle="tab" class="nav-link active">
-                <?php D(__('dashboard_page_Notifications','Notifications'));?>
-                <span class="badge badge-dark ml-1">
-                <?php D($notification_count); ?>
-                </span> </a> </li>
-              <li class="nav-item"> <a href="#inbox" data-toggle="tab" class="nav-link">
-                <?php D(__('dashboard_page_Messages','Messages'));?>
-                <span class="badge badge-dark ml-1">
-                <?php D($message_count); ?>
-                </span> </a> </li>
-            </ul>        
+          <li class="nav-item"> <a href="#notifications" data-toggle="tab" class="nav-link active">
+            <?php D(__('dashboard_page_Notifications','Notifications'));?>
+            <span class="badge badge-dark ml-1">
+            <?php D($notification_count); ?>
+            </span> </a> </li>
+          <li class="nav-item"> <a href="#inbox" data-toggle="tab" class="nav-link">
+            <?php D(__('dashboard_page_Messages','Messages'));?>
+            <span class="badge badge-dark ml-1">
+            <?php D($message_count); ?>
+            </span> </a> </li>
+        </ul>        
         <div class="card mb-4">          
           <div class="card-body p-0">
             <div class="tab-content message-tab">
               <div id="notifications" class="tab-pane fade show active">
                 <?php
-
-            if($notifications){
-
+            	if($notifications){
             	foreach($notifications as $notification){
-
-			      ?>
+			    ?>
                 <div class="message-list <?php if($notification->is_read != 1){ D("header-message-div-read"); }else{ D("header-message-div"); } ?>"><a href="<?php D(VZ); ?>" onclick="deleteNotification('<?php D($notification->notification_id); ?>')" class="btn btn-sm btn-outline-danger"> <i class="icon-feather-trash"></i> </a> <a class="media p-3 text-dark" href="<?php D(get_link('NotificationDetailsLink'))?><?php D($notification->notification_id); ?>"> <img src="<?php D(getMemberLogo($notification->sender_id))?>" width="48" height="48" class="rounded-circle mr-3">
                   <div class="media-body">
-                    <h5>
+                    <h5 class="mb-0">
                       <?php if($notification->sender_id){/*D($notification->member_name);*/ D(getUserName($notification->sender_id));}else{D(__('dashboard_page_Admin','Admin'));} ?>
                     </h5>
                     <p class="message mb-0">
@@ -502,7 +499,7 @@ $s_currency=CURRENCY;
                                     </div>                                                                        
                                 </div>
                             </div>
-                            <h3 class="price mb-0"><?php D($s_currency); ?><span><?php D($order->order_price); ?></h3>
+                            <h3 class="price"><span><?php D($s_currency); ?></span><?php D($order->order_price); ?></h3>
                         </div>
                           <!-- Buttons
                           <div class="buttons-to-right single-right-button">                            
@@ -563,9 +560,9 @@ $s_currency=CURRENCY;
                                     <li><span class="mb-0 dashboard-status-button <?php echo $class;?>"><?php D(ucwords($orderStatus[$order->order_status])); ?></span></li>
                                     </ul>
                                     </div>                                    
-                                </div>
-                                <h3 class="price mb-0"><?php D($s_currency); ?><span><?php D($order->order_price); ?></h3>
+                                </div>                                
                             </div>
+                            <h3 class="price"><span><?php D($s_currency); ?></span><?php D($order->order_price); ?></h3>
                         </div>
                           <!-- Buttons
                           <div class="buttons-to-right single-right-button ">                            

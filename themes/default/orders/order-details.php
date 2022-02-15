@@ -34,27 +34,25 @@ $orderStatus=array(
 
 ?>
 <?php //require_once("orderIncludes/orderDetails.php"); ?>
-
-<div class="container-fluid order-page mt-2">
+<section class="section">
+<div class="container-fluid order-page">
 <div class="row">
-      <div class="col-xl-3 col-lg-4 col-12">
+      <div class="col-xl-3 col-lg-auto col-12">
         <?php
           $templateLayout=array('view'=>'inc/user-nav','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
           load_template($templateLayout,$data);
         ?>
       </div>
-      <div class="col-xl-9 col-lg-8 col-12">
+      <div class="col-xl-9 col-lg col-12">
       <?php if($orderDetails->order_status == ORDER_PENDING or $orderDetails->order_status == ORDER_PROCESSING or $orderDetails->order_status == ORDER_DELIVERED or $orderDetails->order_status == ORDER_REVISION or $orderDetails->order_status == ORDER_CANCELLATION){ ?>
-
-
-  <div class="alert alert-primary d-flex mt-3">
+  <div class="alert alert-primary d-flex">
     <span>
-      <i class="icon-feather-check text-primary iphone5-d-none"></i> <?php D(__('order_details_page_orderID_number',"Order: #"));?>
+      <i class="icon-feather-check iphone5-d-none"></i> <?php D(__('order_details_page_orderID_number',"Order: #"));?>
       <?php D($orderDetails->order_number); ?>
       </span>
     <span class="ml-auto">
       <?php // D(__('order_details_page_Status',"Status:"));?>
-      <span class="badge badge-warning">
+      <span class="badge badge-light">
       <?php if($orderDetails->order_status ==ORDER_PROCESSING){ D(__('order_details_page_In',"In")); } ?>
       <?php 
 
@@ -67,27 +65,26 @@ $orderStatus=array(
 <?php }elseif($orderDetails->order_status == ORDER_CANCELLED){ ?>
   <div class="alert alert-danger d-flex mt-3">
     <p class="mb-0">
-      <i class="icon-feather-slash text-danger iphone5-d-none"></i> <?php D(__('order_details_page_Order_Cancelled',"Order Cancelled, Payment Has Been Refunded To Buyer."));?>
+      <i class="icon-feather-slash iphone5-d-none"></i> <?php D(__('order_details_page_Order_Cancelled',"Order Cancelled, Payment Has Been Refunded To Buyer."));?>
     </p>
     <p class="mb-0 ml-auto">
       <?php // D(__('order_details_page_Status',"Status:"));?>
-      <span class="badge badge-danger">
+      <span class="badge badge-light">
       <?php  D($orderStatus[$orderDetails->order_status]); ?>
       </span> </p>
   </div>
 <?php }elseif($orderDetails->order_status == ORDER_COMPLETED){
 
 	 ?>
-  <div class="alert alert-success d-flex mt-3">
+  <div class="alert alert-success d-flex">
     <?php if($orderDetails->seller_id == $loggedUser['MID']){ ?>
-    <p class="mb-0"><i class="icon-feather-check text-success"></i>
-      <?php D(__('order_details_page_Order_Delivered',"Order Delivered. You Earned"));?>
-      <?php D(CURRENCY) ; ?>
-      <?php D($orderDetails->revenues->amount); //D($orderDetails->order_price-$commission); ?>
+    <p class="mb-0"><i class="icon-feather-check"></i>
+      <b><?php D(__('order_details_page_Order_Delivered',"Order Delivered"));?></b>
+      <?php D(__('order_details_page_you_earned',""));?> <?php D(CURRENCY) ; ?><?php D($orderDetails->revenues->amount); //D($orderDetails->order_price-$commission); ?>
     </p>
     <p class="mb-0 ml-auto">
       <?php // D(__('order_details_page_Status',"Status:"));?>
-      <span class="badge badge-success">
+      <span class="badge badge-light">
       <?php D($orderStatus[$orderDetails->order_status]);?>
       </span></p>
     <?php if($orderDetails->revenues && $orderDetails->revenues->status!=1){?>
@@ -97,18 +94,18 @@ $orderStatus=array(
     </p>
     <?php }?>
     <?php }elseif($orderDetails->buyer_id == $loggedUser['MID']){ ?>
-    <p class="mb-0"><i class="icon-feather-check text-success"></i>
+    <p class="mb-0"><i class="icon-feather-check"></i>
       <?php D(__('order_details_page_Delivery_Submitted',"Delivery Submitted"));?>
     </p>
     <p class="mb-0 ml-auto">
       <?php // D(__('order_details_page_Status',"Status:"));?>
-      <span class="badge badge-success">
+      <span class="badge badge-light">
       <?php  D($orderStatus[$orderDetails->order_status]); ?>
       </span></p>
     <?php } ?>
   </div>
 <?php } ?>
-  <ul class="nav nav-tabs mb-3 mt-3">
+  <ul class="nav nav-pills mb-3 mt-3">
     <li class="nav-item"> <a href="#order-activity" data-toggle="tab" class="nav-link active">
       <?php D(__('order_details_page_Order_Activity',"Order Activity"));?>
       </a> </li>
@@ -122,103 +119,36 @@ $orderStatus=array(
     <div id="order-activity" class="tab-pane fade show active">
       <div class="listings-container">
         <div class="job-listing"> 
-          
           <!-- Job Listing Details -->
-          
           <div class="job-listing-details"> 
-            
             <!-- Logo -->
-            
-            <div class="job-listing-company-logo"> <img src="<?php D(URL_USERUPLOAD) ?>proposal-files/<?php D($orderDetails->proposal_image); ?>" class="img-fluid" alt=""> </div>
+            <div class="job-listing-company-logo" style="max-width:84px">
+            <img src="<?php D(URL_USERUPLOAD) ?>proposal-files/<?php D($orderDetails->proposal_image); ?>" class="img-fluid" alt=""> </div>
             <?php if($orderDetails->seller_id == $loggedUser['MID']){ ?>
-            
             <!-- Details -->
-            
             <div class="job-listing-description">
               <h3 class="job-listing-title">
+				<?php D($orderDetails->proposal_title); ?>
+              </h3>
+              <p class="">
                 <?php D(__('order_details_page_orderID_number',"Order #"));?>
                 <?php D($orderDetails->order_number); ?>
-              </h3>
-              <h3><?php D(CURRENCY) ; ?><?php D($orderDetails->order_price); ?></h3>                            
-              <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D($orderDetails->seller_user_name); ?>/<?php D($orderDetails->proposal_url); ?>" target="_blank" class="btn btn-sm btn-site mb-2">
-              <?php D(__('order_details_page_View_Proposal',"View Proposal/Service"));?>
-              </a>
-              
+              </p>                                                       
               <div class="job-listing-footer">
                 <ul>
                   <li><i class="icon-feather-user"></i> <b>Buyer:</b> <a href="<?php D(get_link('viewprofileURL')); ?><?php D($orderDetails->buyer_user_name); ?>" target="_blank" class="seller-buyer-name mr-1 text-success">
                     <?php /*ucfirst(D($orderDetails->buyer['member']->member_name));*/ D($orderDetails->buyer_user_name); ?>
                     </a> </li>
-                  <li><i class="icon-feather-check-circle"></i> <b>
-                    <?php D(__('order_details_page_Status',"Status:"));?>
-                    </b>
+                  <li><i class="icon-feather-check-circle"></i>
+                    <?php // D(__('order_details_page_Status',"Status:"));?>
                     <?php D($orderStatus[$orderDetails->order_status]);?>
+                    
                   </li>
                   <li><i class="icon-feather-calendar"></i> <!--<b><?php // D(__('order_details_page_Date',"Date:"));?></b>--> <?php D(dateFormat($orderDetails->order_date,'M d, Y')); ?>
                   </li>
-                </ul>
-              </div>              
-            </div>
-            
-            <?php }elseif($orderDetails->buyer_id == $loggedUser['MID']){ ?>
-            
-            <!-- Details -->
-            
-            <div class="job-listing-description">              
-              <div class="d-md-flex justify-content-between">
-              	<h3 class="job-listing-title"><?php  D($orderDetails->proposal_title); ?></h3>              
-              	<h3><?php D(CURRENCY) ; ?><?php D($orderDetails->order_price); ?></h3>
-              </div>
-              <div class="job-listing-footer">
-                <ul>
-                  <li><i class="icon-feather-user"></i> <b>
-                    <?php D(__('order_details_page_Freelancer',"Freelancer:"));?>
-                    </b> <a href="<?php D(get_link('viewprofileURL')); ?><?php D($orderDetails->seller_user_name); ?>" target="_blank" class="seller-buyer-name mr-1 text-success">
-                    <?php /* ucfirst(D($orderDetails->seller['member']->member_name));*/ D($orderDetails->seller_user_name);?>
-                    </a></li>
-                  <li><i class="icon-feather-check-circle"></i> <b>
-                    <?php D(__('order_details_page_Order',"Order:"));?>
-                    </b> #
-                    <?php D($orderDetails->order_number); ?>
-                  </li>
-                  <li><i class="icon-feather-calendar"></i> <!--<b><?php // D(__('order_details_page_Date',"Date:"));?></b>--> <?php D(dateFormat($orderDetails->order_date,'F d,Y')); ?>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <?php } ?>
-          </div>
-        </div>
-      </div>
-      <div class="dashboard-box mb-4">
-        <ul class="dashboard-box-list">
-          <?php /*?><thead>
+                  
+                
 
-            <tr>
-
-              <th><?php D(__('order_details_page_Item',"Item"));?></th>
-
-              <th><?php D(__('order_details_page_Quantity',"Quantity"));?></th>
-
-              <th><?php D(__('order_details_page_Duration',"Duration"));?></th>
-
-              <th><?php D(__('order_details_page_Amount',"Amount"));?></th>
-
-            </tr>
-
-          </thead><?php */?>
-          <li>
-            <div class="job-listing"> 
-              
-              <!-- Job Listing Details -->
-              
-              <div class="job-listing-details">
-                <div class="job-listing-description">
-                  <h3 class="job-listing-title">
-                    <?php D($orderDetails->proposal_title); ?>
-                  </h3>
-                  <div class="job-listing-footer">
                     <?php 
 
               if($orderDetails->extra){
@@ -257,10 +187,65 @@ $orderStatus=array(
                         </span></li>
                     </ul>
                   </div>
-                </div>
+              <?php /*?><a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D($orderDetails->seller_user_name); ?>/<?php D($orderDetails->proposal_url); ?>" target="_blank" class="btn btn-sm btn-site"><?php D(__('order_details_page_View_Proposal',"View Proposal/Service"));?></a><?php */?>         
+            </div>
+            
+            <?php }elseif($orderDetails->buyer_id == $loggedUser['MID']){ ?>
+            
+            <!-- Details -->
+            
+            <div class="job-listing-description">              
+              <div class="d-md-flex justify-content-between">
+              	<h3 class="job-listing-title"><?php  D($orderDetails->proposal_title); ?></h3>              
+              	<h3><?php D(CURRENCY) ; ?><?php D($orderDetails->order_price); ?></h3>
+              </div>
+              <div class="job-listing-footer">
+                <ul>
+                  <li><i class="icon-feather-user"></i> <b>
+                    <?php D(__('order_details_page_Freelancer',"Freelancer:"));?>
+                    </b> <a href="<?php D(get_link('viewprofileURL')); ?><?php D($orderDetails->seller_user_name); ?>" target="_blank" class="seller-buyer-name mr-1 text-success">
+                    <?php /* ucfirst(D($orderDetails->seller['member']->member_name));*/ D($orderDetails->seller_user_name);?>
+                    </a></li>
+                  <li><i class="icon-feather-check-circle"></i> <b>
+                    <?php D(__('order_details_page_Order',"Order:"));?>
+                    </b> #
+                    <?php D($orderDetails->order_number); ?>
+                  </li>
+                  <li><i class="icon-feather-calendar"></i> <!--<b><?php // D(__('order_details_page_Date',"Date:"));?></b>--> <?php D(dateFormat($orderDetails->order_date,'F d,Y')); ?>
+                  </li>
+                </ul>
               </div>
             </div>
-          </li>
+            
+            <?php } ?>
+            <?php if($orderDetails->seller_id == $loggedUser['MID']){ ?>
+            <div>
+            <h3 class="text-danger"><?php D(CURRENCY) ; ?><?php D($orderDetails->order_price); ?></h3>
+            <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D($orderDetails->seller_user_name); ?>/<?php D($orderDetails->proposal_url); ?>" target="_blank" class="btn btn-site"><?php D(__('order_details_page_View_Proposal',"View Proposal/Service"));?></a>
+            </div>
+            <?php } ?>
+          </div>
+          
+        </div>
+      </div>
+      <div class="dashboard-box mb-4">
+        <ul class="dashboard-box-list">
+          <?php /*?><thead>
+
+            <tr>
+
+              <th><?php D(__('order_details_page_Item',"Item"));?></th>
+
+              <th><?php D(__('order_details_page_Quantity',"Quantity"));?></th>
+
+              <th><?php D(__('order_details_page_Duration',"Duration"));?></th>
+
+              <th><?php D(__('order_details_page_Amount',"Amount"));?></th>
+
+            </tr>
+
+          </thead><?php */?>
+          
           <?php /*?><?php if($orderDetails->buyer_id == $loggedUser['MID']){  ?>
 
 	           <?php if(!empty($orderDetails->order_fee)){ ?>
@@ -321,22 +306,20 @@ $orderStatus=array(
 
       <?php if($orderDetails->order_status ==ORDER_PROCESSING or $orderDetails->order_status == ORDER_REVISION){ ?>
         <div class="card mb-4">
-      <?php if($orderDetails->seller_id == $loggedUser['MID']){ ?>
-      <div class="card-header">
-        <h4 class="text-center" id="countdown-heading">
-        <?php D(__('order_details_page_order_need_to_be_deliverd_before',"This Order Needs To Be Delivered Before This Day/Time:"));?>
-        </h4>
-      </div>
-      <?php }elseif($orderDetails->buyer_id == $loggedUser['MID']){ ?>
-        
-          <div class="card-header">
-            <h4 class="text-center" id="courntdown-heading">
+        <div class="card-body text-center">
+		  	<?php if($orderDetails->seller_id == $loggedUser['MID']){ ?>
+			<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+            <h5 id="countdown-heading">
+            <?php D(__('order_details_page_order_need_to_be_deliverd_before',"This Order Needs To Be Delivered Before This Day/Time:"));?>
+            </h5>          
+          	<?php }elseif($orderDetails->buyer_id == $loggedUser['MID']){ ?>        
+            <h5 id="courntdown-heading">
               <?php D(__('order_details_page_your_order_need_to_be_deliverd_before',"Your Order Should Be Ready On or Before This Day/Time:"));?>
-            </h4>
-          </div>
-        <?php } ?>
-        <div class="alert alert-danger text-center courntdown-late-order" style="display:none">
-        <p class="mb-0"><?php D(__('order_details_page_your_order_is_late',"Your order is late"));?></p>
+            </h5>
+        	<?php } ?>
+            <div class="courntdown-late-order mb-0" style="display:none">
+            <p class="mb-0"><?php D(__('order_details_page_your_order_is_late',"Your order is late"));?></p>
+        </div>
         </div>
         <div class="card-body" id="countdown-timer" style="display:none">
             <div class="d-flex justify-content-center">
@@ -637,11 +620,11 @@ $orderStatus=array(
           <div class="d-flex align-items-center justify-content-between">
             <label class="mb-0 d-none d-sm-block"><?php D(__('order_details_page_Attach_File',"Attach File (optional)"));?></label>  
             <div class="d-flex">                 
-                <div class="uploadButton mb-0">
+                <div class="uploadButton mb-0 mr-2">
                   <input type="file" id="file" class="uploadButton-input">
-                  <label class="uploadButton-button ripple-effect" for="file"><i class="icon-feather-paperclip"></i><?php // D(__('global_Choose_File',"Choose File"));?></label>
+                  <label class="uploadButton-button" for="file"><i class="icon-feather-paperclip"></i><?php // D(__('global_Choose_File',"Choose File"));?></label>
                 </div>
-                <button type="submit" class="btn btn-site saveBTN"><?php D(__('order_details_page_Send',"Send"));?></button> 
+                <button type="submit" class="btn btn-dark saveBTN"><?php D(__('order_details_page_Send',"Send"));?></button> 
             </div>
           </div>
           <div class="upload_file_div"></div>
@@ -652,10 +635,10 @@ $orderStatus=array(
     </div>
     <div id="resolution-center" class="tab-pane fade">
       <div class="card">
-        <div class="card-body">
-              <h3>
-                    <?php D(__('order_details_page_Order_Cancellation_Request',"Order Cancellation Request"));?>
-                  </h3>
+      	<div class="card-header">
+        	<h5><?php D(__('order_details_page_Order_Cancellation_Request',"Order Cancellation Request"));?></h5>
+        </div>
+        <div class="card-body">              
               <form method="post" id="resolutionForm" onsubmit="return performAction(this);return false;">
                 <input type="hidden" name="action" value="submit_cancellation_request"/>
                 <div class="form-group">
@@ -714,6 +697,7 @@ $orderStatus=array(
 </div>
 </div>
 </div>
+</section>
 <!---modal-->
 
 <?php if($orderDetails->seller_id == $loggedUser['MID']){ ?>
@@ -758,7 +742,7 @@ $orderStatus=array(
 
 								
 
-						<small class="text-info"><i class="fa fa-info-circle"></i> <?php D(__('modal_deliver_order_attachment_note',"NB: Maximum size 25MB"));?></small>
+						<small class="text-help"><i class="fa fa-info-circle"></i> <?php D(__('modal_deliver_order_attachment_note',"NB: Maximum size 25MB"));?></small>
 
 						<button type="submit" name="submit_delivered" class="btn btn-site float-right saveBTN" style="margin-top: -35px"><?php D(__('modal_deliver_Deliver_Order',"Deliver Order"));?></button>
 

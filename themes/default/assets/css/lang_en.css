@@ -19,7 +19,7 @@
 }
 #header .right-side {
 	float: right;
-	right: 20px;
+	right: 0;
 }
 .navigationTop {
 	float:left;
@@ -104,8 +104,8 @@ ul.list li:before {
 .card-image .featuretag{
 	right: 0;
 }
-.job-listing .job-listing-company-logo {
-	margin-right: 1.25rem;
+.job-listing .job-listing-company-logo, .job-listing .job-listing-user-logo {
+	margin-right: 1rem;
 }
 .dashboard-box .featuretag,
 .card-image .featuretag{
@@ -334,7 +334,7 @@ ul.list li:before {
 	border-left-color: var(--siteColor);
 }
 .message-reply .uploadButton {
-    margin: 0.1rem 1rem 0 auto;
+    margin: 0 1rem 0 auto;
 }
 .bootbox .modal-header .pull-right, .bootbox  .modal-header .btn-success, .bootbox  .modal-header .btn-primary {
     right: 21px;

@@ -20,7 +20,7 @@ load_template($templateLayout,$data);
       </div>
         <div class="col-xl-9 col-lg-8 col-12">
             <div class="dashboard-box mt-0 mb-4">
-                <div class="headline">
+                <div class="headline black">
                     <h4><?php D(__('transaction_page_Available_Balance','Available Balance:'));?> <b class="text-success"><?php D(CURRENCY); ?><?php D(displayamount($member_details['member']->balance)); ?> </b></h4>
                 </div>  
                 <ul class="dashboard-box-list">
@@ -55,8 +55,21 @@ load_template($templateLayout,$data);
                         <li>
                             <div class="job-listing">
                                 <div class="job-listing-details">                        
-                                <div class="job-listing-description">
-                                <h5 class="job-listing-title"><?php D($transaction->name) ; ?>
+                                <div class="job-listing-description"><h5 class="job-listing-title"><?php D($transaction->name) ; ?></h5>                                <div class="job-listing-footer">
+                                    <ul>
+                                        <li><i class="icon-feather-calendar"></i> <?php D(dateFormat($transaction->transaction_date,'F d, Y')) ; ?> <?php D(date('H:i',strtotime($transaction->transaction_date))) ; ?></li>
+                                        <li><i class="icon-feather-tag"></i> <b><?php D(__('transaction_page_Amount','Amount'));?>:</b> 
+                                            <span class="<?php D($clas)?>"><?php D($amount); ?></span>                        
+                                        </li>
+                                        <li><i class="icon-material-outline-money"></i> <b><?php D(__('transaction_page_Processing_Fee','Processing Fee'));?>:</b> <span class="text-danger"><?php if($commission>0){D('-'.CURRENCY.displayamount($commission));}else{ echo '0';}?></span></li>
+                                        
+                                    </ul>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- Buttons -->
+                            <div class="buttons-to-right single-right-button">
                                 <?php if($transaction->status==0){ ?>
                                 <span class="dashboard-status-button yellow"><?php D(__('transaction_page_Pending','Pending'));?> </span>
                                 <?php }elseif($transaction->status== 1){?>
@@ -64,26 +77,13 @@ load_template($templateLayout,$data);
                                 <?php }else{?>
                                 <span class="dashboard-status-button red"><?php D(__('transaction_page_Cancelled','Cancelled'));?></span>
                                 <?php } ?>
-                                </h5>
-                                <div class="job-listing-footer">
-                                    <ul>
-                                        <li><i class="icon-feather-calendar"></i> <b><?php D(__('transaction_page_Date','Date'));?>:</b> <?php D(dateFormat($transaction->transaction_date,'F d, Y')) ; ?> <?php D(date('H:i',strtotime($transaction->transaction_date))) ; ?></li>
-                                        <li><i class="icon-feather-tag"></i> <b><?php D(__('transaction_page_Amount','Amount'));?>:</b> 
-                                            <span class="<?php D($clas)?>"><?php D($amount); ?></span>                        
-                                        </li>
-                                        <li><i class="icon-material-outline-money"></i> <b><?php D(__('transaction_page_Processing_Fee','Processing Fee'));?>:</b> <span class="text-danger"><?php if($commission>0){D('-'.CURRENCY.displayamount($commission));}else{ echo '0';}?></span></li>
-                                    </ul>
-                                </div>
-                                
                             </div>
-                            </div>
-                            </div>                    
-                            </li>
+                         </li>
                     <?php	}
                         }?>
                 </ul>
             </div>
-                <div class="box-footer clearfix row justify-content-center mb-5 mt-0">
+                <div class="box-footer clearfix row justify-content-center mt-0">
                     <?php echo $links;?>
                 </div>
         </div>	

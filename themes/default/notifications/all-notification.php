@@ -18,24 +18,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container-fluid">			
 <div class="row">
-      <div class="col-xl-3 col-lg-4 col-12">
+      <div class="col-xl-3 col-lg-auto col-12">
         <?php
           $templateLayout=array('view'=>'inc/user-nav','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
           load_template($templateLayout,$data);
         ?>
       </div>
-      <div class="col-xl-9 col-lg-8 col-12">
+      <div class="col-xl-9 col-lg col-12">
     <div class="dashboard-box mt-0">
 
             <!-- Headline -->
 
-            <div class="headline">
+            <div class="headline black">
 
                 <h4><i class="icon-feather-bell text-site"></i> <?php D(__('notification_page_All_Notifications',"All Notifications"));?></h4>
 
             </div>
 
-			<div style="max-height:460px" data-simplebar>
+			<div style="max-height:603px" data-simplebar>
 
             <ul class="dashboard-box-list">
 
@@ -85,9 +85,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             <!-- Logo -->
 
-                            <a href="<?php D(get_link('NotificationDetailsLink'))?><?php D($notification->notification_id); ?>" class="job-listing-company-logo" style="max-width: 64px">
+                            <a href="<?php D(get_link('NotificationDetailsLink'))?><?php D($notification->notification_id); ?>" class="job-listing-user-logo">
 
-                                <img src="<?php D(getMemberLogo($notification->sender_id))?>" alt="" class="img-fluid" height="64" width="64">
+                                <img src="<?php D(getMemberLogo($notification->sender_id))?>" alt="" class="rounded-circle" height="48" width="48">
 
                             </a>
 
@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             <div class="job-listing-description">
 
-                                <h3 class="job-listing-title"><a href="<?php D(get_link('NotificationDetailsLink'))?><?php D($notification->notification_id); ?>"><?php /*D($member_name);*/ D($sender_user_name); ?></a></h3>
+                                <h4 class="job-listing-title mb-0"><a href="<?php D(get_link('NotificationDetailsLink'))?><?php D($notification->notification_id); ?>"><?php /*D($member_name);*/ D($sender_user_name); ?></a></h4>
 
                                 <span><?php D($notification->template_content);?></span>
 

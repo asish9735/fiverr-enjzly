@@ -535,21 +535,10 @@ ul.category-list > li > a:hover {
 .accordion__item.active .accordion-header,
 .badge-site {
 	background-color:var(--siteColor);
-    color: #fff;
+    color: #111;
 }
 .dropdown-item.active, .dropdown-item:active {
     background-color: var(--siteColor);
-}
-
-.page-link {
-	color:var(--siteColor);
-}
-.page-link:hover {
-	color:#00b64c;
-}
-.page-item.active .page-link {
-	background-color:var(--siteColor);
-	border-color:var(--siteColor)
 }
 ul.list li:before, .job-category .category-box:hover {
 	color:var(--siteColor);

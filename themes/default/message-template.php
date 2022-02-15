@@ -195,7 +195,7 @@ Vue.component('active-chat-header', {
 							<i class="icon-feather-check" v-if="message.sender_id == login_user.member_id && active_chat.last_seen_msg >= message.message_id"></i>
 						</span>
 						</p>
-						<a v-if="message.is_deleted == null" href="javascript:void(0)" class="fav-star" :class="{'active': parseInt(message.starred) > 0}" @click="starMessage($event, message)"><i class="icon-material-outline-star-border"></i></a>
+						<a v-if="message.is_deleted == null" href="javascript:void(0)" class="fav-star" :class="{'active': parseInt(message.starred) > 0}" @click="starMessage($event, message)"><i class="icon-material-outline-star"></i></a>
 						<div class="input-group message-edit-box" v-if="message.is_deleted == null">
 							<input type="text" class="form-control" value="Edit text here">
 							<div class="input-group-append"><button class="btn btn-outline-site"><i class="icon-feather-send"></i></button></div>
@@ -571,7 +571,7 @@ Vue.component('active-chat-body', {
 			<input type="checkbox" v-model="send_on_enter" id="keyboard">
 			<label for="keyboard" class="mb-0"><span class="checkbox-icon"></span> Use ENTER KEY to send message</label>
 		</div>
-		<button type="button" @click="sendOffer" class="btn btn-outline-site ml-auto"><?php D(__('message_box_page_Create_A_Offer',"Create A Offer"));?></button>
+		<button type="button" @click="sendOffer" class="btn btn-site ml-auto"><?php D(__('message_box_page_Create_A_Offer',"Create A Offer"));?></button>
 	</div>
 </div>
 </script>

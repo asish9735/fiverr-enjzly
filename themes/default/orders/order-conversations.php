@@ -20,18 +20,18 @@ if($orderconversations){
                 <!-- Job Listing Details -->
                 <div class="job-listing-details">
                 	<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="<?php D(getMemberLogo($conversation->sender_id)); ?>" alt="" height="64" width="64">
+						<div class="job-listing-user-logo">
+							<img src="<?php D(getMemberLogo($conversation->sender_id)); ?>" alt="" height="48" width="48" class="rounded-circle">
 						</div>
 
                     <!-- Details -->
                     <div class="job-listing-description">
-                        <h3 class="job-listing-title mb-0"><a href="#"><?php /*D($conversation->member_name);*/ D($sender_user_name);?></a></h3>
-        				<p class="mt-0">
-							<?php D($conversation->message); ?>
+                        <h4 class="job-listing-title mb-0"><a href="#"><?php /*D($conversation->member_name);*/ D($sender_user_name);?></a></h4>
+                        <p><?php D($conversation->message); ?></p>
+        				<p class="mt-0">							
                             <?php if(!empty($conversation->file)){ ?>
-                                <a target="_blank" href="<?php D(URL_USERUPLOAD.'conversation-files/'.$conversation->file)?>" class="d-block mt-2 ml-1" download>
-                                    <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
+                                <a target="_blank" href="<?php D(URL_USERUPLOAD.'conversation-files/'.$conversation->file)?>" class="text-dark" download>
+                                    <i class="icon-feather-download"></i> <?php echo $conversation->file; ?>
                                 </a>
                                 
                             <?php }?>
@@ -39,11 +39,11 @@ if($orderconversations){
                         <!-- Job Listing Footer -->
                         <div class="job-listing-footer">
                             <ul>
-                                <li><small><i class="icon-feather-calendar"></i>
+                                <li><i class="icon-feather-calendar"></i>
                                 <?php D(dateFormat($conversation->date,'M d, Y').' '.date('H:i', strtotime($conversation->date))); ?> 
-		<?php if($loggedUser['MID']!= $conversation->sender_id){ ?>
-		| <a href="#" data-toggle="modal" data-target="#report-modal" class="text-muted"><i class="fa fa-flag"></i> <?php D(__('order_conversation_page_Report',"Report"));?></a> 
-		<?php } ?></small></li>
+		<?php if($loggedUser['MID']!= $conversation->sender_id){ ?></li>
+		 <li><a href="#" data-toggle="modal" data-target="#report-modal" class="text-muted"><i class="fa fa-flag"></i> <?php D(__('order_conversation_page_Report',"Report"));?></a> 
+		<?php } ?></li>
                             </ul>
                         </div>
                     </div>

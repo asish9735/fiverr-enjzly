@@ -24,10 +24,11 @@ if($rating){
 ?>
 
 <div class="card">
-  <div class="card-body">
-    <div class="profile mb-3">
-      <div class="avatar-wrapper"> <a href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>"><img src="<?php D(getMemberLogo($loggedUser['MID'])); ?>" class="rounded-circle img-fluid"></a> </div>
-      <div class="text-center">
+    <div class="profile-x">
+      <div class="avatar-wrapper">
+      <a href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>"><img src="<?php D(getMemberLogo($loggedUser['MID'])); ?>" class="rounded-circle img-fluid"></a> </div>
+      <div class="profile-x-body">
+        <p class="mb-1">Welcome</p>
         <h4><a href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>">Richard Wills</a></h4>
         <!-- <h5>Civil Engineer</h5> -->
         <div class="star-rating d-block" data-rating="<?php printf("%.1f",$avg_rating);?>" data-showcount="true" data-digit="(25)"></div>
@@ -35,7 +36,7 @@ if($rating){
         <?php D($member_details->country_name); ?>
       </div>
     </div>
-    <div class="mp-box mp-box-white">
+    <div class="mp-box mp-box-white mb-2">
       <div class="box-row">
         <ul class="main-cat-list active">
           <li> <a class="active" href="<?php D(get_link('dashboardURL'))?>"> <i class="icon-feather-grid"></i>
@@ -67,7 +68,7 @@ if($rating){
           <li> <a href="<?php D(get_link('NotificationListURL'));?>"><i class="icon-feather-bell"></i>
             <?php D(__('header_Notifications','Notifications'))?>
             </a> </li>
-          <li class="mb-0">
+          <li class="sub-header">
             <h5>
               <?php D(__('header_for_seller','For Seller'))?>
             </h5>            
@@ -84,7 +85,7 @@ if($rating){
           <li> <a href="<?php D(get_link('revenueURL')); ?>"> <i class="icon-line-awesome-money"></i>
           <?php D(__('header_Revenues','Earnings'))?>
           </a> </li>
-          <li class="mb-0">
+          <li class="sub-header">
             <h5>
               <?php D(__('header_for_buyer','For Buyer'))?>
             </h5>            
@@ -101,5 +102,4 @@ if($rating){
         </ul>
       </div>
     </div>
-  </div>
 </div>

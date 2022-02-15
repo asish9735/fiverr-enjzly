@@ -82,20 +82,35 @@ ul.category-list > li {
 /*html {
 	 font-size:16px
 	}*/
+	.job-listing .job-listing-footer ul li:first-child {
+		min-width: 185px;
+	}
+	.job-listing .job-listing-footer ul li:nth-child(2) {
+		min-width: 160px;
+	}
 	.icon-box h4 {
-	font-size: 1.333rem;
-}
-.home-banner {
-	min-height:575px;
-}
-.home-banner .carousel-caption h1 {
-	font-size: 2.75rem;
-}
+		font-size: 1.333rem;
+	}
+	.home-banner {
+		min-height:575px;
+	}
+	.home-banner .carousel-caption h1 {
+		font-size: 2.75rem;
+	}
+	.profile-x {
+    	display: flex;
+	}
+	.profile-x .avatar-wrapper {
+		margin: 0 1rem 0 0;
+	}
 }
 @media (max-width: 1199.98px) {
-.category-nav #navigation > ul > li > a {
-	font-size: 0.85rem;
-}
+	.category-nav #navigation > ul > li > a {
+		font-size: 0.85rem;
+	}
+	.profile-x{
+		text-align:center
+	}
 }
  @media (max-width: 991.98px) {
 .hide-under-991 {
@@ -155,10 +170,10 @@ ul.category-list > li {
 .breadcrumbs h1 {
 	font-size: 1.5rem;
 }
-.avatar-wrapper {
-	width: 100px;
-	height: 100px;
+#order-activity .job-listing-details{
+	display:block;
 }
+
 }
  @media (min-width: 601px) and (max-width: 767px) {
 .package .column {

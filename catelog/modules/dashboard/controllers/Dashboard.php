@@ -118,21 +118,22 @@ class Dashboard extends MX_Controller {
 		$config['use_page_numbers'] = TRUE;  
         $config['full_tag_open'] = "<ul class='pagination'>";
         $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = 'First';
-        $config['first_tag_open'] = '<li>';
+        $config['first_link'] = '<i class="icon-line-awesome-angle-double-left"></i>';
+		$config['last_link'] = '<i class="icon-line-awesome-angle-double-right"></i>';
+        $config['first_tag_open'] = '<li class="page-item">';
         $config['first_tag_close'] = '</li>';
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';
         $config['cur_tag_open'] = "<li class='page-item active'><a href='javascript:void(0)' class='page-link'>";
         $config['cur_tag_close'] = '</a></li>';
-        $config['last_tag_open'] = "<li class='last'>";
+        $config['last_tag_open'] = '<li class="page-item">';
         $config['last_tag_close'] = '</li>';
-        /*$config['next_link'] = '<i class="zmdi zmdi-chevron-right"></i>';
-        $config['next_tag_open'] = "<li>";
-        $config['next_tag_close'] = '</li>';*/
-       /* $config['prev_link'] = '<i class="zmdi zmdi-chevron-left"></i>';
-        $config['prev_tag_open'] = '<li>';
-        $config['prev_tag_close'] = '</li>';*/                 
+        $config['next_link'] = '<i class="icon-line-awesome-angle-right"></i>';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_link'] = '<i class="icon-line-awesome-angle-left"></i>';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';           
         $config['attributes'] = array('class' => 'page-link');
 		$this->pagination->initialize($config); 
 		$limit_from=$this->input->get('per_page');

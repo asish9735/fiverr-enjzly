@@ -9,21 +9,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </h4>
 </div>
 <div class="header-notifications-scroll" data-simplebar>
-    <ul>
-        
-    
-<!--<h3 class="dropdown-header">
-</h3>-->
-<?php
-if($notification){
-foreach($notification as $notificationmsg){
-    if($notificationmsg->sender_id){
-        //$member_name=$notificationmsg->member_name;
-        $sender_user_name=getUserName($notificationmsg->sender_id);
-    }else{
-        $member_name=$sender_user_name=__('notification_list_page_Admin','Admin');
-    }
-?>
+<ul>            
+    <!--<h3 class="dropdown-header"></h3>-->
+    <?php
+    if($notification){
+    foreach($notification as $notificationmsg){
+        if($notificationmsg->sender_id){
+            //$member_name=$notificationmsg->member_name;
+            $sender_user_name=getUserName($notificationmsg->sender_id);
+        }else{
+            $member_name=$sender_user_name=__('notification_list_page_Admin','Admin');
+        }
+    ?>
 
 <!-- Notification -->
 <li class="<?php if($notificationmsg->is_read != 1){D('notifications-not-read header-message-div-unread_');}else{D('header-message-div_');	}?>">
