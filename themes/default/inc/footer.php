@@ -87,13 +87,12 @@ $get_all_category=getAllCategory(array('limit'=>5));
 <section class="post_footer">
 <div class="container-fluid">
 <div class="row align-items-center">
-	<div class="col-auto" style="min-width:200px;">
+	<div class="col-md-auto order-md-1 mb-3 mb-md-0" style="min-width:200px;">
     	<a class="<?php if($loggedUser){ D("text-success"); } ?>" href="<?php D(VPATH);?>" title="Home">
         	<img src="<?php echo theme_url().IMAGE.LOGO_NAME;?>" alt="<?php D($website_name);?>" height="40">
         </a>
     </div>
-	<div class="col text-center">&copy; Copyright <?php D(date('Y'))?>. All Rights Reserved.</div>
-    <div class="col-auto">
+    <div class="col-md-auto order-md-3 mb-3 mb-md-0">
     	<ul class="social-links">
             <li><a href="<?php D(get_option_value('facebook_url'))?>" target="_blank"><i class="icon-brand-facebook-f"></i></a></li>
             <li><a href="<?php D(get_option_value('twitter_url'))?>" target="_blank"><i class="icon-brand-twitter"></i></a></li>    
@@ -101,6 +100,8 @@ $get_all_category=getAllCategory(array('limit'=>5));
             <li><a href="<?php D(get_option_value('youtube_url'))?>" target="_blank"><i class="icon-brand-google-plus"></i></a></li>    
   		</ul>
     </div>
+	<div class="col-md text-md-center order-md-2">&copy; Copyright <?php D(date('Y'))?>. All Rights Reserved.</div>
+    
 </div>
 </div>
 </section>

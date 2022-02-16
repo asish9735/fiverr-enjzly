@@ -17,11 +17,11 @@ $username=$loggedUser['UNAME'];
             <?php D(__('manage_proposal_page_Vacation_Mode','Vacation Mode:'))?>
             <label id="vacation_section" class="mb-0" style="display:inline-block">
               <?php if($member_details['member']->is_vacation!= 1){ ?>
-              <button id="turn_on_seller_vaction" data-toggle="button" class="btn btn-lg btn-toggle">
+              <button id="turn_on_seller_vaction" data-toggle="button" class="btn btn-toggle">
               <div class="toggle-handle"></div>
               </button>
               <?php }else{ ?>
-              <button id="turn_off_seller_vaction" data-toggle="button" class="btn btn-lg btn-toggle active">
+              <button id="turn_off_seller_vaction" data-toggle="button" class="btn btn-toggle active">
               <div class="toggle-handle"></div>
               </button>
               <?php } ?>
@@ -34,14 +34,14 @@ $username=$loggedUser['UNAME'];
         </div>--> 
         </div>
       </div>
-      <div class="col-sm-4 col-12">
+      <div class="col-sm-4 col-12 text-center">
         <h1>
           <?php D(__('manage_proposal_page_heading','View My Gigs'))?>
         </h1>
       </div>
-      <div class="col-sm-4 col-12 text-sm-right"> <a href="<?php D(get_link('postproposalURL'))?>" class="btn btn-site mr-2"> <i class="icon-brand-buysellads"></i>
-        <?php D(__('manage_proposal_page_post_proposal_button','Add New Gigs'))?>
-        </a> </div>
+      <div class="col-sm-4 col-12 text-sm-right">
+      <a href="<?php D(get_link('postproposalURL'))?>" class="btn btn-dark mr-2"> <i class="icon-brand-buysellads"></i> <?php D(__('manage_proposal_page_post_proposal_button','Add New Gigs'))?></a>
+      </div>
     </div>
   </div>
 </div>
@@ -238,10 +238,9 @@ $username=$loggedUser['UNAME'];
             if(count($active_proposals) == 0){
 
           ?>
-              <div class='p-3'>
-                <div class="alert alert-danger mb-0">
-                  <?php D(__('manage_proposal_page_list_active_no_record',"You currently have no proposals/services to sell."));?>
-                </div>
+              <div class='p-3 text-center'>
+              	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5><?php D(__('manage_proposal_page_list_active_no_record',"You currently have no proposals/services to sell."));?></h5>
               </div>
               <?php
 
@@ -332,11 +331,9 @@ $username=$loggedUser['UNAME'];
                           if(count($paused_proposals) == 0){
 
                         ?>
-              <div class='p-3'>
-                <div class="text-center">
+              <div class='p-3 text-center'>
                 	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
                     <h5><?php D(__('manage_proposal_page_list_paused_no_record',"You currently have no paused proposals/services."));?></h5>
-                </div>
               </div>
               <?php
 
@@ -424,12 +421,10 @@ $username=$loggedUser['UNAME'];
 			  if(count($pending_proposals) == 0){
 
 		  ?>
-              <div class='p-3'>
-                <div class="text-center">
-                	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+              <div class='p-3 text-center'>
+              		<h2 class="icon-line-awesome-info-circle text-danger"></h2>
                     <h5><?php D(__('manage_proposal_page_list_pending_no_record',"You currently have no proposals/services pending."));?></h5>
                 </div>
-              </div>
               <?php
 
                           }
@@ -515,15 +510,11 @@ $username=$loggedUser['UNAME'];
 				?>
               </ul>
               <?php
-
-                          if(count($modification_proposals) == 0){
-
-                        ?>
-              <div class='p-3'>
-                <div class="text-center">
-                	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
-                    <h5><?php D(__('manage_proposal_page_list_pending_no_record',"You currently have no proposals/services modification."));?></h5>
-                </div>
+                 if(count($modification_proposals) == 0){
+              ?>
+              <div class='p-3 text-center'>
+              	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+              	<h5><?php D(__('manage_proposal_page_list_pending_no_record',"You currently have no proposals/services modification."));?></h5>
               </div>
               <?php
 
@@ -627,7 +618,7 @@ $username=$loggedUser['UNAME'];
       <form action="" method="post" accept-charset="utf-8" id="vacationform" class="form-horizontal" role="form" name="vacationform" onsubmit="saveVacationActive(this);return false;">
         <div class="modal-header"><!-- modal-header Starts -->
           
-          <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
           <?php D(__('global_Close',"Close"));?>
           </button>
           <h4 class="modal-title">

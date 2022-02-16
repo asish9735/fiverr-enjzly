@@ -7,9 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h1>
       <?php if($is_login){?>
       <?php D(__('view_offer_page_heading',"View Offers"));?>
-      (
-      <?php D(count($request_offer)); ?>
-      )
+      (<?php D(count($request_offer)); ?>)
       <?php }else{?>
       <?php D(ucfirst($request_details['request']->request_title)); ?>
       <?php }?>
@@ -19,8 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <section class="section">
   <div class="container">
     <div class="view-offers">
-      <div class="listings-container mb-4">
-        <div class="headline">
+      <div class="listings-container compact-list-layout mb-4">
+        <div class="headline black">
           <h4>
             <?php D(__('view_offer_page_Request_Description',"Request Description:"));?>
           </h4>
@@ -93,8 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             		$seller_dtl=getMemberDetails($offer->proposal_seller_id,array('main'=>1));
 					$url=get_link('ProposalDetailsURL').'/'.$seller_user_name.'/'.$offer->proposal_url;
 				?>
-               
-                    
+                                   
 				<!-- Job Listing -->
                 <div class="job-listing">
 
@@ -179,17 +176,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
                     </div>
                     
-                </div>
-                        
-				
-	
+                </div>                                      						
       
       <?php	
 			}
             }else{?>
-      <div class="card rounded-0 mb-3">
+      <div class="card text-center rounded-0 mb-3">
         <div class="card-body">
-          <h5 class="text-muted text-center">
+          <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+          <h5>
             <?php D(__('view_offer_page_no_offer_yet',"Unfortunately, no offers yet. Please wait a little longer."));?>
           </h5>
         </div>

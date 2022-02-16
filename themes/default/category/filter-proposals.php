@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$info=__('filter_proposal_random_text',"This is an extended list of our random proposals/services");
 	}
 	?>
-    <div class="container">
+    <div class="container-fluid">
         <h1> <?php D($title); ?> </h1>
         <p><?php D($info); ?></p>
     </div>
@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<input type="hidden" name="is_random" id="is_random" value="<?php D($is_random);?>"/>
 		
 			<div class="card mb-4">
-				<div class="card-header">
+				<div class="card-header black">
 					<h5><?php D(__('filter_proposal_Categories',"Categories"));?></h5>
 				</div>
 				<div class="card-body">
@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					if($all_category){
 						foreach($all_category as $c=>$category){
 					?>
-                    <div class="custom-control custom-checkbox mt-2 mb-2">
+                    <div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input categoryids" name="category_ids[]" id="check_<?php D($category->category_id)?>" value="<?php D($category->category_id)?>">
                       <label class="custom-control-label" for="check_<?php D($category->category_id)?>"><?php D($category->name); ?></label>
                     </div>					
@@ -59,14 +59,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 			<div class="card mb-4">
 				<div class="card-body">
-                	<div class="custom-control custom-checkbox">
+                	<div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input get_online_sellers" name="is_online_user" id="online_user" value="1">
                       <label class="custom-control-label" for="online_user"><?php D(__('filter_proposal_show_online_user',"Show Online Freelancers"));?></label>
                     </div>					
 				</div>
 			</div>
 			<div class="card mb-4">
-				<div class="card-header">
+				<div class="card-header black">
 					<h5><?php D(__('filter_proposal_Delivery_Time',"Delivery Time"));?></h5>
 					<button class="btn btn-secondary btn-sm float-right clear_delivery_time d-none" onclick="clearDelivery()">
 						<i class="fa fa-times-circle"></i> <?php D(__('filter_proposal_Clear Filter',"Clear Filter"));?>
@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				if($all_delivery_times){
 					foreach($all_delivery_times as $t=>$delivery_time){
 				?>
-                	<div class="custom-control custom-checkbox mt-2 mb-2">
+                	<div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input get_delivery_time" name="delivery_id[]" id="check_<?php D($delivery_time->delivery_id);?>" value="<?php D($delivery_time->delivery_id);?>">
                       <label class="custom-control-label" for="check_<?php D($delivery_time->delivery_id);?>"><?php D($delivery_time->delivery_title);?></label>
                     </div>
@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 			<div class="card mb-4">
-				<div class="card-header">
+				<div class="card-header black">
 					<h5><?php D(__('filter_proposal_Freelancer_Level',"Freelancer Level"));?></h5>
 					<button class="btn btn-secondary btn-sm float-right clear_seller_level d-none" onclick="clearLevel()">
 						<i class="fa fa-times-circle"></i> <?php D(__('filter_proposal_Clear Filter',"Clear Filter"));?>
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					if($all_level){
 						foreach($all_level as $l=>$level){
 					?>
-                    <div class="custom-control custom-checkbox mt-2 mb-2">
+                    <div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input get_seller_level" name="level_id[]" id="check_<?php D($l); ?>" value="<?php D($l); ?>">
                       <label class="custom-control-label" for="check_<?php D($l); ?>"><?php D($level['name']); ?></label>
                     </div>						
@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 			<div class="card">
-				<div class="card-header">
+				<div class="card-header black">
 					<h5><?php D(__('filter_proposal_Freelancer_Language',"Freelancer Language"));?></h5>
 					<button class="btn btn-secondary btn-sm float-right clear_seller_language d-none" onclick="clearLanguage()">
 						<i class="fa fa-times-circle"></i> <?php D(__('filter_proposal_Clear Filter',"Clear Filter"));?>
@@ -127,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					if($all_language){
 						foreach($all_language as $l=>$language){
 					?>
-                    <div class="custom-control custom-checkbox mt-2 mb-2">
+                    <div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input get_seller_language" name="language_id[]" id="check_<?php D($language->language_id); ?>" value="<?php D($language->language_id); ?>">
                       <label class="custom-control-label" for="check_<?php D($language->language_id); ?>"><?php D($language->language_title); ?></label>
                     </div>					

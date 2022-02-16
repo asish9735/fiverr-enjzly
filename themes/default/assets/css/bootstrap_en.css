@@ -3123,7 +3123,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	pointer-events: none;
 	content: "";
 	background-color: #fff;
-	border: #adb5bd solid 1px;
+	border: #777 solid 1px;
 }
 .custom-control-label::after {
 	position: absolute;
@@ -3179,7 +3179,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	left: calc(-2.25rem + 2px);
 	width: calc(1rem - 4px);
 	height: calc(1rem - 4px);
-	background-color: #adb5bd;
+	background-color: #777;
 	border-radius: 0.5rem;
 	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
 	transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -5590,7 +5590,7 @@ a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
 	background-color: #dae0e5 !important;
 }
 .bg-dark {
-	background-color: #343a40 !important;
+	background-color: var(--dark) !important;
 }
 a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 	background-color: #1d2124 !important;

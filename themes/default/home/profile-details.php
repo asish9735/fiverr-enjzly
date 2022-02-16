@@ -51,11 +51,11 @@ if($member_details['member_logo'] && $member_details['member_logo']->logo && fil
             </span> </h3>
           <?php if($proposal){
 
-if($is_login){
-
-    if(!$is_editable){ 
-
-?>
+			if($is_login){
+			
+			if(!$is_editable){ 
+			
+			?>
           <a class="btn btn-site mt-3" href="<?php D(get_link('messageLink')); ?>/<?php D($member_details['member']->member_id);?>">
           <?php D(__('profile_page_Contact',"Contact"));?>
           <small>(
@@ -74,9 +74,9 @@ if($is_login){
 } ?>
           <ul>
             <li>
-              <div class="star-rating" data-rating="<?php printf("%.1f",$member_details['member']->avg_rating);?>" data-showcount="true" data-digit="(<?php D($member_details['member']->total_review); ?>)"> <span class="star-count"></span></div>
+              <div class="star-rating" data-rating="<?php printf("%.1f",$member_details['member']->avg_rating);?>" data-showcount="true" data-digit="[<?php D($member_details['member']->total_review); ?>]"></div>
             </li>
-            <li><img class="flag" src="<?php D(theme_url().IMAGE);?>flags/<?php D($member_details['member_address']->country_flag); ?>.svg" alt=""> <i class="icon-feather-map-pin"></i>
+            <li><img class="flag" src="<?php D(theme_url().IMAGE);?>flags/<?php D($member_details['member_address']->country_flag); ?>.svg" alt="">
               <?php D($member_details['member_address']->member_country_name); ?>
             </li>
             
@@ -98,8 +98,327 @@ if($is_login){
 <section class="section">
   <div class="container-fluid"> <!-- Container starts -->
     <div class="row">
+      <div class="col-xl-9 col-lg-8 col-12">
+        <div class="card user-sidebar mb-4"><!--- card user-sidebar rounded-0 Starts -->
+          
+          <div class="card-header black">
+            <h4>
+              <?php D(__('profile_page_Description',"Description"));?>
+            </h4>
+          </div>
+          <div class="card-body">
+            <p>
+              <?php D($member_details['member_basic']->member_overview); ?>
+            </p>
+          </div>
+        </div>
+        <h4 class="mb-4">
+          <?php /*D(ucfirst($member_details['member']->member_name));*/ D($username); ?>
+          <?php D(__('profile_page_proposal_service',"\'s Proposals/Services"));?>
+        </h4>
+        <div class="row grid-view">
+          <?php
+
+                if($proposals){
+
+                	$proposaldata=array();
+
+                	foreach($proposals as $k=>$proposal){
+
+					?>
+          <div class="col-md-4 col-12">
+            <?php 
+
+					 	$proposaldata['proposal']=$proposal;
+
+					 	if($is_editable){
+
+							$proposaldata['proposal']->hide_footer_action=1;
+
+						}
+
+					 	$templateLayout=array('view'=>'proposals/proposal-list','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
+
+						load_template($templateLayout,$proposaldata);
+
+					 ?>
+          </div>
+          <?php
+
+					}
+
+				}else{	
+
+                ?>
+          <div class="col-md-12">
+            <?php if($is_editable) { ?>
+            <h5 class="text-center text-muted">
+              <?php D(__('profile_page_Hey',"Hey"));?>
+              <?php /*D(ucfirst($member_details['member']->member_name));*/ D($username);?>
+              <?php D(__('profile_page_no_proposal',"! you have no proposals/services displayed here at the moment. Click "));?>
+              <a href="<?php D(get_link('startsellingURL'))?>" class="text-success">
+              <?php D(__('profile_page_no_proposal_click_here',"here"));?>
+              </a>
+              <?php D(__('profile_page_no_proposal_last_part',"to create a proposal/service."));?>
+            </h5>
+            <?php }else{ ?>
+            <h5 class="text-center text-muted">
+              <?php /*D(ucfirst($member_details['member']->member_name));*/ D($username);?>
+              <?php D(__('profile_page_no_proposal_public',"does not have any proposals/services to display at the moment."));?>
+            </h5>
+            <?php } ?>
+          </div>
+          <?php	
+
+                }
+
+                ?>
+          <?php if($is_editable AND count($proposals) > 0) { ?>
+          <a href="<?php D(get_link('postproposalURL'));?>" class="col-lg-4 col-md-6 col-sm-6 mb-4">
+          <div class="proposal-card-base mp-proposal-card add-new-proposal">
+            <p class="mb-0">
+              <?php D(__('profile_page_Create_A_New_Proposal',"Create A New Proposal"));?>
+            </p>
+          </div>
+          </a>
+          <?php } ?>
+        </div>
+        <script>
+        $(function() {
+
+       		$('.col-lg-3').matchHeight({
+
+		        byRow: true,
+
+		        property: 'height',
+
+		        target: null,
+
+		        remove: true
+
+	        });
+
+        });
+
+        </script>
+        <?php
+
+if($member_details['member']->total_review){
+
+        ?>
+        <div class="boxed-list user-reviews mb-4">
+          <div class="boxed-list-headline d-md-flex align-items-center">
+            <h4 class="mb-md-0"><i class="icon-feather-user"></i>
+              <?php /*D(ucfirst($member_details['member']->member_name));*/ D($username);?>'s Reviews</h4>
+            <div class="d-flex align-items-center ml-auto">  
+            <div class="star-rating mb-2 mb-md-0" data-rating="<?php printf("%.1f",$member_details['member']->avg_rating);?>"></div>
+            <span class="text-white ml-2">[<?php D($member_details['member']->total_review); ?>]</span>
+            <div class="dropdown ml-3">
+              <button id="dropdown-button" class="btn btn-sm btn-outline-site dropdown-toggle" data-toggle="dropdown">
+              <?php D(__('profile_page_Most_Recent',"Most Recent"));?>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item active all">
+                  <?php D(__('profile_page_Most_Recent',"Most Recent"));?>
+                </li>
+                <li class="dropdown-item good">
+                  <?php D(__('profile_page_Positive_Reviews',"Positive Reviews"));?>
+                </li>
+                <li class="dropdown-item bad">
+                  <?php D(__('profile_page_Negative_Reviews',"Negative Reviews"));?>
+                </li>
+              </ul>
+            </div>
+            </div>
+          </div>
+          <ul class="boxed-list-ul reviews-list" id="all">
+            <?php
+
+	if($buyer_reviews){
+
+	$good_review=$bad_review=array();
+
+	foreach($buyer_reviews as $r=>$review){
+
+	if($review->buyer_rating>=4){
+
+		$good_review[]=$review;
+
+	}else{
+
+		$bad_review[]=$review;
+
+	}	
+
+	?>
+            <li>
+              <div class="boxed-list-item"> 
+                
+                <!-- Avatar -->
+                
+                <div class="item-image"> <img src="<?php D(getMemberLogo($review->review_buyer_id))?>" alt=""> </div>
+                
+                <!-- Content -->
+                
+                <div class="item-content">
+                  <div class="d-flex justify-content-between">
+                    <h4 class="mb-0">
+                      <?php D($review->buyer_name); ?>
+                    </h4>
+                    <p class="mb-0 text-muted"><i class="icon-feather-calendar"></i>
+                      <?php D(dateFormat($review->review_date,'F d, Y')); ?>
+                    </p>
+                  </div>
+                  <div class="star-rating" data-rating="<?php echo $review->buyer_rating;?>"></div>
+                  <?php /*?><div class="item-details margin-top-7">
+        <div class="detail-item"><i class="icon-feather-calendar"></i> <?php D(dateFormat($review->review_date,'F d,Y')); ?></div>
+    </div><?php */?>
+                  <div class="item-description mt-0">
+                    <p>
+                      <?php D($review->buyer_review); ?>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <!-- star-rating-row Ends -->
+            
+            <?php
+
+	}
+
+}else{
+
+?>
+            <li>
+              <div class="text-center">
+                <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5>
+                  <?php D(__('profile_page_no_review_yet',"This proposal/service has no reviews yet. Be the first to post in a review."));?>
+                </h5>
+              </div>
+            </li>
+            <?php
+
+}
+
+?>
+          </ul>
+          
+          <!-- reviews-list Ends -->
+          
+          <ul class="boxed-list-ul reviews-list" id="good">
+            <?php if($good_review){
+
+	foreach($good_review as $r=>$review){
+
+		?>
+            <li>
+              <div class="boxed-list-item"> 
+                
+                <!-- Avatar -->
+                
+                <div class="item-image"> <img src="<?php D(getMemberLogo($review->review_buyer_id))?>" alt=""> </div>
+                
+                <!-- Content -->
+                
+                <div class="item-content">
+                  <div class="d-flex justify-content-between">
+                    <h4 class="mb-0">
+                      <?php D($review->buyer_name); ?>
+                    </h4>
+                    <p class="text-muted mb-0"><i class="icon-feather-calendar"></i>
+                      <?php D(dateFormat($review->review_date,'F d, Y')); ?>
+                    </p>
+                  </div>
+                  <div class="star-rating" data-rating="<?php echo $review->buyer_rating;?>"></div>
+                  <div class="item-description mt-0">
+                    <p>
+                      <?php D($review->buyer_review); ?>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+            <!-- star-rating-row Ends -->
+            
+            <?php }
+
+}else{
+
+?>
+            <li>
+              <div class="text-center">
+                <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5>
+                  <?php D(__('profile_page_no_positive_review_yet',"There is currently no positive review for this proposal/service."));?>
+                </h5>
+              </div>
+            </li>
+            <?php }?>
+          </ul>
+          <!-- reviews-list Ends --> 
+          
+          <!-- proposal-reviews Ends -->
+          
+          <!-- proposal-reviews Starts -->
+          
+          <ul class="boxed-list-ul reviews-list" id="bad">
+            <?php if($bad_review){
+
+	foreach($bad_review as $r=>$review){
+
+		?>
+            <li>
+              <div class="boxed-list-item"> 
+                <!-- Avatar -->
+                <div class="item-image"> <img src="<?php D(getMemberLogo($review->review_buyer_id))?>" alt=""> </div>
+                <!-- Content -->
+                <div class="item-content">
+                  <div class="d-flex justify-content-between">
+                    <h4 class="mb-0">
+                      <?php D($review->buyer_name); ?>
+                    </h4>
+                    <p class="text-muted mb-0"><i class="icon-feather-calendar"></i>
+                      <?php D(dateFormat($review->review_date,'F d, Y')); ?>
+                    </p>
+                  </div>
+                  <div class="star-rating" data-rating="<?php echo $review->buyer_rating;?>"></div>
+                  <div class="item-description mt-0">
+                    <p>
+                      <?php D($review->buyer_review); ?>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <?php }
+
+}else{
+
+?>
+            <li>
+              <div class="text-center">
+                <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5>
+                  <?php D(__('profile_page_no_negative_review_yet',"There is currently no negative review for this proposal/service."));?>
+                </h5>
+              </div>
+            </li>
+            <?php }?>
+          </ul>
+          <!-- reviews-list Ends --> 
+          
+          <!-- proposal-reviews Ends --> 
+          
+        </div>
+        <?php } ?>
+      </div>
       <div class="col-xl-3 col-lg-4 col-12">
         <div class="card mb-4">
+          <div class="card-header black d-flex"><h4>About</h4></div>
           <div class="card-body">
             <ul>
               <li class="mb-2"> <i class="icon-feather-user"></i> <strong>
@@ -125,7 +444,7 @@ if($is_login){
           </div>
         </div>
         <div class="card mb-4">
-          <div class="card-header d-flex">
+          <div class="card-header black d-flex">
             <h4>
               <?php D(__('profile_page_Languages',"Languages"));?>
             </h4>
@@ -234,8 +553,8 @@ if($is_login){
           </div>
         </div>
         <div class="card mb-4">
-          <div class="card-header d-flex">
-            <h4 class="">
+          <div class="card-header black d-flex">
+            <h4>
               <?php D(__('profile_page_Skills',"Skills"));?>
             </h4>
             <?php if($is_editable){ ?>
@@ -346,324 +665,6 @@ if($is_login){
           <!-- card-body Ends --> 
           
         </div>
-      </div>
-      <div class="col-xl-9 col-lg-8 col-12">
-        <div class="card user-sidebar mb-4"><!--- card user-sidebar rounded-0 Starts -->
-          
-          <div class="card-header">
-            <h4>
-              <?php D(__('profile_page_Description',"Description"));?>
-            </h4>
-          </div>
-          <div class="card-body">
-            <p>
-              <?php D($member_details['member_basic']->member_overview); ?>
-            </p>
-          </div>
-        </div>
-        <div class="mb-4">
-            <h4 class="mb-4">
-              <?php /*D(ucfirst($member_details['member']->member_name));*/ D($username); ?>
-              <?php D(__('profile_page_proposal_service',"\'s Proposals/Services"));?>
-            </h4>
-
-            <div class="row">
-              <?php
-
-                if($proposals){
-
-                	$proposaldata=array();
-
-                	foreach($proposals as $k=>$proposal){
-
-					?>
-              <div class="col-md-4 col-12">
-                <?php 
-
-					 	$proposaldata['proposal']=$proposal;
-
-					 	if($is_editable){
-
-							$proposaldata['proposal']->hide_footer_action=1;
-
-						}
-
-					 	$templateLayout=array('view'=>'proposals/proposal-list','type'=>'ajax','buffer'=>FALSE,'theme'=>'');
-
-						load_template($templateLayout,$proposaldata);
-
-					 ?>
-              </div>
-              <?php
-
-					}
-
-				}else{	
-
-                ?>
-              <div class="col-md-12">
-                <?php if($is_editable) { ?>
-                <h5 class="text-center text-muted">
-                  <?php D(__('profile_page_Hey',"Hey"));?>
-                  <?php /*D(ucfirst($member_details['member']->member_name));*/ D($username);?>
-                  <?php D(__('profile_page_no_proposal',"! you have no proposals/services displayed here at the moment. Click "));?>
-                  <a href="<?php D(get_link('startsellingURL'))?>" class="text-success">
-                  <?php D(__('profile_page_no_proposal_click_here',"here"));?>
-                  </a>
-                  <?php D(__('profile_page_no_proposal_last_part',"to create a proposal/service."));?>
-                </h5>
-                <?php }else{ ?>
-                <h5 class="text-center text-muted">
-                  <?php /*D(ucfirst($member_details['member']->member_name));*/ D($username);?>
-                  <?php D(__('profile_page_no_proposal_public',"does not have any proposals/services to display at the moment."));?>
-                </h5>
-                <?php } ?>
-              </div>
-              <?php	
-
-                }
-
-                ?>
-              <?php if($is_editable AND count($proposals) > 0) { ?>
-              <a href="<?php D(get_link('postproposalURL'));?>" class="col-lg-4 col-md-6 col-sm-6 mb-3">
-              <div class="proposal-card-base mp-proposal-card add-new-proposal">
-                <p>
-                  <?php D(__('profile_page_Create_A_New_Proposal',"Create A New Proposal"));?>
-                </p>
-              </div>
-              </a>
-              <?php } ?>
-            </div>
-        </div>
-        <script>
-
-        $(function() {
-
-       		$('.col-lg-3').matchHeight({
-
-		        byRow: true,
-
-		        property: 'height',
-
-		        target: null,
-
-		        remove: true
-
-	        });
-
-        });
-
-        </script>
-        <?php
-
-if($member_details['member']->total_review){
-
-        ?>
-        <div class="boxed-list user-reviews mb-4">
-          <div class="boxed-list-headline d-md-flex align-items-center">
-            <h3 class="mb-md-0 mr-md-4"><i class="icon-feather-user"></i>
-              <?php /*D(ucfirst($member_details['member']->member_name));*/ D($username);?>
-              's Reviews</h3>
-            <div class="star-rating mb-2 mb-md-0" data-rating="<?php printf("%.1f",$member_details['member']->avg_rating);?>"> <span class="text-muted">(
-              <?php D($member_details['member']->total_review); ?>
-              )</span></div>
-            <div class="dropdown ml-auto">
-              <button id="<dropdown-button></dropdown-button>" class="btn btn-outline-site dropdown-toggle" data-toggle="dropdown">
-              <?php D(__('profile_page_Most_Recent',"Most Recent"));?>
-              </button>
-              <ul class="dropdown-menu">
-                <li class="dropdown-item active all">
-                  <?php D(__('profile_page_Most_Recent',"Most Recent"));?>
-                </li>
-                <li class="dropdown-item good">
-                  <?php D(__('profile_page_Positive_Reviews',"Positive Reviews"));?>
-                </li>
-                <li class="dropdown-item bad">
-                  <?php D(__('profile_page_Negative_Reviews',"Negative Reviews"));?>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <ul class="boxed-list-ul reviews-list" id="all">
-            <?php
-
-if($buyer_reviews){
-
-	$good_review=$bad_review=array();
-
-	foreach($buyer_reviews as $r=>$review){
-
-	if($review->buyer_rating>=4){
-
-		$good_review[]=$review;
-
-	}else{
-
-		$bad_review[]=$review;
-
-	}	
-
-	?>
-            <li>
-              <div class="boxed-list-item"> 
-                
-                <!-- Avatar -->
-                
-                <div class="item-image"> <img src="<?php D(getMemberLogo($review->review_buyer_id))?>" alt=""> </div>
-                
-                <!-- Content -->
-                
-                <div class="item-content">
-                  <div class="d-flex justify-content-between">
-                    <h4>
-                      <?php D($review->buyer_name); ?>
-                    </h4>
-                    <p class="mb-2 text-muted"><i class="icon-feather-calendar"></i>
-                      <?php D(dateFormat($review->review_date,'F d, Y')); ?>
-                    </p>
-                  </div>
-                  <div class="star-rating" data-rating="<?php echo $review->buyer_rating;?>"></div>
-                  <?php /*?><div class="item-details margin-top-7">
-                <div class="detail-item"><i class="icon-feather-calendar"></i> <?php D(dateFormat($review->review_date,'F d,Y')); ?></div>
-            </div><?php */?>
-                  <div class="item-description mt-0">
-                    <p>
-                      <?php D($review->buyer_review); ?>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            
-            <!-- star-rating-row Ends -->
-            
-            <?php
-
-	}
-
-}else{
-
-?>
-            <li>
-              <div class="alert alert-danger mb-0">
-                <?php D(__('profile_page_no_review_yet',"This proposal/service has no reviews yet. Be the first to post in a review."));?>
-              </div>
-            </li>
-            <?php
-
-}
-
-?>
-          </ul>
-          
-          <!-- reviews-list Ends -->
-          
-          <ul class="boxed-list-ul reviews-list" id="good">
-            <?php if($good_review){
-
-	foreach($good_review as $r=>$review){
-
-		?>
-            <li>
-              <div class="boxed-list-item"> 
-                
-                <!-- Avatar -->
-                
-                <div class="item-image"> <img src="<?php D(getMemberLogo($review->review_buyer_id))?>" alt=""> </div>
-                
-                <!-- Content -->
-                
-                <div class="item-content">
-                  <h4><a href="#">
-                    <?php D($review->buyer_name); ?>
-                    </a></h4>
-                  <div class="star-rating" data-rating="<?php echo $review->buyer_rating;?>"></div>
-                  <div class="item-details margin-top-7">
-                    <div class="detail-item"><i class="icon-feather-calendar"></i>
-                      <?php D(dateFormat($review->review_date,'F d,Y')); ?>
-                    </div>
-                  </div>
-                  <div class="item-description">
-                    <p>
-                      <?php D($review->buyer_review); ?>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            
-            <!-- star-rating-row Ends -->
-            
-            <?php }
-
-}else{
-
-?>
-            <li>
-              <div class="alert alert-danger mb-0">
-                <?php D(__('profile_page_no_positive_review_yet',"There is currently no positive review for this proposal/service."));?>
-              </div>
-            </li>
-            <?php }?>
-          </ul>
-          <!-- reviews-list Ends --> 
-          
-          <!-- proposal-reviews Ends -->
-          
-          <article class="proposal-reviews">
-          <!-- proposal-reviews Starts -->
-          
-          <ul class="boxed-list-ul reviews-list" id="bad">
-            <?php if($bad_review){
-
-	foreach($bad_review as $r=>$review){
-
-		?>
-            <li>
-              <div class="boxed-list-item"> 
-                
-                <!-- Avatar -->
-                
-                <div class="item-image"> <img src="<?php D(getMemberLogo($review->review_buyer_id))?>" alt=""> </div>
-                
-                <!-- Content -->
-                
-                <div class="item-content">
-                  <h4><a href="#">
-                    <?php D($review->buyer_name); ?>
-                    </a></h4>
-                  <div class="star-rating" data-rating="<?php echo $review->buyer_rating;?>"></div>
-                  <div class="item-details margin-top-7">
-                    <div class="detail-item"><i class="icon-feather-calendar"></i>
-                      <?php D(dateFormat($review->review_date,'F d,Y')); ?>
-                    </div>
-                  </div>
-                  <div class="item-description">
-                    <p>
-                      <?php D($review->buyer_review); ?>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <?php }
-
-}else{
-
-?>
-            <li>
-              <div class="alert alert-danger mb-0">
-                <?php D(__('profile_page_no_negative_review_yet',"There is currently no negative review for this proposal/service."));?>
-              </div>
-            </li>
-            <?php }?>
-          </ul>
-          <!-- reviews-list Ends --> 
-          
-          <!-- proposal-reviews Ends --> 
-          
-        </div>
-        <?php } ?>
       </div>
     </div>
   </div>

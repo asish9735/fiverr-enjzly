@@ -57,7 +57,7 @@ if($is_enable){
 $this->minify->add_css('bootstrap_'.$deflang.'.css');
 
 $this->minify->add_css('icons.css');
-
+$this->minify->add_css('all.css');
 $this->minify->add_css('theme.css?68468');
 
 $this->minify->add_css('custom.css');
@@ -78,7 +78,7 @@ if($loggedUser && $this->router->fetch_class()!='home'){
 
 }
 
-$this->minify->add_css('font-awesome.css');
+//$this->minify->add_css('font-awesome.css');
 
 
 

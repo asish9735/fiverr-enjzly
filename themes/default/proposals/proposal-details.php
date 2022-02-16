@@ -459,13 +459,13 @@ $section_data=array(
               <span class="comments-amount">(<?php echo $count_reviews; ?>)</span> </h3>
             <div class="d-flex align-items-center ml-auto">
             <div class="star-rating d-block" data-rating="<?php echo round($average_rating); ?>"></div>            
-            <span class="text-muted">
+            <span class="text-muted ml-2">[
             <?php
 
               printf("%.1f", $average_rating);
 
               ?>
-            </span>
+            ]</span>
             <div class="dropdown ml-3">
               <button id="dropdown-button" class="btn btn-outline-site dropdown-toggle" data-toggle="dropdown">
               <?php D(__('proposal_details_page_Most_Recent', "Most Recent")); ?>
@@ -547,23 +547,25 @@ $section_data=array(
                 </ul>
                 <?php } ?>
               </li>
+<li class="text-center"><a href="#" class="btn btn-outline-site">More Reviews</a></li>
               <?php
 
                 }
               } else {
 
                 ?>
-              <li style="margin:0;">
-                <p class='text-center text-muted'>
+              <li class="text-center">
+<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+                <h5>
                   <?php D(__('proposal_details_page_no_review_yet', "This proposal/service has no reviews yet. Be the first to post in a review.")); ?>
-                </p>
+                </h5>
               </li>
               <?php
 
               }
 
               ?>
-              <li class="text-center"><a href="#" class="btn btn-outline-site">More Reviews</a></li>
+              
             </ul>
             <ul id="good">
               <?php if ($good_review) {
@@ -896,11 +898,8 @@ $section_data=array(
 				?>
 
                 <li>
-
                   <h5 class='text-center text-muted'>
-
                     <?php D(__('proposal_details_page_no_review_yet',"This proposal/service has no reviews yet. Be the first to post in a review."));?>
-
                   </h5>
 
                 </li>
@@ -1258,8 +1257,8 @@ $section_data=array(
                   if ($proposal_details['proposal']->proposal_price == 0) {
               ?>
                 <div class="card mb-4 mt-4 mt-lg-0">
-                  <div class="card-header pt-0">
-                    <ul class="nav nav-pills card-header-tabs justify-content-center" id="myTab" role="tablist">
+                  <div class="card-header p-0">
+                    <ul class="nav nav-pills justify-content-center" id="myTab" role="tablist">
                     <?php
                     if ($proposal_details['proposal_packages']) {
                       foreach ($proposal_details['proposal_packages'] as $i => $package) {
@@ -1282,11 +1281,7 @@ $section_data=array(
                           
                           <div id="tab_<?php D($package->package_id); ?>" class="tab-pane fade <?php if ($package->package_name == "Standard") {  echo "show active"; } ?>" data-parent="#accordionExample">
                             <div class="card-body">
-                              <h3><strong>
-                                <?php D(CURRENCY); ?>
-                                <span class="<?php D($priceClass); ?>">
-                                <?php D($package->price); ?>
-                                </span></strong></h3>
+                              <h2><?php D(CURRENCY); ?><span class="<?php D($priceClass); ?>"><?php D($package->price); ?></span></h2>
                               <h5><i class="icon-feather-clock"></i>
                                 <?php D($package->delivery_time); ?>
                                 <?php D(__('proposal_details_page_Days_Delivery', "Days Delivery")); ?>
@@ -1892,9 +1887,11 @@ $section_data=array(
     <?php
 
     } else { ?>
-    <div class="alert alert-danger text-center">
-      <?php D(__('proposal_details_page_no_other_proposal', "This freelancer has no other proposals/services.")); ?>
-    </div>
+    <div class="card text-center mb-4">
+<div class="card-body">
+	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+      <h5><?php D(__('proposal_details_page_no_other_proposal', "This freelancer has no other proposals/services.")); ?></h5>
+    </div></div>
     <?php
 
     }
@@ -1941,9 +1938,12 @@ $section_data=array(
       } else {
 
       ?>
-    <div class="alert alert-danger text-center">
-        <?php D(__('proposal_details_page_no_recent_proposal_view', "This freelancer has no other proposals/services.")); ?>
-    </div>
+<div class="card text-center">
+<div class="card-body">
+	<h2 class="icon-line-awesome-info-circle text-danger"></h2>
+      <h5><?php D(__('proposal_details_page_no_recent_proposal_view', "This freelancer has no other proposals/services.")); ?></h5>
+    </div></div>
+    
     <?php
 
       }

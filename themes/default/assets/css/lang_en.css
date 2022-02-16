@@ -232,17 +232,17 @@ ul.list li:before {
     right: 1rem;
 }
 .job-listing .job-listing-footer ul li {
-	margin-right: 14px;
+	margin-right: 0.75rem;
 }
 .boxed-list-item .item-image {
-	margin-right: 20px;
+	margin-right: 1rem;
 }
 /*.input-group > .input-group-prepend > .input-group-text{
 	border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
 }*/
 .fun-fact-text {
-	margin-right: 20px;
+	margin-right: 1rem;
 }
 .fun-fact-icon {
     right: 1rem;

@@ -81,20 +81,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
   <div class="row">
     <div class="col-xl-3 col-md-4 col-12">
-      <div class="card rounded-0 mb-3 card_user user-home-sidebar-sec">
-        <div class="card-body"> <img src="<?php D(getMemberLogo($profile_data['member']->member_id));?>" class="img-fluid rounded-circle center-block" alt="none" height="120" width="120">
+      <div class="profile-x mb-3">
+      <div class="avatar-wrapper mb-2">
+      	<img src="<?php D(getMemberLogo($profile_data['member']->member_id));?>" class="rounded-circle" alt="User" height="64" width="64"></div>
+        <div class="profile-x-body"> 
+        	<p class="mb-1">Welcome</p>
           <h4>
             <?php D(__('user_home_page_Hi','Hi'));?>
             ,
             <?php if($profile_data && $profile_data['member']){D(ucwords(strtolower($profile_data['member']->member_name)));} ?>
           </h4>
+        </div>
           <p>
             <?php D(__('user_home_page_get_offer_from_freelancer','Get offers from our freelancers for your project.'));?>
           </p>
           <button onclick="location.href='<?php D(get_link('postrequestURL'))?>'" class="btn btn-site">
           <?php D(__('user_home_page_post_a_request','Post A Request'));?>
           </button>
-        </div>
+        
       </div>
       <div class=" rounded-0 carosel_sec">
         <h3 class="buy_head">
@@ -396,7 +400,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <!-- Headline -->
         
-        <div class="headline d-flex">
+        <div class="headline black d-flex">
           <h4>
             <?php D(__('user_home_page_Recent_requests','Recent requests'));?>
           </h4>
@@ -518,8 +522,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         ?>
           <li style="padding:15px 20px;">
-            <div class="alert alert-danger text-center mb-0" style="flex:1;">
-              <?php D(__('user_home_page_no_request','No requests that matches any of your proposals/services yet!'));?>
+            <div class="text-center" style="flex:1;">
+              <h2 class="icon-line-awesome-info-circle text-danger"></h2>
+              <h5><?php D(__('user_home_page_no_request','No requests that matches any of your proposals/services yet!'));?></h5>
             </div>
           </li>
           <?php

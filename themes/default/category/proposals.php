@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php }?>
         <!-- Accordion -->
                 <div class="accordion js-accordion mb-4" id="proposal_category_old">
-                <h4 class="list-group-header bg-white" style="padding: 0.75rem 1rem; margin: 0;"><?php D(__('proposal_Categories',"Categories"));?></h4>
+                <h4 class="list-group-header bg-dark text-white" style="padding: 0.75rem 1rem; margin: 0;"><?php D(__('proposal_Categories',"Categories"));?></h4>
                 <?php
                 if($all_category){
                     foreach($all_category as $c=>$category){
@@ -109,27 +109,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
                 </div>
 			
-			<!-- Accordion / End -->
+		<!-- Accordion / End -->
             
-			<div class="card mb-4">
-				<div class="card-body">
-                <div class="sidebar-widget">
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input get_online_sellers" name="is_online_user" value="1" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1"><?php D(__('proposal_show_online_user',"Show Online Freelancers"));?></label>
-                </div>
-				</div>
-							                
+                <div class="card mb-4">
+                    <div class="card-body">
+                    <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input get_online_sellers" name="is_online_user" value="1" id="customCheck1">
+                      <label class="custom-control-label" for="customCheck1"><?php D(__('proposal_show_online_user',"Show Online Freelancers"));?></label>
+                    </div>
+                    </div>
+                </div>				                
                 
                 <!-- Hourly Rate -->
-				<div class="sidebar-widget">
-					<h3>Price</h3>
+				<div class="card mb-4">
+                <div class="card-header black"><h5>Price</h5></div>
+				<div class="card-body">
 					<div class="margin-top-50"></div>
 					<!-- Range Slider -->
 					<input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="10" data-slider-max="250" data-slider-step="5" data-slider-value="[10,250]"/>
 				</div>
-                <div class="sidebar-widget">
-                <h5><?php D(__('proposal_Delivery_Time',"Delivery Time"));?></h5>
+                </div>
+                
+                <div class="card mb-4">
+                <div class="card-header black"><h5><?php D(__('proposal_Delivery_Time',"Delivery Time"));?></h5></div>
+				<div class="card-body">
+                
                 <button class="btn btn-secondary btn-sm float-right clear_delivery_time d-none" onclick="clearDelivery()">
                     <i class="fa fa-times-circle"></i> <?php D(__('proposal_Clear Filter',"Clear Filter"));?>
                 </button>
@@ -148,10 +152,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
                 
                 </div>
-				
+				</div>
 			
-				<div class="sidebar-widget">
-            		<h5><?php D(__('proposal_Freelancer_Level',"Freelancer Level"));?></h5>
+				<div class="card mb-4">
+                <div class="card-header black"><h5><?php D(__('proposal_Freelancer_Level',"Freelancer Level"));?></h5></div>
+				<div class="card-body">
+            		
 					<button class="btn btn-secondary btn-sm float-right clear_seller_level d-none" onclick="clearLevel()">
 						<i class="fa fa-times-circle"></i> <?php D(__('proposal_Clear Filter',"Clear Filter"));?>
 					</button>
@@ -168,11 +174,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						}
 					}
 					?>
-				
 				</div>
-				<div class="sidebar-widget">
-				
-					<h5><?php D(__('proposal_Freelancer_Language',"Freelancer Language"));?></h5>
+				</div>
+                
+				<div class="card mb-4">
+                	<div class="card-header black"><h5><?php D(__('proposal_Freelancer_Language',"Freelancer Language"));?></h5></div>
+					<div class="card-body">				
+					
 					<button class="btn btn-secondary btn-sm float-right clear_seller_language d-none" onclick="clearLanguage()">
 						<i class="fa fa-times-circle"></i> <?php D(__('proposal_Clear Filter',"Clear Filter"));?>
 					</button>
@@ -194,8 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					
 				
 			</div>
-            </div>
-			</div>
+				</div>
 		</form>
 		</div>
 		<div class="col-lg-9 col-12">
