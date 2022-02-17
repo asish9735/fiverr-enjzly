@@ -25,17 +25,17 @@ $s_currency=CURRENCY;
       <li class="breadcrumb-item active">Dashboard</li>
     </ol>
     </div>
-    <div class="col-sm-6 text-right">                  
+    <div class="col-sm-6 text-sm-right">                  
       <a href="<?php D(get_link('postrequestURL')); ?>" class="btn btn-outline-dark mr-3"><i class="icon-line-awesome-hand-stop-o"></i> <?php D(__('Post_Requests','Post Request'))?></a>
       <a href="<?php D(get_link('postproposalURL')); ?>" class="btn btn-dark"><i class="icon-line-awesome-mouse-pointer"></i> Post Gigs</a>
     </div>
   </div>
   </div>
 </div>
-<section class="section gray">
+<section class="section">
   <div class="container-fluid">
     <div class="row">
-      <div class="col6-xl-3 col-lg-auto col-12">
+      <div class="col-xl-3 col-lg-auto col-12">
         <?php /*?>
 		    <div class="card contacts-sidebar_" style="border-bottom:0">
           <div class="card-header bg-white">

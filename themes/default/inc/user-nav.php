@@ -23,7 +23,7 @@ if($rating){
 }
 ?>
 
-<div class="card">
+
     <div class="profile-x">
       <div class="avatar-wrapper">
       <a href="<?php D(get_link('viewprofileURL'));?><?php D($username); ?>"><img src="<?php D(getMemberLogo($loggedUser['MID'])); ?>" class="rounded-circle img-fluid"></a> </div>
@@ -36,6 +36,7 @@ if($rating){
         <?php D($member_details->country_name); ?>
       </div>
     </div>
+    <div class="card">
     <div class="mp-box mp-box-white mb-2">
       <div class="box-row">
         <ul class="main-cat-list active">

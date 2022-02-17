@@ -44,6 +44,10 @@ ul.category-list > li {
 .package-table tr > th:last-child, .package-table tr > td:last-child {
 	background-color: #ccefff;
 }*/
+.box-login {
+	padding: 1.5rem;
+	min-height: 550px;
+}
 .login:before{
 	width:50%;
 }
@@ -117,7 +121,9 @@ ul.category-list > li {
 	display:none !important
 }
 .breadcrumbs .container, .breadcrumbs .container-fluid {
-	height: 80px;
+	/*height: 80px;*/
+	padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 .category-nav, .mp-box-white {
 	display:none
@@ -129,7 +135,7 @@ ul.category-list > li {
 	left: 0;
 	top: 0;
 	width: 100%;
-	z-index: 999;
+	z-index: 1001;
 	height: 100vh;
 	padding: 0
 }
@@ -145,15 +151,20 @@ ul.category-list > li {
 .ibborder{
 	display:none;	
 }
+.profile-x{
+	border-radius: 0.25rem;
+	margin-bottom:1.5rem
 }
- @media (max-width: 767px) {
+}
+ @media (max-width: 767.98px) {
 .breadcrumbs .container {
 	min-height: 10vh;
 }
 .section {
-	padding: 2rem 0;
+	padding: 2rem 0
 }
 .login{
+	background-size: cover;
 	padding:1rem 0;
 }
 .box-login {
@@ -167,13 +178,26 @@ ul.category-list > li {
 	left:20px;
 	right:20px;
 }
-.breadcrumbs h1 {
+.breadcrumbs h1, .paragraph h2.title {
 	font-size: 1.5rem;
+}
+.banner-headline h1, .section-headline > h2{
+	font-size: 1.75rem;
 }
 #order-activity .job-listing-details{
 	display:block;
 }
-
+.box-login {
+	padding: 1.25rem;
+}
+.nav-pills {
+	flex-wrap: inherit;
+	position: relative;
+	overflow-x: auto;
+	overflow-y: hidden;
+	width: 100%;
+	white-space: nowrap;
+}
 }
  @media (min-width: 601px) and (max-width: 767px) {
 .package .column {

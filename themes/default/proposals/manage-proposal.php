@@ -191,6 +191,7 @@ $username=$loggedUser['UNAME'];
                           <?php } */?>
                           </ul>
                         </div>
+                        <div class="job-listing-button">
                         <a href="<?php D(get_link('ProposalDetailsURL'))?>/<?php D('p-'.$member_details['member']->username); ?>/<?php echo $proposal->proposal_url; ?>" class="btn btn-sm btn-outline-dark mr-2"><i class="icon-feather-eye"></i>
                         <?php D(__('manage_proposal_page_action_Preview','Preview'));?>
                         </a>
@@ -211,7 +212,9 @@ $username=$loggedUser['UNAME'];
                         <?php D(__('manage_proposal_page_action_Edit','Edit'));?>
                         </a> <a href="<?php D(VZ)?>" onclick="doAction('delete','<?php D($proposal->proposal_id); ?>')" class="btn btn-sm btn-outline-danger mr-2"><i class="icon-feather-trash"></i>
                         <?php D(__('manage_proposal_page_action_Delete','Delete'));?>
-                        </a> </div>
+                        </a>
+                        </div>
+                        </div>
                     </div>
                   </div>
                   

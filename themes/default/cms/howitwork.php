@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="breadcrumbs" id="how_to">
-  <div class="container">
+  <div class="container-fluid">
     <h1>
       <?php D(__('how_it_works','How it works?'))?>
     </h1>
@@ -16,46 +16,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 <!-- HOW IT WORKS -->
-<?php /*
-<section class="section how-it-works">
-  <div class="container">
-    <div class="section-headline">
-      <h2>
-        
-      </h2>
-      
-    </div>
+<section class="section how-it-works bg-white pt-3">
+  <div class="container-fluid">    
     <div class="row">
-      <?php
-	if($boxes){
-	foreach($boxes as $k=>$box){
-	?>
-      <div class="col-md-4 col-12">
-        <div class="icon-box with-line"> 
+		<div class="col-lg-3 col-sm-6 col-12">
+        <div class="icon-box with-line">
+        	<div class="ibborder"><img src="<?php D(theme_url().IMAGE);?>border.png" alt=""></div> 
           <!-- Icon -->
           <div class="icon-box-circle">
-            <div class="icon-box-circle-inner"> <img src="<?php D(URL_USERUPLOAD.'box/')?><?php D($box->box_image);?>" class="mb-3" alt="<?php D($box->name);?>" height="96" width="96">
-              <div class="icon-box-check">0<?php echo ($k+1);?></div>
+            <div class="icon-box-circle-inner">
+            
+            <img src="<?php D(VPATH);?>userupload/box/0a8701fc11e857e955cec67af08bc0da.png" class="mb-3" alt="Create A Gig" height="64" width="64">
             </div>
           </div>
-          <h4>
-            <?php D($box->name);?>
-          </h4>
-          <p>
-            <?php D($box->description);?>
-          </p>
+          <h4>Create A Gig</h4>
+          <p>Payment is released to the freelancer once you’re pleased and approve the work you get.</p>
         </div>
       </div>
-      <?php	
-	}
-	}
-	?>
-    </div>
+		<div class="col-lg-3 col-sm-6 col-12">
+        <div class="icon-box with-line">
+        	<div class="ibborder"><img src="<?php D(theme_url().IMAGE);?>border.png" alt=""></div> 
+          <!-- Icon -->
+          <div class="icon-box-circle">
+            <div class="icon-box-circle-inner">            
+            <img src="<?php D(VPATH);?>userupload/box/614a5dcc608e80cf595d11eb7189ba78.png" class="mb-3" alt="Get Paid" height="64" width="64">
+			</div>
+          </div>
+          <h4>Get Paid</h4>
+          <p>We here for you, anything from answering any questions to resolving any issues, at any time.</p>
+        </div>
+      </div>
+            <div class="col-lg-3 col-sm-6 col-12">
+        <div class="icon-box with-line">
+        	<div class="ibborder"><img src="<?php D(theme_url().IMAGE);?>border.png" alt=""></div> 
+          <!-- Icon -->
+          <div class="icon-box-circle">
+            <div class="icon-box-circle-inner">
+            
+            <img src="<?php D(VPATH);?>userupload/box/ad4945e5c25b86e7a772765ac334ed1d.png" class="mb-3" alt="Deliver Great Work" height="64" width="64">
+                          </div>
+          </div>
+          <h4>Deliver Great Work</h4>
+          <p>Find any service within minutes and know exactly what you’ll pay. No hourly rates, just a fixed price.</p>
+        </div>
+      </div>
+            <div class="col-lg-3 col-sm-6 col-12">
+        <div class="icon-box with-line">
+        	<div class="ibborder"><img src="<?php D(theme_url().IMAGE);?>border.png" alt=""></div> 
+          <!-- Icon -->
+          <div class="icon-box-circle">
+            <div class="icon-box-circle-inner">
+            
+            <img src="<?php D(VPATH);?>userupload/box/022ff5feb5fc1ccd563740aa2185316c.png" class="mb-3" alt="Stay Updated" height="64" width="64">
+                          </div>
+          </div>
+          <h4>Stay Updated</h4>
+          <p>We are consisting of both creative thinkers and tech geniuses. We have the curiosity to explore new ideas</p>
+        </div>
+      </div>
+          </div>    
   </div>
 </section>
-<?php */  ?>
 <section class="section">
-  <div class="container">
+  <div class="container-fluid">
     <ul class="nav nav-pills mb-0 justify-content-center" id="myTab" role="tablist">
       <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">For Buyers</a></li>
       <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">For Sellers</a></li>

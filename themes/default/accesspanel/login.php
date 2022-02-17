@@ -40,10 +40,10 @@ header, footer, .post_footer{
                     <div class="social-login-separator"><span><?php D(__('login_page_or',"OR"));?></span></div>						
                     <div class="social-login-buttons">
                     <a href="#" onclick="window.location = '<?php echo $fLoginURL ?>';" class="facebook-login" >
-                    <i class="fa fa-facebook"></i> Log In via <?php D(__('login_page_social_FACEBOOK',"FACEBOOK"));?>
+                    <i class="fa-brands fa-facebook"></i> Log In via <?php D(__('login_page_social_FACEBOOK',"FACEBOOK"));?>
                     </a>
                     <a href="#" onclick="window.location = '<?php echo $gLoginURL ?>';" class="google-login">
-                    <i class="fa fa-google-plus"></i> Log In via <?php D(__('login_page_social_GOOGLE',"GOOGLE"));?>
+                    <i class="fa-brands fa-google"></i> Log In via <?php D(__('login_page_social_GOOGLE',"GOOGLE"));?>
                     </a>
                     </div>									
 				<?php } ?>                                

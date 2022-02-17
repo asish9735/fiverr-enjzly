@@ -1973,8 +1973,6 @@ video.embed-responsive {
 }
 .box-login {
 	background-color: #fff;
-	padding: 1.5rem;
-	min-height: 550px;
 	display: flex;
 	align-items: center;
 	position: relative;
@@ -4036,7 +4034,7 @@ ul.bullet > li:before {
     align-items: center;
     flex-wrap: wrap;
 	margin-bottom:0.25rem;
-    padding: 1rem 1.25rem;
+    padding: 1.25rem;
 }
 .profile-x .avatar-wrapper {
     width: 64px;
@@ -4138,8 +4136,12 @@ span.required {
 .job-listing .job-listing-footer ul li{
 	margin-bottom:5px;
 }
-
-
+.job-listing-button{
+	margin-bottom:-0.5rem;
+}
+.job-listing-button .btn{
+	margin-bottom:0.5rem;
+}
 
 
 

@@ -76,7 +76,7 @@ load_template($templateLayout,$data);
     </div>
     <div class="banner-search">
     <div class="container-fluid h-100">
-      <div class="row align-items-md-center h-100">
+      <div class="row align-items-center h-100">
         <div class="col-md-6 col-12">                            
           <div class="banner-headline">
             <h1>

@@ -161,10 +161,10 @@ $website_name=get_option_value('website_name');
               </a></li>
             <?php }else{?>
             <li><a href="<?php D(get_link('loginURL'))?>">
-              <?php D(__('header_signin','Sign In'))?>
+              <i class="icon-feather-log-in"></i> <?php D(__('header_login','Log In'))?>
               </a></li>
             <li><a href="<?php D(get_link('registerURL'))?>">
-              <?php D(__('header_join_now','Join Now'))?>
+              <i class="icon-line-awesome-mouse-pointer"></i> <?php D(__('header_post_gigs','Post Gigs'))?>
               </a></li>
             <?php }?>
             
@@ -369,10 +369,7 @@ $website_name=get_option_value('website_name');
         <!-- User Menu / End -->
         
         <?php }else{?>
-        <div class="header-widget hide-under-991"> 
-          
-          <!--<a href="#sign-in-dialog" class=""><i class="icon-feather-log-in"></i> <span>Log In / Register</span></a>-->
-          
+        <div class="header-widget hide-under-991">                     
           <div class="widget-center">
             <div class="widget-center-align">
               <a href="<?php D(get_link('loginURL'))?>" class="btn btn-outline-site" >

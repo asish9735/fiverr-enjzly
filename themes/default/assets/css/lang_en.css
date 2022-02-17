@@ -376,6 +376,11 @@ ul.dashboard-box-list.with-button > li {
 
 }
 
+@media (max-width: 991.98px){
+#header .right-side {
+    right: 1.25rem;
+}
+}
 
 
 
