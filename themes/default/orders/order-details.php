@@ -145,15 +145,12 @@ $orderStatus=array(
                     
                   </li>
                   <li><i class="icon-feather-calendar"></i> <!--<b><?php // D(__('order_details_page_Date',"Date:"));?></b>--> <?php D(dateFormat($orderDetails->order_date,'M d, Y')); ?>
-                  </li>
-                  
-                
+                  </li>                  
+                </ul>
 
-                    <?php 
-
-              if($orderDetails->extra){
-
-              ?>
+					<?php         
+                      if($orderDetails->extra){        
+                    ?>
                     <ul class="ml-5" style="list-style-type: circle;">
                       <?php
 

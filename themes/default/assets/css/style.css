@@ -3578,10 +3578,10 @@ ul.bullet > li:before {
 .setlang > a > img {
 	border-radius: 1rem;
 	object-fit: cover;
-	height: 32px;
-	width: 32px;
-	padding: 3px;
-	border: 1px solid #dfdfdf;
+	height: 28px;
+    width: 28px;
+    padding: 2px;
+    border: 1px solid #777;
 }
 .card-image .carousel-indicators {
 	margin-bottom: 0.25rem;

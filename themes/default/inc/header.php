@@ -235,7 +235,7 @@ $website_name=get_option_value('website_name');
 
 						<!-- Dropdown -->
 						<div class="header-notifications-dropdown">
-            <div class="" style="display: block;width: 100%;">
+            			<div class="" style="display: block;width: 100%;">
 							<div class="header-notifications-headline">
 								<h4><?php echo __('messages','Messages'); ?></h4>
 								<button class="mark-as-read" title="Mark all as read" data-tippy-placement="left" hidden>
@@ -386,7 +386,7 @@ $website_name=get_option_value('website_name');
           </div>
         </div>
         <?php }?>
-        <div class="header-widget setlang" hidden>
+        <div class="header-widget setlang">
           <a href="<?php D(VZ)?>" onClick="setlang('en')" class="log-in-button <?php if($this->session->userdata('current_lang')=='en' || $this->session->userdata('current_lang')=='' ){D('active');}?>"><img src="<?php echo theme_url().IMAGE;?>en.svg" alt="English" height="32" width="32" /><!--<i class="icon-line-awesome-language"></i> EN--></a> 
             <!--<span class="text-muted pl-0 pr-0">|</span>-->
           <a href="<?php D(VZ)?>" onClick="setlang('ar')" class="log-in-button <?php if($this->session->userdata('current_lang')=='ar'){D('active');}?>"><img src="<?php echo theme_url().IMAGE;?>ae.svg" alt="Arabic" height="32" width="32" /><!--<i class="icon-line-awesome-language"></i> AR--></a>
